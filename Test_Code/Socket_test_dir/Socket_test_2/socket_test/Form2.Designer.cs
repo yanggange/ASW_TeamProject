@@ -28,60 +28,51 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.button1 = new System.Windows.Forms.Button();
-            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.listBox1 = new System.Windows.Forms.ListBox();
+            this.btnStart = new System.Windows.Forms.Button();
+            this.lblMsg = new System.Windows.Forms.Label();
+            this.txtChatMsg = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
-            // button1
+            // btnStart
             // 
-            this.button1.Location = new System.Drawing.Point(12, 12);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "시작";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.btnStart.Location = new System.Drawing.Point(310, 453);
+            this.btnStart.Name = "btnStart";
+            this.btnStart.Size = new System.Drawing.Size(262, 84);
+            this.btnStart.TabIndex = 1;
+            this.btnStart.Text = "서버 시작";
+            this.btnStart.UseVisualStyleBackColor = true;
+            this.btnStart.Click += new System.EventHandler(this.btnStart_Click);
             // 
-            // richTextBox1
+            // lblMsg
             // 
-            this.richTextBox1.Location = new System.Drawing.Point(12, 42);
-            this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(560, 322);
-            this.richTextBox1.TabIndex = 1;
-            this.richTextBox1.Text = "";
-            this.richTextBox1.TextChanged += new System.EventHandler(this.richTextBox1_TextChanged);
+            this.lblMsg.AutoSize = true;
+            this.lblMsg.Location = new System.Drawing.Point(113, 489);
+            this.lblMsg.Name = "lblMsg";
+            this.lblMsg.Size = new System.Drawing.Size(69, 12);
+            this.lblMsg.TabIndex = 2;
+            this.lblMsg.Tag = "Stop";
+            this.lblMsg.Text = "서버 중지됨";
             // 
-            // textBox1
+            // txtChatMsg
             // 
-            this.textBox1.Location = new System.Drawing.Point(13, 370);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(559, 21);
-            this.textBox1.TabIndex = 2;
-            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
-            this.textBox1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox1_KeyDown);
-            // 
-            // listBox1
-            // 
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.ItemHeight = 12;
-            this.listBox1.Location = new System.Drawing.Point(13, 397);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(559, 148);
-            this.listBox1.TabIndex = 3;
-            this.listBox1.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
+            this.txtChatMsg.Location = new System.Drawing.Point(12, 12);
+            this.txtChatMsg.Multiline = true;
+            this.txtChatMsg.Name = "txtChatMsg";
+            this.txtChatMsg.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.txtChatMsg.Size = new System.Drawing.Size(560, 422);
+            this.txtChatMsg.TabIndex = 3;
             // 
             // Form2
             // 
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(584, 561);
-            this.Controls.Add(this.listBox1);
-            this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.richTextBox1);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.txtChatMsg);
+            this.Controls.Add(this.lblMsg);
+            this.Controls.Add(this.btnStart);
             this.Name = "Form2";
-            this.Text = "Server";
+            this.Text = "Form2";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Form2_FormClosed);
             this.Load += new System.EventHandler(this.Form2_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -89,10 +80,8 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.RichTextBox richTextBox1;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.ListBox listBox1;
+        private System.Windows.Forms.Button btnStart;
+        private System.Windows.Forms.Label lblMsg;
+        private System.Windows.Forms.TextBox txtChatMsg;
     }
 }
