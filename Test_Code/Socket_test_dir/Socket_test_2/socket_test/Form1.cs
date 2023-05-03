@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace socket_test
 {
-    public partial class Start : Form
+    public partial class Form1 : Form
     {
-        public Start()
+        public Form1()
         {
             InitializeComponent();
         }
@@ -29,9 +29,9 @@ namespace socket_test
             showForm3.Show();
         }
 
-        private void Start_Load(object sender, EventArgs e)
+        private void Form1_FormClosed(object sender, FormClosedEventArgs e)
         {
-
+            
         }
     }
 }

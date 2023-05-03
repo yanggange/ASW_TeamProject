@@ -1,16 +1,16 @@
 ﻿namespace socket_test
 {
-    partial class Start
+    partial class Form1
     {
         /// <summary>
-        /// 필수 디자이너 변수입니다.
+        /// Required designer variable.
         /// </summary>
         private System.ComponentModel.IContainer components = null;
 
         /// <summary>
-        /// 사용 중인 모든 리소스를 정리합니다.
+        /// Clean up any resources being used.
         /// </summary>
-        /// <param name="disposing">관리되는 리소스를 삭제해야 하면 true이고, 그렇지 않으면 false입니다.</param>
+        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
         protected override void Dispose(bool disposing)
         {
             if (disposing && (components != null))
@@ -20,56 +20,55 @@
             base.Dispose(disposing);
         }
 
-        #region Windows Form 디자이너에서 생성한 코드
+        #region Windows Form Designer generated code
 
         /// <summary>
-        /// 디자이너 지원에 필요한 메서드입니다. 
-        /// 이 메서드의 내용을 코드 편집기로 수정하지 마세요.
+        /// Required method for Designer support - do not modify
+        /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent()
         {
-            this.Server = new System.Windows.Forms.Button();
-            this.Client = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // Server
+            // button1
             // 
-            this.Server.Location = new System.Drawing.Point(113, 55);
-            this.Server.Name = "Server";
-            this.Server.Size = new System.Drawing.Size(153, 45);
-            this.Server.TabIndex = 0;
-            this.Server.Text = "Server";
-            this.Server.UseVisualStyleBackColor = true;
-            this.Server.Click += new System.EventHandler(this.button1_Click);
+            this.button1.Location = new System.Drawing.Point(121, 47);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(315, 168);
+            this.button1.TabIndex = 0;
+            this.button1.Text = "서버";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // Client
+            // button2
             // 
-            this.Client.Location = new System.Drawing.Point(113, 157);
-            this.Client.Name = "Client";
-            this.Client.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.Client.Size = new System.Drawing.Size(153, 43);
-            this.Client.TabIndex = 1;
-            this.Client.Text = "Client";
-            this.Client.UseVisualStyleBackColor = true;
-            this.Client.Click += new System.EventHandler(this.button2_Click);
+            this.button2.Location = new System.Drawing.Point(121, 304);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(315, 168);
+            this.button2.TabIndex = 1;
+            this.button2.Text = "클라이언트";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
-            // Start
+            // Form1
             // 
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
-            this.ClientSize = new System.Drawing.Size(384, 261);
-            this.Controls.Add(this.Client);
-            this.Controls.Add(this.Server);
-            this.Name = "Start";
-            this.Text = "Start";
-            this.Load += new System.EventHandler(this.Start_Load);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ClientSize = new System.Drawing.Size(584, 561);
+            this.Controls.Add(this.button2);
+            this.Controls.Add(this.button1);
+            this.Name = "Form1";
+            this.Text = "Form1";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Form1_FormClosed);
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.Button Server;
-        private System.Windows.Forms.Button Client;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button button2;
     }
 }
-

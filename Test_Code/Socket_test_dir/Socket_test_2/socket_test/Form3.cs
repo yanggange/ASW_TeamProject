@@ -1,104 +1,170 @@
-ï»¿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Net.Sockets;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
 using System.Net;
-using System.Net.Sockets;
 using System.Threading;
-using System.Runtime.InteropServices;
 
 namespace socket_test
 {
+    //¼­¹öÀÇ txtChatMsg ÅØ½ºÆ®¹Ú½º¿¡ ±ÛÀ» ¾²±âÀ§ÇÑ µ¨¸®°ÔÀÌÆ®
+    //½ÇÁ¦ ±ÛÀ» ¾²´Â°ÍÀº Form1Å¬·¡½ºÀÇ UI¾²·¹µå°¡ ¾Æ´Ñ ´Ù¸¥ ½º·¹µåÀÎ ChatHandlerÀÇ ½º·¹µå ÀÌ±â¿¡        
+    //ChatHandlerÀÇ ½º·¹µå¿¡¼­ ÀÌ µ¨¸®°ÔÀÌÆ®¸¦ È£ÃâÇÏ¿© ÅØ½ºÆ® ¹Ú½º¿¡ ±ÛÀ» ¾´´Ù
+    //(¸¸¾à ÄÁÆ®·ÑÀ» ¸¸µç À©ÆûÀÇ UI¾²·¹µå°¡ ¾Æ´Ñ ´Ù¸¥ ½º·¹µå¿¡¼­ ÅØ½ºÆ®¹Ú½º¿¡ ±ÛÀ» ¾´´Ù¸é ¿¡·¯¹ß»ı)
+    delegate void SetTextDelegate(string s);
     public partial class Form3 : Form
     {
-        private Socket socket;  // ì†Œì¼“
-        private Thread receiveThread;    // ëŒ€í™” ìˆ˜ì‹ ìš©
-
         public Form3()
         {
             InitializeComponent();
-            CheckForIllegalCrossThreadCalls = false;
         }
 
-        private void Log(string msg)
+        TcpClient tcpClient = null;
+        NetworkStream ntwStream = null;
+
+        //¼­¹ö¿Í Ã¤ÆÃÀ» ½ÇÇàÇÏ´Â Å¬·¡½º
+        ChatHandler chatHandler = new ChatHandler();
+
+        //¼­¹ö µé¾î°¡±â ¹öÆ°
+        private void btnConnect_Click(object sender, EventArgs e)
         {
-            listBox1.Items.Add(string.Format("[{0}]{1}", DateTime.Now.ToString(), msg));
-        }
-
-        private void Form3_Load(object sender, EventArgs e)
-        {
-            textBox1.Focus();
-            Log("í´ë¼ì´ì–¸íŠ¸ ë¡œë“œë¨!!");
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            // ì„œë²„ ì—°ê²°
-            IPAddress ipaddress = IPAddress.Parse(textBox1.Text);
-            IPEndPoint endPoint = new IPEndPoint(ipaddress, int.Parse(textBox2.Text));
-
-            socket = new Socket(
-
-                AddressFamily.InterNetwork,
-                SocketType.Stream,
-                ProtocolType.Tcp
-                );
-
-            // ì—°ê²°í•˜ê¸°
-            Log("ì„œë²„ì— ì—°ê²° ì‹œë„ì¤‘...");
-            socket.Connect(endPoint);
-            Log("ì„œë²„ì— ì ‘ì†ë¨");
-
-            // Receive ìŠ¤ë ˆë“œ ì²˜ë¦¬(ì„œë²„ <--> í´ë¼ì´ì–¸íŠ¸)
-            receiveThread = new Thread(new ThreadStart(Receive));
-            receiveThread.IsBackground = true;
-            receiveThread.Start();
-        }
-
-        private void Receive()
-        {
-            while (true)
+            if (btnConnect.Text == "¼­¹ö µé¾î°¡±â")
             {
-                // ì—°ê²°ëœ í´ë¼ì´ì–¸íŠ¸ê°€ ë³´ë‚¸ ë°ì´í„° ìˆ˜ì‹ 
-                byte[] receiveBuffer = new byte[512];
-                int length = socket.Receive(receiveBuffer, receiveBuffer.Length, SocketFlags.None);
-                string msg = Encoding.UTF8.GetString(receiveBuffer, 0, length);
-                ShowMsg("ìƒëŒ€]" + msg);
+                try
+                {
+                    tcpClient = new TcpClient();
+                    tcpClient.Connect(IPAddress.Parse("127.0.0.1"), 2023);
+                    ntwStream = tcpClient.GetStream();
+
+                    chatHandler.Setup(this, ntwStream, this.txtChatMsg);
+                    Thread chatThread = new Thread(new ThreadStart(chatHandler.ChatProcess));
+                    chatThread.Start();
+
+                    // ¼­¹ö·Î Å¬¶óÀÌ¾ğÆ®°¡ Á¢¼ÓÇßÀ½À» ¾Ë¸®´Â ¸Ş¼Òµå
+                    Message_Snd("¼­¹ö : <" + txtName.Text + "> ´Ô²²¼­ Á¢¼Ó ÇÏ¼Ì½À´Ï´Ù.", true);
+                    btnConnect.Text = "¼­¹ö ³ª°¡±â";
+                }
+                catch(System.Exception Ex)
+                {
+                    MessageBox.Show("Server ¿À·ù¹ß»ı ¶Ç´Â Start µÇÁö ¾Ê¾Ò°Å³ª\r\n" + Ex.Message, "Client");
+                }
+            }
+            else
+            {
+                Message_Snd("¼­¹ö : <" + txtName.Text + "> ´Ô²²¼­ Á¢¼ÓÇØÁ¦ ÇÏ¼Ì½À´Ï´Ù.", false);
+                btnConnect.Text = "¼­¹ö µé¾î°¡±â";
+                chatHandler.ChatClose();
+                ntwStream.Close();
+                tcpClient.Close();
+                txtChatMsg.Text = "";
             }
         }
 
-        // ì†¡ìˆ˜ì‹  ë©”ì‹œì§€ë“¤ ëŒ€í™”ì°½ì— ì¶œë ¥
-        private void ShowMsg(string msg)
+        // ¼­¹ö·Î ¸Ş¼¼Áö¸¦ º¸³»´Â ÇÔ¼ö
+        private void Message_Snd(string lstMessage, Boolean Msg)
         {
-            // richTextBoxì—ì„œ ê°œí–‰ì´ ì •ìƒì ìœ¼ë¡œ ì‘ìš©ë˜ì§€ ì•Šìœ¼ë©´
-            // ì•„ë˜ì²˜ëŸ¼ ë”°ë¡œë”°ë¡œ
-            richTextBox1.AppendText(msg);
-            richTextBox1.AppendText("\r\n");
-
-            // ì…ë ¥ëœ í…ìŠ¤íŠ¸ì— ë§ê²Œ ìŠ¤í¬ë¡¤ì„ ë‚´ë ¤ì¤€ë‹¤.
-            this.Activate();
-            richTextBox1.Focus();
-
-            // ìºëŸ¿(ì»¤ì„œ)ë¥¼ í…ìŠ¤íŠ¸ë°•ìŠ¤ì˜ ëìœ¼ë¡œ ë‚´ë ¤ì¤€ë‹¤.
-            richTextBox1.SelectionStart = richTextBox1.Text.Length;
-            richTextBox1.ScrollToCaret();   // ìŠ¤í¬ëŸ´ì„ ìºëŸ¿(ì»¤ì„œ)ìœ„ì¹˜ì— ë§ì¶°ì¤€ë‹¤.
+            try
+            {
+                // º¸³¾ µ¥ÀÌÅÍ¸¦ ÀĞ¾î Default Çü½ÄÀÇ ¹ÙÀÌÆ® ½ºÆ®¸²À¸·Î º¯È¯ ÇØ¼­ Àü¼Û
+                string dataToSend = lstMessage + "\r\n";
+                byte[] data = Encoding.UTF8.GetBytes(dataToSend);
+                ntwStream.Write(data, 0, data.Length);
+            }
+            catch (Exception Ex)
+            {
+                if (Msg == true)
+                {
+                    MessageBox.Show("¼­¹ö°¡ Start µÇÁö ¾Ê¾Ò°Å³ª\r\n" + Ex.Message, "Client");
+                    btnConnect.Text = "¼­¹ö µé¾î°¡±â";
+                    chatHandler.ChatClose();
+                    ntwStream.Close();
+                    tcpClient.Close();
+                }
+            }
         }
 
-        private void textBox3_KeyDown(object sender, KeyEventArgs e)
+        public void SetText(string text)
         {
-            // ë©”ì‹œì§€ ì „ì†¡í•˜ê¸°(ê³µë°±ì´ ì•„ë‹ˆê³ , Enter ëˆŒë €ì„ë•Œ)
-            if (textBox3.Text.Trim() != "" && e.KeyCode == Keys.Enter)
+            if (this.txtChatMsg.InvokeRequired)
             {
-                byte[] sendBuffer = Encoding.UTF8.GetBytes(textBox3.Text.Trim());
-                socket.Send(sendBuffer);
-                Log("ë©”ì‹œì§€ ì „ì†¡ë¨");
-                ShowMsg("ë‚˜]" + textBox3.Text);
-                textBox3.Text = ""; // ì´ˆê¸°í™”
+                SetTextDelegate d = new SetTextDelegate(SetText); // ´ë¸®ÀÚ ¼±¾ğ
+                this.Invoke(d, new object[] { text }); // ´ë¸®ÀÚ¸¦ ÅëÇØ ±ÛÀ» ¾²´Â
+            }
+            else // UI Thread ÀÌ¸é
+            {
+                this.txtChatMsg.AppendText(text);
+            }
+        }
+
+        private void txtMsg_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == 13) // ´©¸¥ Å°°¡ EnterÀÎ °æ¿ì
+            {
+                // ¼­¹ö¿¡ Á¢¼ÓÀÌ µÈ »óÅÂÀÏ °æ¿ì
+                if (btnConnect.Text == "¼­¹ö ³ª°¡±â")
+                {
+                    Message_Snd("<" + txtName.Text + "> " + txtMsg.Text, true);
+                }
+
+                txtMsg.Text = "";
+                e.Handled = true; // ÀÌº¥Æ®Ã³¸® ÁßÁö
+            }
+        }
+
+        private void Form3_FormClosed(object sender, FormClosedEventArgs e)
+        {
+    
+        }
+    }
+
+    public class ChatHandler
+    {
+        private TextBox txtChatMsg;
+        private NetworkStream netStream;
+        private StreamReader strReader;
+        private Form3 form3;
+
+        public void Setup(Form3 form3, NetworkStream netStream, TextBox txtChatMsg)
+        {
+            this.txtChatMsg = txtChatMsg;
+            this.netStream = netStream;
+            this.form3 = form3;
+            this.netStream = netStream;
+            this.strReader = new StreamReader(netStream);
+        }
+
+        public void ChatClose()
+        {
+            netStream.Close();
+            strReader.Close();
+        }
+
+        public void ChatProcess()
+        {
+            while (true)
+            {
+                try
+                {
+                    // ¹®ÀÚ¿­À» ¹ŞÀ½
+                    string lstMessage = strReader.ReadLine();
+
+                    if(lstMessage != null && lstMessage != "")
+                    {
+                        // ´ë¸®ÀÚ »ç¿ë
+                        form3.SetText(lstMessage + "\r\n");
+                    }
+                }
+                catch (System.Exception)
+                {
+                    break;
+                }
             }
         }
     }
