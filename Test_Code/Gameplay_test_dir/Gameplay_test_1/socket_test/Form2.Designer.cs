@@ -178,9 +178,9 @@
             this.IPtxt.AutoSize = true;
             this.IPtxt.Location = new System.Drawing.Point(104, 311);
             this.IPtxt.Name = "IPtxt";
-            this.IPtxt.Size = new System.Drawing.Size(38, 12);
+            this.IPtxt.Size = new System.Drawing.Size(16, 12);
             this.IPtxt.TabIndex = 14;
-            this.IPtxt.Text = "label2";
+            this.IPtxt.Text = "IP";
             // 
             // Form2
             // 
