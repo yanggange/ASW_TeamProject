@@ -14,6 +14,7 @@ using System.Threading;
 using System.Net;
 using System.Net.Http;
 using System.Collections;
+using System.Net.NetworkInformation;
 
 namespace socket_test
 {
@@ -33,49 +34,52 @@ namespace socket_test
             InitializeComponent();
         }
 
-        
-
         public static ArrayList clientSocketArray = new ArrayList();
 
         private void Form2_Load(object sender, EventArgs e)
         {
-            IPtxt.Text = GetInternalIP();
+            IPtxt.Text = GetIP();
         }
 
-        // 왜 VMware Network Adapter VMnet8의 IPv4 주소를 가져오는 걸까?????
-        public static string GetInternalIP()
+        // 이더넷 or Wi-Fi의 IP를 가져오는 함수
+        public static string GetIP()
         {
-            var host = Dns.GetHostEntry(Dns.GetHostName());
+            string IPs = "";
 
-            foreach (var ip in host.AddressList)
+            //모든 네트워크 인터페이스 얻기
+            foreach (var network in NetworkInterface.GetAllNetworkInterfaces())
             {
-                if (ip.AddressFamily == AddressFamily.InterNetwork)
+                if (network.Name == "이더넷" || network.Name == "Wi-Fi")
                 {
-                    return ip.ToString();
+                    //IPv4를 지원하는 네트워크 확인
+                    if (network.Supports(NetworkInterfaceComponent.IPv4) == true)
+                    {
+                        if (NetworkInterface.GetIsNetworkAvailable() && network.OperationalStatus == OperationalStatus.Up)
+                        {
+                            //Unicast 주소가 할당된 ip 얻기
+                            foreach (UnicastIPAddressInformation uniIp in network.GetIPProperties().UnicastAddresses)
+                            {
+                                if (uniIp.Address.AddressFamily == System.Net.Sockets.AddressFamily.InterNetwork)
+                                {
+                                    string ipAddress = uniIp.Address.ToString();
+                                    if (ipAddress != null)
+                                    {
+                                        IPs = IPs + ipAddress + "\n";
+                                    }
+                                }
+                            }
+                        }
+                    }
                 }
             }
-
-            throw new Exception("IPv4 주소를 찾을 수 없습니다.");
-        }
-
-        private static string GetPublicIP()
-        {
-            string publicIp = new WebClient().DownloadString("http://ipinfo.io/ip").Trim();
-
-            //null경우 Get Internal IP를 가져오게 한다.
-            if (String.IsNullOrWhiteSpace(publicIp))
-            {
-                publicIp = GetInternalIP();
-            }
-
-            return publicIp;
+            return IPs;
         }
 
         private void btnStart_Click(object sender, EventArgs e)
         {
             if (portNumTxt.Text != "") {
                 portNumber = int.Parse(portNumTxt.Text);
-                chatServer = new TcpListener(IPAddress.Parse("192.168.0.8"), portNumber); // 포트
+                chatServer = new TcpListener(IPAddress.Parse(GetIP()), portNumber); // 포트
             } else { return; }
 
             try
