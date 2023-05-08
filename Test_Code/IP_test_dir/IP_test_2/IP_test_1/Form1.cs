@@ -22,7 +22,7 @@ namespace IP_test_1
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            label1.Text = GetInternalIP();
+            label1.Text = GetIP();
             foreach (var network in NetworkInterface.GetAllNetworkInterfaces())
             {
                 label2.Text = label2.Text + network.Name + "\n";
@@ -45,28 +45,36 @@ namespace IP_test_1
             throw new Exception("IPv4 주소를 찾을 수 없습니다.");
         }
 
-        public static string GetIp()
+        // VMware Network 무시하려면?
+        public static string GetIP()
         {
             string IPs = "";
 
             //모든 네트워크 인터페이스 얻기
             foreach (var network in NetworkInterface.GetAllNetworkInterfaces())
             {
-                //IPv4를 지원하는 네트워크 확인
-                if (network.Supports(NetworkInterfaceComponent.IPv4) == true)
+                if (network.Name == "이더넷" || network.Name == "Wi-Fi")
                 {
-                    //이더넷 타입 확인
-                    if (network.NetworkInterfaceType == NetworkInterfaceType.Ethernet)
+                    //IPv4를 지원하는 네트워크 확인
+                    if (network.Supports(NetworkInterfaceComponent.IPv4) == true)
                     {
-                        //IP 속성 얻기
-                        IPInterfaceProperties properties = network.GetIPProperties();
-                        //Unicast 주소가 할당된 ip 얻기
-                        foreach (UnicastIPAddressInformation uniIp in network.GetIPProperties().UnicastAddresses)
+                        //이더넷 타입 확인
+                        if (network.NetworkInterfaceType == NetworkInterfaceType.Ethernet)
                         {
-                            if (uniIp.Address.AddressFamily == System.Net.Sockets.AddressFamily.InterNetwork)
+                            //IP 속성 얻기
+                            IPInterfaceProperties properties = network.GetIPProperties();
+                            //Unicast 주소가 할당된 ip 얻기
+                            foreach (UnicastIPAddressInformation uniIp in network.GetIPProperties().UnicastAddresses)
                             {
-                                string ipAddress = uniIp.Address.ToString();
-                                string subNetMask = uniIp.IPv4Mask.ToString();
+                                if (uniIp.Address.AddressFamily == System.Net.Sockets.AddressFamily.InterNetwork)
+                                {
+                                    string ipAddress = uniIp.Address.ToString();
+                                    if (ipAddress == null)
+                                    {
+                                        continue;
+                                    }
+                                    IPs = ipAddress;
+                                }
                             }
                         }
                     }
