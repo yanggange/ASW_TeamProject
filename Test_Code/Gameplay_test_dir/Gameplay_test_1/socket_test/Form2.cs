@@ -42,6 +42,7 @@ namespace socket_test
             IPtxt.Text = GetInternalIP();
         }
 
+        // 왜 VMware Network Adapter VMnet8의 IPv4 주소를 가져오는 걸까?????
         public static string GetInternalIP()
         {
             var host = Dns.GetHostEntry(Dns.GetHostName());
@@ -74,7 +75,7 @@ namespace socket_test
         {
             if (portNumTxt.Text != "") {
                 portNumber = int.Parse(portNumTxt.Text);
-                chatServer = new TcpListener(IPAddress.Parse(GetInternalIP()), portNumber); // 포트
+                chatServer = new TcpListener(IPAddress.Parse("192.168.0.8"), portNumber); // 포트
             } else { return; }
 
             try
@@ -178,7 +179,6 @@ namespace socket_test
                 soket.Close();
             }
             clientSocketArray.Clear();
-            Application.Exit();
         }
 
         private void portNumTxt_TextChanged(object sender, EventArgs e)

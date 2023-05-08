@@ -122,7 +122,6 @@ namespace socket_test
 
         private void Form3_FormClosed(object sender, FormClosedEventArgs e)
         {
-    
         }
 
         private void Form3_Load(object sender, EventArgs e)
