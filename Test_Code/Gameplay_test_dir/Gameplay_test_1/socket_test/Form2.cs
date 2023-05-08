@@ -8,7 +8,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
-using System.Drawing;
 using System.Net.Sockets;
 using System.Threading;
 using System.Net;
@@ -28,13 +27,12 @@ namespace socket_test
         int portNumber;
         TcpListener chatServer;
         string musicTitle = "";
+        public static ArrayList clientSocketArray = new ArrayList();
 
         public Form2()
         {
             InitializeComponent();
         }
-
-        public static ArrayList clientSocketArray = new ArrayList();
 
         private void Form2_Load(object sender, EventArgs e)
         {
@@ -54,6 +52,7 @@ namespace socket_test
                     //IPv4를 지원하는 네트워크 확인
                     if (network.Supports(NetworkInterfaceComponent.IPv4) == true)
                     {
+                        // 사용하는 네트워크인지 확인
                         if (NetworkInterface.GetIsNetworkAvailable() && network.OperationalStatus == OperationalStatus.Up)
                         {
                             //Unicast 주소가 할당된 ip 얻기
@@ -64,7 +63,7 @@ namespace socket_test
                                     string ipAddress = uniIp.Address.ToString();
                                     if (ipAddress != null)
                                     {
-                                        IPs = IPs + ipAddress + "\n";
+                                        IPs = ipAddress;
                                     }
                                 }
                             }
@@ -84,11 +83,11 @@ namespace socket_test
 
             try
             {
+                Thread waitThread = new Thread(new ThreadStart(AcceptClient));
                 //서버가 종료 상태인경우
-                if(lblMsg.Tag.ToString() == "Stop")
+                if (lblMsg.Tag.ToString() == "Stop")
                 {
                     chatServer.Start();
-                    Thread waitThread = new Thread(new ThreadStart(AcceptClient));
                     waitThread.Start();
 
                     lblMsg.Text = "서버 시작됨";
@@ -123,6 +122,7 @@ namespace socket_test
                     txtChatMsg.Text = "";
                     portNumTxt.Enabled = true;
 
+                    musicTitleMsg.Enabled = false;
                     musicTitleBtn.Enabled = false;
                     musicStartBtn.Enabled = false;
                     hintBtn1.Enabled = false;
@@ -177,12 +177,15 @@ namespace socket_test
 
         private void Form2_FormClosed(object sender, FormClosedEventArgs e)
         {
-            chatServer.Stop();
-            foreach (Socket soket in Form2.clientSocketArray)
+            if (clientSocketArray.Count > 0)
             {
-                soket.Close();
+                chatServer.Stop();
+                foreach (Socket soket in Form2.clientSocketArray)
+                {
+                    soket.Close();
+                }
+                clientSocketArray.Clear();
             }
-            clientSocketArray.Clear();
         }
 
         private void portNumTxt_TextChanged(object sender, EventArgs e)
@@ -351,7 +354,7 @@ namespace socket_test
                         }
                     }
                 }
-                catch (Exception ex)
+                catch
                 {
                     //MessageBox.Show("채팅 오류 :" + ex.Message);
                     Form2.clientSocketArray.Remove(socketClient);

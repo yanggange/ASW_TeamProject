@@ -31,7 +31,7 @@ namespace socket_test
 
         private void Form1_FormClosed(object sender, FormClosedEventArgs e)
         {
-            
+            Environment.Exit(0);
         }
 
         private void Form1_Load(object sender, EventArgs e)
