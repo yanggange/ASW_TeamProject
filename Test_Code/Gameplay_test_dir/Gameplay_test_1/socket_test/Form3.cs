@@ -53,7 +53,7 @@ namespace socket_test
                     Message_Snd("서버 : <" + txtName.Text + "> 님께서 접속 하셨습니다.", true);
                     btnConnect.Text = "서버 나가기";
                 }
-                catch(System.Exception Ex)
+                catch
                 {
                     MessageBox.Show("존재하지 않는 서버입니다.");
                 }
