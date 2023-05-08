@@ -42,7 +42,7 @@ namespace socket_test
                 {
                     portNumber = int.Parse(portNumMsg.Text);
                     tcpClient = new TcpClient();
-                    tcpClient.Connect(IPAddress.Parse("127.0.0.1"), portNumber);
+                    tcpClient.Connect(IPAddress.Parse(IPtxtMsg.Text), portNumber);
                     ntwStream = tcpClient.GetStream();
 
                     chatHandler.Setup(this, ntwStream, this.txtChatMsg);
@@ -123,6 +123,11 @@ namespace socket_test
         private void Form3_FormClosed(object sender, FormClosedEventArgs e)
         {
     
+        }
+
+        private void Form3_Load(object sender, EventArgs e)
+        {
+
         }
     }
 
