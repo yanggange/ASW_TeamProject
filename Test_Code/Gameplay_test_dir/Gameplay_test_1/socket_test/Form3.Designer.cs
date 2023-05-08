@@ -35,6 +35,8 @@
             this.txtMsg = new System.Windows.Forms.TextBox();
             this.portNumMsg = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
+            this.IPtxt = new System.Windows.Forms.Label();
+            this.IPtxtMsg = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // label1
@@ -65,11 +67,11 @@
             // 
             // txtChatMsg
             // 
-            this.txtChatMsg.Location = new System.Drawing.Point(13, 40);
+            this.txtChatMsg.Location = new System.Drawing.Point(13, 69);
             this.txtChatMsg.Multiline = true;
             this.txtChatMsg.Name = "txtChatMsg";
             this.txtChatMsg.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.txtChatMsg.Size = new System.Drawing.Size(559, 449);
+            this.txtChatMsg.Size = new System.Drawing.Size(559, 420);
             this.txtChatMsg.TabIndex = 3;
             // 
             // txtMsg
@@ -96,11 +98,29 @@
             this.label2.TabIndex = 6;
             this.label2.Text = "방번호";
             // 
+            // IPtxt
+            // 
+            this.IPtxt.AutoSize = true;
+            this.IPtxt.Location = new System.Drawing.Point(216, 43);
+            this.IPtxt.Name = "IPtxt";
+            this.IPtxt.Size = new System.Drawing.Size(16, 12);
+            this.IPtxt.TabIndex = 7;
+            this.IPtxt.Text = "IP";
+            // 
+            // IPtxtMsg
+            // 
+            this.IPtxtMsg.Location = new System.Drawing.Point(252, 37);
+            this.IPtxtMsg.Name = "IPtxtMsg";
+            this.IPtxtMsg.Size = new System.Drawing.Size(320, 21);
+            this.IPtxtMsg.TabIndex = 8;
+            // 
             // Form3
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(584, 561);
+            this.Controls.Add(this.IPtxtMsg);
+            this.Controls.Add(this.IPtxt);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.portNumMsg);
             this.Controls.Add(this.txtMsg);
@@ -111,6 +131,7 @@
             this.Name = "Form3";
             this.Text = "Form3";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Form3_FormClosed);
+            this.Load += new System.EventHandler(this.Form3_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -125,5 +146,7 @@
         private System.Windows.Forms.TextBox txtMsg;
         private System.Windows.Forms.TextBox portNumMsg;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label IPtxt;
+        private System.Windows.Forms.TextBox IPtxtMsg;
     }
 }

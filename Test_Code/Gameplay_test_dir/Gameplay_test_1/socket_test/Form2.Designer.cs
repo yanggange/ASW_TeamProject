@@ -41,6 +41,7 @@
             this.hintBtn3 = new System.Windows.Forms.Button();
             this.answerTxt = new System.Windows.Forms.Label();
             this.musicAnswerP = new System.Windows.Forms.TextBox();
+            this.IPtxt = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // btnStart
@@ -56,7 +57,7 @@
             // lblMsg
             // 
             this.lblMsg.AutoSize = true;
-            this.lblMsg.Location = new System.Drawing.Point(107, 311);
+            this.lblMsg.Location = new System.Drawing.Point(104, 275);
             this.lblMsg.Name = "lblMsg";
             this.lblMsg.Size = new System.Drawing.Size(69, 12);
             this.lblMsg.TabIndex = 2;
@@ -171,11 +172,21 @@
             this.musicAnswerP.TabIndex = 13;
             this.musicAnswerP.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.musicAnswerP_KeyPress);
             // 
+            // IPtxt
+            // 
+            this.IPtxt.AutoSize = true;
+            this.IPtxt.Location = new System.Drawing.Point(104, 311);
+            this.IPtxt.Name = "IPtxt";
+            this.IPtxt.Size = new System.Drawing.Size(38, 12);
+            this.IPtxt.TabIndex = 14;
+            this.IPtxt.Text = "label2";
+            // 
             // Form2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(584, 561);
+            this.Controls.Add(this.IPtxt);
             this.Controls.Add(this.musicAnswerP);
             this.Controls.Add(this.answerTxt);
             this.Controls.Add(this.hintBtn3);
@@ -212,5 +223,6 @@
         private System.Windows.Forms.Button hintBtn3;
         private System.Windows.Forms.Label answerTxt;
         private System.Windows.Forms.TextBox musicAnswerP;
+        private System.Windows.Forms.Label IPtxt;
     }
 }

@@ -39,14 +39,42 @@ namespace socket_test
 
         private void Form2_Load(object sender, EventArgs e)
         {
+            IPtxt.Text = GetInternalIP();
+        }
 
+        public static string GetInternalIP()
+        {
+            var host = Dns.GetHostEntry(Dns.GetHostName());
+
+            foreach (var ip in host.AddressList)
+            {
+                if (ip.AddressFamily == AddressFamily.InterNetwork)
+                {
+                    return ip.ToString();
+                }
+            }
+
+            throw new Exception("IPv4 주소를 찾을 수 없습니다.");
+        }
+
+        private static string GetPublicIP()
+        {
+            string publicIp = new WebClient().DownloadString("http://ipinfo.io/ip").Trim();
+
+            //null경우 Get Internal IP를 가져오게 한다.
+            if (String.IsNullOrWhiteSpace(publicIp))
+            {
+                publicIp = GetInternalIP();
+            }
+
+            return publicIp;
         }
 
         private void btnStart_Click(object sender, EventArgs e)
         {
             if (portNumTxt.Text != "") {
                 portNumber = int.Parse(portNumTxt.Text);
-                chatServer = new TcpListener(IPAddress.Parse("127.0.0.1"), portNumber); // 포트
+                chatServer = new TcpListener(IPAddress.Parse(GetInternalIP()), portNumber); // 포트
             } else { return; }
 
             try
@@ -170,6 +198,22 @@ namespace socket_test
         {
             // 누르면 실행하는 코드
             // 모든 클라이언트들에게 노래실행 코드를 보내는 방법은?
+            // 클라이언트에게 문자열을 받음
+            string lstMessage = "./start!!!!!!!!!!!!";
+            if (lstMessage != null && lstMessage != "")
+            {
+                txtChatMsg.Text = "게임실행버튼을 서버장이 눌렀습니다." + "\r\n"; // delegate를 사용
+                byte[] bytSand_Data = Encoding.UTF8.GetBytes(lstMessage + "\r\n");
+                lock (Form2.clientSocketArray)
+                {
+                    // 접속해 있는 모든 클라이언트에게 글을 쓰는
+                    foreach (Socket soket in Form2.clientSocketArray)
+                    {
+                        NetworkStream stream = new NetworkStream(soket);
+                        stream.Write(bytSand_Data, 0, bytSand_Data.Length);
+                    }
+                }
+            }
         }
 
         private void hintBtn1_Click(object sender, EventArgs e)
