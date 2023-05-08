@@ -161,8 +161,31 @@ namespace socket_test
                 {
                     // 문자열을 받음
                     string lstMessage = strReader.ReadLine();
+                    if (lstMessage == "./start")
+                    {
+                        form3.SetText("start!!!!!!!!!" + "\r\n");
+                        continue;
+                    }
 
-                    if(lstMessage != null && lstMessage != "")
+                    if (lstMessage == "./hint1")
+                    {
+                        form3.SetText("hint1!!!!!!!!!" + "\r\n");
+                        continue;
+                    }
+
+                    if (lstMessage == "./hint2")
+                    {
+                        form3.SetText("hint2!!!!!!!!!" + "\r\n");
+                        continue;
+                    }
+
+                    if (lstMessage == "./hint3")
+                    {
+                        form3.SetText("hint3!!!!!!!!!" + "\r\n");
+                        continue;
+                    }
+
+                    if (lstMessage != null && lstMessage != "")
                     {
                         // 대리자 사용
                         form3.SetText(lstMessage + "\r\n");

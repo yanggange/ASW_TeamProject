@@ -199,10 +199,10 @@ namespace socket_test
             // 누르면 실행하는 코드
             // 모든 클라이언트들에게 노래실행 코드를 보내는 방법은?
             // 클라이언트에게 문자열을 받음
-            string lstMessage = "./start!!!!!!!!!!!!";
+            string lstMessage = "./start";
             if (lstMessage != null && lstMessage != "")
             {
-                txtChatMsg.Text = "게임실행버튼을 서버장이 눌렀습니다." + "\r\n"; // delegate를 사용
+                txtChatMsg.Text = txtChatMsg.Text + "게임실행버튼을 서버장이 눌렀습니다." + "\r\n";
                 byte[] bytSand_Data = Encoding.UTF8.GetBytes(lstMessage + "\r\n");
                 lock (Form2.clientSocketArray)
                 {
@@ -219,22 +219,90 @@ namespace socket_test
         private void hintBtn1_Click(object sender, EventArgs e)
         {
             // 모든 클라이언트들에게 힌트1실행 코드를 보내는 방법은?
+            string lstMessage = "./hint1";
+            if (lstMessage != null && lstMessage != "")
+            {
+                txtChatMsg.Text = txtChatMsg.Text + "힌트1버튼을 서버장이 눌렀습니다." + "\r\n";
+                byte[] bytSand_Data = Encoding.UTF8.GetBytes(lstMessage + "\r\n");
+                lock (Form2.clientSocketArray)
+                {
+                    // 접속해 있는 모든 클라이언트에게 글을 쓰는
+                    foreach (Socket soket in Form2.clientSocketArray)
+                    {
+                        NetworkStream stream = new NetworkStream(soket);
+                        stream.Write(bytSand_Data, 0, bytSand_Data.Length);
+                    }
+                }
+            }
         }
 
         private void hintBtn2_Click(object sender, EventArgs e)
         {
             // 모든 클라이언트들에게 힌트2실행 코드를 보내는 방법은?
+            string lstMessage = "./hint2";
+            if (lstMessage != null && lstMessage != "")
+            {
+                txtChatMsg.Text = txtChatMsg.Text + "힌트2버튼을 서버장이 눌렀습니다." + "\r\n";
+                byte[] bytSand_Data = Encoding.UTF8.GetBytes(lstMessage + "\r\n");
+                lock (Form2.clientSocketArray)
+                {
+                    // 접속해 있는 모든 클라이언트에게 글을 쓰는
+                    foreach (Socket soket in Form2.clientSocketArray)
+                    {
+                        NetworkStream stream = new NetworkStream(soket);
+                        stream.Write(bytSand_Data, 0, bytSand_Data.Length);
+                    }
+                }
+            }
         }
 
         private void hintBtn3_Click(object sender, EventArgs e)
         {
             // 모든 클라이언트들에게 힌트2실행 코드를 보내는 방법은?
+            string lstMessage = "./hint3";
+            if (lstMessage != null && lstMessage != "")
+            {
+                txtChatMsg.Text = txtChatMsg.Text + "힌트3버튼을 서버장이 눌렀습니다." + "\r\n";
+                byte[] bytSand_Data = Encoding.UTF8.GetBytes(lstMessage + "\r\n");
+                lock (Form2.clientSocketArray)
+                {
+                    // 접속해 있는 모든 클라이언트에게 글을 쓰는
+                    foreach (Socket soket in Form2.clientSocketArray)
+                    {
+                        NetworkStream stream = new NetworkStream(soket);
+                        stream.Write(bytSand_Data, 0, bytSand_Data.Length);
+                    }
+                }
+            }
         }
 
         private void musicAnswerP_KeyPress(object sender, KeyPressEventArgs e)
         {
-            // 적고 엔터키를 누르면 한라운드 끝
-            // 정답자에게 점수를 추가해야한다
+            
+        }
+
+        private void musicAnswerP_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                // 적고 엔터키를 누르면 한라운드 끝
+                // 정답자에게 점수를 추가해야한다
+                string lstMessage = "./plus " + musicAnswerP.Text;
+                if (lstMessage != null && lstMessage != "")
+                {
+                    txtChatMsg.Text = txtChatMsg.Text + "누군가에게 서버장님이 점수를 추가했습니다!" + "\r\n";
+                    byte[] bytSand_Data = Encoding.UTF8.GetBytes(lstMessage + "\r\n");
+                    lock (Form2.clientSocketArray)
+                    {
+                        // 접속해 있는 모든 클라이언트에게 글을 쓰는
+                        foreach (Socket soket in Form2.clientSocketArray)
+                        {
+                            NetworkStream stream = new NetworkStream(soket);
+                            stream.Write(bytSand_Data, 0, bytSand_Data.Length);
+                        }
+                    }
+                }
+            }
         }
     }
 
