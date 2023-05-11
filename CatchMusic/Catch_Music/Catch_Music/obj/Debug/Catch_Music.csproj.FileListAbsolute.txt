@@ -1,0 +1,13 @@
+C:\Users\didru\OneDrive\바탕 화면\ASW_TeamProject\CatchMusic\Catch_Music\Catch_Music\bin\Debug\Catch_Music.exe.config
+C:\Users\didru\OneDrive\바탕 화면\ASW_TeamProject\CatchMusic\Catch_Music\Catch_Music\bin\Debug\Catch_Music.exe
+C:\Users\didru\OneDrive\바탕 화면\ASW_TeamProject\CatchMusic\Catch_Music\Catch_Music\bin\Debug\Catch_Music.pdb
+C:\Users\didru\OneDrive\바탕 화면\ASW_TeamProject\CatchMusic\Catch_Music\Catch_Music\obj\Debug\Catch_Music.csproj.AssemblyReference.cache
+C:\Users\didru\OneDrive\바탕 화면\ASW_TeamProject\CatchMusic\Catch_Music\Catch_Music\obj\Debug\Catch_Music.csproj.SuggestedBindingRedirects.cache
+C:\Users\didru\OneDrive\바탕 화면\ASW_TeamProject\CatchMusic\Catch_Music\Catch_Music\obj\Debug\Catch_Music.MultiChoose.resources
+C:\Users\didru\OneDrive\바탕 화면\ASW_TeamProject\CatchMusic\Catch_Music\Catch_Music\obj\Debug\Catch_Music.Properties.Resources.resources
+C:\Users\didru\OneDrive\바탕 화면\ASW_TeamProject\CatchMusic\Catch_Music\Catch_Music\obj\Debug\Catch_Music.csproj.GenerateResource.cache
+C:\Users\didru\OneDrive\바탕 화면\ASW_TeamProject\CatchMusic\Catch_Music\Catch_Music\obj\Debug\Catch_Music.csproj.CoreCompileInputs.cache
+C:\Users\didru\OneDrive\바탕 화면\ASW_TeamProject\CatchMusic\Catch_Music\Catch_Music\obj\Debug\Catch_Music.exe
+C:\Users\didru\OneDrive\바탕 화면\ASW_TeamProject\CatchMusic\Catch_Music\Catch_Music\obj\Debug\Catch_Music.pdb
+C:\Users\didru\OneDrive\바탕 화면\ASW_TeamProject\CatchMusic\Catch_Music\Catch_Music\obj\Debug\Catch_Music.Client.resources
+C:\Users\didru\OneDrive\바탕 화면\ASW_TeamProject\CatchMusic\Catch_Music\Catch_Music\obj\Debug\Catch_Music.Server.resources

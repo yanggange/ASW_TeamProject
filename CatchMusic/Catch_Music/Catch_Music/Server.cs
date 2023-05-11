@@ -1,40 +1,35 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
+using System.Net;
+using System.Net.NetworkInformation;
+using System.Net.Sockets;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.IO;
-using System.Net.Sockets;
-using System.Threading;
-using System.Net;
-using System.Net.Http;
-using System.Collections;
-using System.Net.NetworkInformation;
 
-namespace socket_test
+namespace Catch_Music
 {
-    public partial class Form2 : Form
+    public partial class Server : Form
     {
-        //서버의 txtChatMsg 텍스트박스에 글을 쓰기위한 델리게이트
-        //실제 글을 쓰는것은 Form1클래스의 UI쓰레드가 아닌 다른 스레드인 ClientHandler의 스레드 이기에        
-        //ClientHandler의 스레드에서 이 델리게이트를 호출하여 텍스트 박스에 글을 쓴다
-        //(만약 컨트롤을 만든 윈폼의 UI쓰레드가 아닌 다른 스레드에서 텍스트박스에 글을 쓴다면 에러발생)
         delegate void SetTextDelegate(string s);
         int portNumber;
         TcpListener chatServer;
-        string musicTitle = "";
+        string musicTitle = null;
         public static ArrayList clientSocketArray = new ArrayList();
 
-        public Form2()
+        public Server()
         {
             InitializeComponent();
         }
 
-        private void Form2_Load(object sender, EventArgs e)
+        private void Server_Load(object sender, EventArgs e)
         {
             IPtxt.Text = GetIP();
         }
@@ -76,54 +71,51 @@ namespace socket_test
 
         private void btnStart_Click(object sender, EventArgs e)
         {
-            if (portNumTxt.Text != "") {
+            if (portNumTxt.Text != "")
+            {
                 portNumber = int.Parse(portNumTxt.Text);
                 chatServer = new TcpListener(IPAddress.Parse(GetIP()), portNumber); // 포트
-            } else { return; }
+            }
+            else { return; }
 
             try
             {
                 Thread waitThread = new Thread(new ThreadStart(AcceptClient));
                 //서버가 종료 상태인경우
-                if (lblMsg.Tag.ToString() == "Stop")
+                if (OnOffsv.Tag.ToString() == "Stop")
                 {
                     chatServer.Start();
                     waitThread.Start();
 
-                    lblMsg.Text = "서버 시작됨";
-                    lblMsg.Tag = "Start";
-                    btnStart.Text = "서버 종료";
+                    OnOffsv.Text = "방 열림";
+                    OnOffsv.Tag = "Start";
+                    btnStart.Text = "방 닫기";
                     portNumTxt.Enabled = false;
 
-                    musicTitleBtn.Enabled = true;
+                    musicTitleMsg.Enabled = true;
                     musicStartBtn.Enabled = true;
                     hintBtn1.Enabled = true;
                     hintBtn2.Enabled = true;
                     hintBtn3.Enabled = true;
                     answerTxt.Enabled = true;
                     musicAnswerP.Enabled = true;
-
-
-                    Form3 form3 = new Form3();
-                    form3.Show(); // 방장도 참가하기 때문
                 }
                 else
                 {
                     chatServer.Stop();
-                    foreach (Socket soket in Form2.clientSocketArray)
+                    foreach (Socket soket in Server.clientSocketArray)
                     {
                         soket.Close();
                     }
                     clientSocketArray.Clear();
 
-                    lblMsg.Text = "서버 중지됨";
-                    lblMsg.Tag = "Stop";
-                    btnStart.Text = "서버 시작";
+                    OnOffsv.Text = "방 닫기";
+                    OnOffsv.Tag = "Stop";
+                    btnStart.Text = "방 열기";
                     txtChatMsg.Text = "";
                     portNumTxt.Enabled = true;
 
                     musicTitleMsg.Enabled = false;
-                    musicTitleBtn.Enabled = false;
                     musicStartBtn.Enabled = false;
                     hintBtn1.Enabled = false;
                     hintBtn2.Enabled = false;
@@ -156,7 +148,7 @@ namespace socket_test
                 }
                 catch (System.Exception)
                 {
-                    Form2.clientSocketArray.Remove(socketClient);
+                    Server.clientSocketArray.Remove(socketClient);
                     break;
                 }
             }
@@ -175,46 +167,58 @@ namespace socket_test
             }
         }
 
-        private void Form2_FormClosed(object sender, FormClosedEventArgs e)
+        private void Server_FormClosed(object sender, FormClosedEventArgs e)
         {
             if (clientSocketArray.Count > 0)
             {
                 chatServer.Stop();
-                foreach (Socket soket in Form2.clientSocketArray)
+                foreach (Socket soket in Server.clientSocketArray)
                 {
                     soket.Close();
                 }
                 clientSocketArray.Clear();
             }
+
+           Environment.Exit(0); // 테스트용
         }
 
-        private void portNumTxt_TextChanged(object sender, EventArgs e)
+        private void musicAnswerP_KeyDown(object sender, KeyEventArgs e)
         {
-
-        }
-
-        private void musicTitleBtn_Click(object sender, EventArgs e)
-        {
-            // 노래를 유튜브 리스트에서 musicTitle로 가져옴
-            musicTitle = "";
-            musicTitleMsg.Enabled = true;
-            musicTitleMsg.Text = musicTitle;
+            if (e.KeyCode == Keys.Enter)
+            {
+                // 적고 엔터키를 누르면 한라운드 끝
+                // 정답자에게 점수를 추가해야한다
+                string lstMessage = "./plus " + musicAnswerP.Text;
+                if (lstMessage != null && lstMessage != "")
+                {
+                    txtChatMsg.Text = txtChatMsg.Text + "누군가에게 서버장님이 점수를 추가했습니다!" + "\r\n";
+                    byte[] bytSand_Data = Encoding.UTF8.GetBytes(lstMessage + "\r\n");
+                    lock (Server.clientSocketArray)
+                    {
+                        // 접속해 있는 모든 클라이언트에게 글을 쓰는
+                        foreach (Socket soket in Server.clientSocketArray)
+                        {
+                            NetworkStream stream = new NetworkStream(soket);
+                            stream.Write(bytSand_Data, 0, bytSand_Data.Length);
+                        }
+                    }
+                }
+            }
         }
 
         private void musicStartBtn_Click(object sender, EventArgs e)
         {
             // 누르면 실행하는 코드
-            // 모든 클라이언트들에게 노래실행 코드를 보내는 방법은?
-            // 클라이언트에게 문자열을 받음
-            string lstMessage = "./start" ;
+            // 모든 클라이언트들에게 노래실행 코드와 제목을 보내는 방법은?
+            string lstMessage = "./start " + musicTitleMsg.Text;
             if (lstMessage != null && lstMessage != "")
             {
                 txtChatMsg.Text = txtChatMsg.Text + "게임실행버튼을 서버장이 눌렀습니다." + "\r\n";
                 byte[] bytSand_Data = Encoding.UTF8.GetBytes(lstMessage + "\r\n");
-                lock (Form2.clientSocketArray)
+                lock (Server.clientSocketArray)
                 {
                     // 접속해 있는 모든 클라이언트에게 글을 쓰는
-                    foreach (Socket soket in Form2.clientSocketArray)
+                    foreach (Socket soket in Server.clientSocketArray)
                     {
                         NetworkStream stream = new NetworkStream(soket);
                         stream.Write(bytSand_Data, 0, bytSand_Data.Length);
@@ -231,10 +235,10 @@ namespace socket_test
             {
                 txtChatMsg.Text = txtChatMsg.Text + "힌트1버튼을 서버장이 눌렀습니다." + "\r\n";
                 byte[] bytSand_Data = Encoding.UTF8.GetBytes(lstMessage + "\r\n");
-                lock (Form2.clientSocketArray)
+                lock (Server.clientSocketArray)
                 {
                     // 접속해 있는 모든 클라이언트에게 글을 쓰는
-                    foreach (Socket soket in Form2.clientSocketArray)
+                    foreach (Socket soket in Server.clientSocketArray)
                     {
                         NetworkStream stream = new NetworkStream(soket);
                         stream.Write(bytSand_Data, 0, bytSand_Data.Length);
@@ -251,10 +255,10 @@ namespace socket_test
             {
                 txtChatMsg.Text = txtChatMsg.Text + "힌트2버튼을 서버장이 눌렀습니다." + "\r\n";
                 byte[] bytSand_Data = Encoding.UTF8.GetBytes(lstMessage + "\r\n");
-                lock (Form2.clientSocketArray)
+                lock (Server.clientSocketArray)
                 {
                     // 접속해 있는 모든 클라이언트에게 글을 쓰는
-                    foreach (Socket soket in Form2.clientSocketArray)
+                    foreach (Socket soket in Server.clientSocketArray)
                     {
                         NetworkStream stream = new NetworkStream(soket);
                         stream.Write(bytSand_Data, 0, bytSand_Data.Length);
@@ -271,50 +275,16 @@ namespace socket_test
             {
                 txtChatMsg.Text = txtChatMsg.Text + "힌트3버튼을 서버장이 눌렀습니다." + "\r\n";
                 byte[] bytSand_Data = Encoding.UTF8.GetBytes(lstMessage + "\r\n");
-                lock (Form2.clientSocketArray)
+                lock (Server.clientSocketArray)
                 {
                     // 접속해 있는 모든 클라이언트에게 글을 쓰는
-                    foreach (Socket soket in Form2.clientSocketArray)
+                    foreach (Socket soket in Server.clientSocketArray)
                     {
                         NetworkStream stream = new NetworkStream(soket);
                         stream.Write(bytSand_Data, 0, bytSand_Data.Length);
                     }
                 }
             }
-        }
-
-        private void musicAnswerP_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            
-        }
-
-        private void musicAnswerP_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter)
-            {
-                // 적고 엔터키를 누르면 한라운드 끝
-                // 정답자에게 점수를 추가해야한다
-                string lstMessage = "./plus " + musicAnswerP.Text;
-                if (lstMessage != null && lstMessage != "")
-                {
-                    txtChatMsg.Text = txtChatMsg.Text + "누군가에게 서버장님이 점수를 추가했습니다!" + "\r\n";
-                    byte[] bytSand_Data = Encoding.UTF8.GetBytes(lstMessage + "\r\n");
-                    lock (Form2.clientSocketArray)
-                    {
-                        // 접속해 있는 모든 클라이언트에게 글을 쓰는
-                        foreach (Socket soket in Form2.clientSocketArray)
-                        {
-                            NetworkStream stream = new NetworkStream(soket);
-                            stream.Write(bytSand_Data, 0, bytSand_Data.Length);
-                        }
-                    }
-                }
-            }
-        }
-
-        private void musicAnswerP_TextChanged(object sender, EventArgs e)
-        {
-
         }
     }
 
@@ -324,16 +294,16 @@ namespace socket_test
         private Socket socketClient;
         private NetworkStream netStream;
         private StreamReader strReader;
-        private Form2 form2;
+        private Server sv;
 
-        public void ClientHandler_Setup(Form2 form2, Socket socketClient, TextBox txtChatMsg)
+        public void ClientHandler_Setup(Server sv, Socket socketClient, TextBox txtChatMsg)
         {
             this.txtChatMsg = txtChatMsg;
             this.socketClient = socketClient;
             this.netStream = new NetworkStream(socketClient);
-            Form2.clientSocketArray.Add(socketClient); // 클라이언트 소켓을 List에 담음
+            Server.clientSocketArray.Add(socketClient); // 클라이언트 소켓을 List에 담음
             this.strReader = new StreamReader(netStream);
-            this.form2 = form2;
+            this.sv = sv;
         }
 
         public void Chat_Process()
@@ -346,12 +316,12 @@ namespace socket_test
                     string lstMessage = strReader.ReadLine();
                     if (lstMessage != null && lstMessage != "")
                     {
-                        form2.SetText(lstMessage + "\r\n"); // delegate를 사용
+                        sv.SetText(lstMessage + "\r\n"); // delegate를 사용
                         byte[] bytSand_Data = Encoding.UTF8.GetBytes(lstMessage + "\r\n");
-                        lock (Form2.clientSocketArray)
+                        lock (Server.clientSocketArray)
                         {
                             // 접속해 있는 모든 클라이언트에게 글을 쓰는
-                            foreach (Socket soket in Form2.clientSocketArray)
+                            foreach (Socket soket in Server.clientSocketArray)
                             {
                                 NetworkStream stream = new NetworkStream(soket);
                                 stream.Write(bytSand_Data, 0, bytSand_Data.Length);
@@ -362,7 +332,7 @@ namespace socket_test
                 catch
                 {
                     //MessageBox.Show("채팅 오류 :" + ex.Message);
-                    Form2.clientSocketArray.Remove(socketClient);
+                    Server.clientSocketArray.Remove(socketClient);
                     break;
                 }
             }

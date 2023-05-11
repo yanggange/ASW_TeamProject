@@ -170,6 +170,7 @@
             this.musicAnswerP.Name = "musicAnswerP";
             this.musicAnswerP.Size = new System.Drawing.Size(100, 21);
             this.musicAnswerP.TabIndex = 13;
+            this.musicAnswerP.TextChanged += new System.EventHandler(this.musicAnswerP_TextChanged);
             this.musicAnswerP.KeyDown += new System.Windows.Forms.KeyEventHandler(this.musicAnswerP_KeyDown);
             this.musicAnswerP.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.musicAnswerP_KeyPress);
             // 
