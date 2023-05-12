@@ -46,6 +46,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="GameStart.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GameStart.Designer.cs">
+      <DependentUpon>GameStart.cs</DependentUpon>
+    </Compile>
     <Compile Include="MultiChoose.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -66,8 +72,29 @@
     <Compile Include="Server.Designer.cs">
       <DependentUpon>Server.cs</DependentUpon>
     </Compile>
+    <Compile Include="Setting1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Setting1.Designer.cs">
+      <DependentUpon>Setting1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Setting2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Setting2.Designer.cs">
+      <DependentUpon>Setting2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Setting3.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Setting3.Designer.cs">
+      <DependentUpon>Setting3.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Client.resx">
       <DependentUpon>Client.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GameStart.resx">
+      <DependentUpon>GameStart.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MultiChoose.resx">
       <DependentUpon>MultiChoose.cs</DependentUpon>
@@ -83,6 +110,15 @@
     </Compile>
     <EmbeddedResource Include="Server.resx">
       <DependentUpon>Server.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Setting1.resx">
+      <DependentUpon>Setting1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Setting2.resx">
+      <DependentUpon>Setting2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Setting3.resx">
+      <DependentUpon>Setting3.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
