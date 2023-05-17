@@ -30,6 +30,7 @@ namespace Catch_Music
         TcpListener chatServer;
         string musicTitle = null;
         public static ArrayList clientSocketArray = new ArrayList();
+        public DataSet dataset = new ClientINFO();
 
         private YouTubeService youtubeService;
         private string videoId;
@@ -39,6 +40,8 @@ namespace Catch_Music
         public Server()
         {
             InitializeComponent();
+            dataGridView1.DataSource = dataset.Tables["clientINFO"];
+
             youtubeService = new YouTubeService(new BaseClientService.Initializer()
             {
                 ApiKey = "AIzaSyCXYRYadXpJP9AzdPidWCYKVO_Xj5wcQM4", // Google API Console에서 생성한 인증키를 입력하세요.
@@ -474,6 +477,10 @@ namespace Catch_Music
                     string lstMessage = strReader.ReadLine();
                     if (lstMessage != null && lstMessage != "")
                     {
+                        if (lstMessage.StartsWith("./name ") == true) // 닉네임 정보를 저장하는 if문
+                        {
+                            sv.dataset.Tables["clientINFO"].Rows.Add(new object[] { lstMessage.Substring(7), 0 });
+                        }
                         sv.SetText(lstMessage + "\r\n"); // delegate를 사용
                         byte[] bytSand_Data = Encoding.UTF8.GetBytes(lstMessage + "\r\n");
                         lock (Server.clientSocketArray)

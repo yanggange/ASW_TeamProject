@@ -22,10 +22,12 @@ namespace Catch_Music
         int portNumber;
         ChatHandler chatHandler = new ChatHandler(); //서버와 채팅을 실행하는 클래스
         public string musicTitle = null; // 방장이 음악 실행하면 음악의 제목이 저장될 변수
+        public DataSet dataset = new ClientINFO();
 
         public Client()
         {
             InitializeComponent();
+            dataGridView1.DataSource = dataset.Tables["clientINFO"];
         }
 
         private void Client_Load(object sender, EventArgs e)
@@ -49,6 +51,7 @@ namespace Catch_Music
                     chatThread.Start();
 
                     // 서버로 클라이언트가 접속했음을 알리는 메소드
+                    Message_Snd("./name " + txtName.Text, true);
                     Message_Snd("서버 : <" + txtName.Text + "> 님께서 접속 하셨습니다.", true);
                     btnConnect.Text = "서버 나가기";
                 }
@@ -59,6 +62,7 @@ namespace Catch_Music
             }
             else
             {
+                Message_Snd("/close " + txtName.Text, true);
                 Message_Snd("서버 : <" + txtName.Text + "> 님께서 접속해제 하셨습니다.", false);
                 btnConnect.Text = "서버 들어가기";
                 chatHandler.ChatClose();
@@ -178,6 +182,14 @@ namespace Catch_Music
                         // 여기에 음악 실행하는 코드 작성(ce.musicTitle 변수가 음악 제목입니다)
                         ///
                         continue;
+                    }
+
+                    if (lstMessage.StartsWith("./name ") == true)
+                    {
+                        // 닉네임 저장
+                        ce.dataset.Tables["clientINFO"].Rows.Add(new object[] { lstMessage.Substring(7), 0 });
+                        continue;
+                        // Form에 닉네임과 점수 띄우기 필요
                     }
 
                     if (lstMessage == "./hint1")
