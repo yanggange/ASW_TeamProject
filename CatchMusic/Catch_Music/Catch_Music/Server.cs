@@ -13,7 +13,6 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
 using Google.Apis.Services;
 using Google.Apis.YouTube.v3;
 using Google.Apis.YouTube.v3.Data;
@@ -37,6 +36,9 @@ namespace Catch_Music
         private string audioUrl;
         private Process audioProcess;
 
+        private System.Windows.Forms.Timer timer;
+        private int elapsedTime;
+
         public Server()
         {
             InitializeComponent();
@@ -47,6 +49,15 @@ namespace Catch_Music
                 ApiKey = "AIzaSyCXYRYadXpJP9AzdPidWCYKVO_Xj5wcQM4", // Google API Console에서 생성한 인증키를 입력하세요.
                 ApplicationName = this.GetType().ToString()
             });
+
+            timer = new System.Windows.Forms.Timer();
+            timer.Interval = 1000; // 1초마다 타이머 이벤트 발생
+            timer.Tick += Timer_Tick;
+        }
+        private void Timer_Tick(object sender, EventArgs e)
+        {
+            elapsedTime++;
+            labelTimer.Text = elapsedTime.ToString();
         }
 
         private void Server_Load(object sender, EventArgs e)
@@ -333,6 +344,11 @@ namespace Catch_Music
             audioProcess.Start();
             lblStatus.Text = "재생 중";
 
+            timer.Stop();
+            elapsedTime = 0;
+            labelTimer.Text = "0";
+            timer.Start();
+
             // 모든 클라이언트들에게 노래실행 코드와 제목을 보내는 방법은?
             string lstMessage = "./start " + musicTitleMsg.Text;
             if (lstMessage != null && lstMessage != "")
@@ -418,6 +434,8 @@ namespace Catch_Music
                 audioProcess.Kill();
                 lblStatus.Text = "중지됨";
             }
+
+            timer.Stop();
         }
 
         private void btnSearch_Click(object sender, EventArgs e)
