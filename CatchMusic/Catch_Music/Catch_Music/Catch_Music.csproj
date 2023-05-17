@@ -67,6 +67,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ClientINFO.cs">
+      <DependentUpon>ClientINFO.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="ClientINFO.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ClientINFO.xsd</DependentUpon>
+    </Compile>
     <Compile Include="GameStart.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -141,6 +149,17 @@
     <EmbeddedResource Include="Setting3.resx">
       <DependentUpon>Setting3.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="ClientINFO.xsc">
+      <DependentUpon>ClientINFO.xsd</DependentUpon>
+    </None>
+    <None Include="ClientINFO.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>ClientINFO.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="ClientINFO.xss">
+      <DependentUpon>ClientINFO.xsd</DependentUpon>
+    </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

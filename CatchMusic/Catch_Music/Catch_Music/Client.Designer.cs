@@ -37,6 +37,8 @@
             this.btnConnect = new System.Windows.Forms.Button();
             this.txtName = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // IPtxtMsg
@@ -85,7 +87,7 @@
             this.txtChatMsg.Multiline = true;
             this.txtChatMsg.Name = "txtChatMsg";
             this.txtChatMsg.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.txtChatMsg.Size = new System.Drawing.Size(559, 420);
+            this.txtChatMsg.Size = new System.Drawing.Size(416, 427);
             this.txtChatMsg.TabIndex = 12;
             // 
             // btnConnect
@@ -114,11 +116,21 @@
             this.label1.TabIndex = 9;
             this.label1.Text = "닉네임";
             // 
+            // dataGridView1
+            // 
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Location = new System.Drawing.Point(436, 77);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.RowTemplate.Height = 23;
+            this.dataGridView1.Size = new System.Drawing.Size(136, 427);
+            this.dataGridView1.TabIndex = 18;
+            // 
             // Client
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(584, 561);
+            this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.IPtxtMsg);
             this.Controls.Add(this.IPtxt);
             this.Controls.Add(this.label2);
@@ -131,6 +143,7 @@
             this.Name = "Client";
             this.Text = "Client";
             this.Load += new System.EventHandler(this.Client_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -147,5 +160,6 @@
         private System.Windows.Forms.Button btnConnect;
         private System.Windows.Forms.TextBox txtName;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.DataGridView dataGridView1;
     }
 }

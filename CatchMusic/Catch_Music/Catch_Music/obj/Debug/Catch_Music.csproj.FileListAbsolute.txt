@@ -62,3 +62,24 @@ C:\Users\82105\Desktop\ASW_TeamProject\CatchMusic\Catch_Music\Catch_Music\obj\De
 C:\Users\82105\Desktop\ASW_TeamProject\CatchMusic\Catch_Music\Catch_Music\obj\Debug\Catch_Music.csproj.CopyComplete
 C:\Users\82105\Desktop\ASW_TeamProject\CatchMusic\Catch_Music\Catch_Music\obj\Debug\Catch_Music.exe
 C:\Users\82105\Desktop\ASW_TeamProject\CatchMusic\Catch_Music\Catch_Music\obj\Debug\Catch_Music.pdb
+C:\Users\didru\OneDrive\바탕 화면\ASW_TeamProject\CatchMusic\Catch_Music\Catch_Music\bin\Debug\Google.Apis.Auth.dll
+C:\Users\didru\OneDrive\바탕 화면\ASW_TeamProject\CatchMusic\Catch_Music\Catch_Music\bin\Debug\Google.Apis.Auth.PlatformServices.dll
+C:\Users\didru\OneDrive\바탕 화면\ASW_TeamProject\CatchMusic\Catch_Music\Catch_Music\bin\Debug\Google.Apis.Core.dll
+C:\Users\didru\OneDrive\바탕 화면\ASW_TeamProject\CatchMusic\Catch_Music\Catch_Music\bin\Debug\Google.Apis.dll
+C:\Users\didru\OneDrive\바탕 화면\ASW_TeamProject\CatchMusic\Catch_Music\Catch_Music\bin\Debug\Google.Apis.PlatformServices.dll
+C:\Users\didru\OneDrive\바탕 화면\ASW_TeamProject\CatchMusic\Catch_Music\Catch_Music\bin\Debug\Google.Apis.YouTube.v3.dll
+C:\Users\didru\OneDrive\바탕 화면\ASW_TeamProject\CatchMusic\Catch_Music\Catch_Music\bin\Debug\Newtonsoft.Json.dll
+C:\Users\didru\OneDrive\바탕 화면\ASW_TeamProject\CatchMusic\Catch_Music\Catch_Music\bin\Debug\Google.Apis.pdb
+C:\Users\didru\OneDrive\바탕 화면\ASW_TeamProject\CatchMusic\Catch_Music\Catch_Music\bin\Debug\Google.Apis.xml
+C:\Users\didru\OneDrive\바탕 화면\ASW_TeamProject\CatchMusic\Catch_Music\Catch_Music\bin\Debug\Google.Apis.Auth.pdb
+C:\Users\didru\OneDrive\바탕 화면\ASW_TeamProject\CatchMusic\Catch_Music\Catch_Music\bin\Debug\Google.Apis.Auth.xml
+C:\Users\didru\OneDrive\바탕 화면\ASW_TeamProject\CatchMusic\Catch_Music\Catch_Music\bin\Debug\Google.Apis.Core.pdb
+C:\Users\didru\OneDrive\바탕 화면\ASW_TeamProject\CatchMusic\Catch_Music\Catch_Music\bin\Debug\Google.Apis.Core.xml
+C:\Users\didru\OneDrive\바탕 화면\ASW_TeamProject\CatchMusic\Catch_Music\Catch_Music\bin\Debug\Google.Apis.YouTube.v3.pdb
+C:\Users\didru\OneDrive\바탕 화면\ASW_TeamProject\CatchMusic\Catch_Music\Catch_Music\bin\Debug\Google.Apis.YouTube.v3.xml
+C:\Users\didru\OneDrive\바탕 화면\ASW_TeamProject\CatchMusic\Catch_Music\Catch_Music\bin\Debug\Newtonsoft.Json.xml
+C:\Users\didru\OneDrive\바탕 화면\ASW_TeamProject\CatchMusic\Catch_Music\Catch_Music\obj\Debug\Catch_Music.StartPage.resources
+C:\Users\didru\OneDrive\바탕 화면\ASW_TeamProject\CatchMusic\Catch_Music\Catch_Music\obj\Debug\Catch_Music.MySet1.resources
+C:\Users\didru\OneDrive\바탕 화면\ASW_TeamProject\CatchMusic\Catch_Music\Catch_Music\obj\Debug\Catch_Music.MySet2.resources
+C:\Users\didru\OneDrive\바탕 화면\ASW_TeamProject\CatchMusic\Catch_Music\Catch_Music\obj\Debug\Catch_Music.MySet3.resources
+C:\Users\didru\OneDrive\바탕 화면\ASW_TeamProject\CatchMusic\Catch_Music\Catch_Music\obj\Debug\Catch_Music.csproj.CopyComplete

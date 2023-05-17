@@ -46,6 +46,8 @@
             this.lblStatus = new System.Windows.Forms.Label();
             this.btnSearch = new System.Windows.Forms.Button();
             this.lblTitle = new System.Windows.Forms.Label();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // txtChatMsg
@@ -54,7 +56,7 @@
             this.txtChatMsg.Multiline = true;
             this.txtChatMsg.Name = "txtChatMsg";
             this.txtChatMsg.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.txtChatMsg.Size = new System.Drawing.Size(559, 245);
+            this.txtChatMsg.Size = new System.Drawing.Size(404, 245);
             this.txtChatMsg.TabIndex = 0;
             // 
             // OnOffsv
@@ -220,11 +222,21 @@
             this.lblTitle.TabIndex = 29;
             this.lblTitle.Text = "현재 검색중인 동영상 제목";
             // 
+            // dataGridView1
+            // 
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Location = new System.Drawing.Point(439, 13);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.RowTemplate.Height = 23;
+            this.dataGridView1.Size = new System.Drawing.Size(133, 245);
+            this.dataGridView1.TabIndex = 30;
+            // 
             // Server
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(584, 561);
+            this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.lblTitle);
             this.Controls.Add(this.btnSearch);
             this.Controls.Add(this.lblStatus);
@@ -247,6 +259,7 @@
             this.Text = "Server";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Server_FormClosed);
             this.Load += new System.EventHandler(this.Server_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -272,5 +285,6 @@
         private System.Windows.Forms.Label lblStatus;
         private System.Windows.Forms.Button btnSearch;
         private System.Windows.Forms.Label lblTitle;
+        private System.Windows.Forms.DataGridView dataGridView1;
     }
 }
