@@ -42,6 +42,10 @@
             this.musicTitleMsg = new System.Windows.Forms.TextBox();
             this.musicStartBtn = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
+            this.musicStopBtn = new System.Windows.Forms.Button();
+            this.lblStatus = new System.Windows.Forms.Label();
+            this.btnSearch = new System.Windows.Forms.Button();
+            this.lblTitle = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // txtChatMsg
@@ -101,7 +105,7 @@
             // musicAnswerP
             // 
             this.musicAnswerP.Enabled = false;
-            this.musicAnswerP.Location = new System.Drawing.Point(267, 515);
+            this.musicAnswerP.Location = new System.Drawing.Point(423, 500);
             this.musicAnswerP.Name = "musicAnswerP";
             this.musicAnswerP.Size = new System.Drawing.Size(100, 21);
             this.musicAnswerP.TabIndex = 24;
@@ -111,7 +115,7 @@
             // 
             this.answerTxt.AutoSize = true;
             this.answerTxt.Enabled = false;
-            this.answerTxt.Location = new System.Drawing.Point(220, 518);
+            this.answerTxt.Location = new System.Drawing.Point(376, 503);
             this.answerTxt.Name = "answerTxt";
             this.answerTxt.Size = new System.Drawing.Size(41, 12);
             this.answerTxt.TabIndex = 23;
@@ -120,7 +124,7 @@
             // hintBtn3
             // 
             this.hintBtn3.Enabled = false;
-            this.hintBtn3.Location = new System.Drawing.Point(448, 440);
+            this.hintBtn3.Location = new System.Drawing.Point(245, 493);
             this.hintBtn3.Name = "hintBtn3";
             this.hintBtn3.Size = new System.Drawing.Size(75, 23);
             this.hintBtn3.TabIndex = 22;
@@ -131,7 +135,7 @@
             // hintBtn2
             // 
             this.hintBtn2.Enabled = false;
-            this.hintBtn2.Location = new System.Drawing.Point(367, 440);
+            this.hintBtn2.Location = new System.Drawing.Point(164, 492);
             this.hintBtn2.Name = "hintBtn2";
             this.hintBtn2.Size = new System.Drawing.Size(75, 23);
             this.hintBtn2.TabIndex = 21;
@@ -142,7 +146,7 @@
             // hintBtn1
             // 
             this.hintBtn1.Enabled = false;
-            this.hintBtn1.Location = new System.Drawing.Point(286, 440);
+            this.hintBtn1.Location = new System.Drawing.Point(83, 493);
             this.hintBtn1.Name = "hintBtn1";
             this.hintBtn1.Size = new System.Drawing.Size(75, 23);
             this.hintBtn1.TabIndex = 20;
@@ -153,9 +157,9 @@
             // musicTitleMsg
             // 
             this.musicTitleMsg.Enabled = false;
-            this.musicTitleMsg.Location = new System.Drawing.Point(83, 396);
+            this.musicTitleMsg.Location = new System.Drawing.Point(83, 374);
             this.musicTitleMsg.Name = "musicTitleMsg";
-            this.musicTitleMsg.Size = new System.Drawing.Size(489, 21);
+            this.musicTitleMsg.Size = new System.Drawing.Size(334, 21);
             this.musicTitleMsg.TabIndex = 19;
             // 
             // musicStartBtn
@@ -172,17 +176,59 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(8, 399);
+            this.label2.Location = new System.Drawing.Point(2, 374);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(69, 12);
             this.label2.TabIndex = 25;
             this.label2.Text = "실행할 노래";
+            // 
+            // musicStopBtn
+            // 
+            this.musicStopBtn.Location = new System.Drawing.Point(267, 423);
+            this.musicStopBtn.Name = "musicStopBtn";
+            this.musicStopBtn.Size = new System.Drawing.Size(150, 57);
+            this.musicStopBtn.TabIndex = 26;
+            this.musicStopBtn.Text = "노래정지";
+            this.musicStopBtn.UseVisualStyleBackColor = true;
+            this.musicStopBtn.Click += new System.EventHandler(this.musicStopBtn_Click);
+            // 
+            // lblStatus
+            // 
+            this.lblStatus.AutoSize = true;
+            this.lblStatus.Location = new System.Drawing.Point(458, 458);
+            this.lblStatus.Name = "lblStatus";
+            this.lblStatus.Size = new System.Drawing.Size(77, 12);
+            this.lblStatus.TabIndex = 27;
+            this.lblStatus.Text = "노래재생상태";
+            // 
+            // btnSearch
+            // 
+            this.btnSearch.Location = new System.Drawing.Point(439, 370);
+            this.btnSearch.Name = "btnSearch";
+            this.btnSearch.Size = new System.Drawing.Size(96, 27);
+            this.btnSearch.TabIndex = 28;
+            this.btnSearch.Text = "노래검색";
+            this.btnSearch.UseVisualStyleBackColor = true;
+            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
+            // 
+            // lblTitle
+            // 
+            this.lblTitle.AutoSize = true;
+            this.lblTitle.Location = new System.Drawing.Point(81, 398);
+            this.lblTitle.Name = "lblTitle";
+            this.lblTitle.Size = new System.Drawing.Size(149, 12);
+            this.lblTitle.TabIndex = 29;
+            this.lblTitle.Text = "현재 검색중인 동영상 제목";
             // 
             // Server
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(584, 561);
+            this.Controls.Add(this.lblTitle);
+            this.Controls.Add(this.btnSearch);
+            this.Controls.Add(this.lblStatus);
+            this.Controls.Add(this.musicStopBtn);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.musicAnswerP);
             this.Controls.Add(this.answerTxt);
@@ -222,5 +268,9 @@
         private System.Windows.Forms.TextBox musicTitleMsg;
         private System.Windows.Forms.Button musicStartBtn;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button musicStopBtn;
+        private System.Windows.Forms.Label lblStatus;
+        private System.Windows.Forms.Button btnSearch;
+        private System.Windows.Forms.Label lblTitle;
     }
 }
