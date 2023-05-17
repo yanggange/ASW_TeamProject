@@ -47,6 +47,7 @@
             this.btnSearch = new System.Windows.Forms.Button();
             this.lblTitle = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.labelTimer = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -197,7 +198,7 @@
             // lblStatus
             // 
             this.lblStatus.AutoSize = true;
-            this.lblStatus.Location = new System.Drawing.Point(458, 458);
+            this.lblStatus.Location = new System.Drawing.Point(458, 435);
             this.lblStatus.Name = "lblStatus";
             this.lblStatus.Size = new System.Drawing.Size(77, 12);
             this.lblStatus.TabIndex = 27;
@@ -231,11 +232,21 @@
             this.dataGridView1.Size = new System.Drawing.Size(133, 245);
             this.dataGridView1.TabIndex = 30;
             // 
+            // labelTimer
+            // 
+            this.labelTimer.AutoSize = true;
+            this.labelTimer.Location = new System.Drawing.Point(458, 459);
+            this.labelTimer.Name = "labelTimer";
+            this.labelTimer.Size = new System.Drawing.Size(77, 12);
+            this.labelTimer.TabIndex = 31;
+            this.labelTimer.Text = "노래재생시간";
+            // 
             // Server
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(584, 561);
+            this.Controls.Add(this.labelTimer);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.lblTitle);
             this.Controls.Add(this.btnSearch);
@@ -286,5 +297,6 @@
         private System.Windows.Forms.Button btnSearch;
         private System.Windows.Forms.Label lblTitle;
         private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.Label labelTimer;
     }
 }
