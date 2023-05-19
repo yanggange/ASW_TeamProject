@@ -210,7 +210,8 @@ namespace Catch_Music
                 clientSocketArray.Clear();
             }
 
-           Environment.Exit(0); // 테스트용
+            dataset.Tables["clientINFO"].Rows.Clear();
+            Environment.Exit(0); // 테스트용
         }
 
         private void musicAnswerP_KeyDown(object sender, KeyEventArgs e)
@@ -480,6 +481,7 @@ namespace Catch_Music
                 serverChatMsg.Text = "";
                 if (lstMessage != null && lstMessage != "")
                 {
+                    SetText(lstMessage + "\r\n");
                     byte[] bytSand_Data = Encoding.UTF8.GetBytes(lstMessage + "\r\n");
                     lock (Server.clientSocketArray)
                     {
@@ -526,6 +528,7 @@ namespace Catch_Music
                         if (lstMessage.StartsWith("./name ") == true) // 닉네임 정보를 저장하는 if문
                         {
                             sv.dataset.Tables["clientINFO"].Rows.Add(new object[] { lstMessage.Substring(7), 0 });
+                            continue;
                         }
                         sv.SetText(lstMessage + "\r\n"); // delegate를 사용
                         byte[] bytSand_Data = Encoding.UTF8.GetBytes(lstMessage + "\r\n");

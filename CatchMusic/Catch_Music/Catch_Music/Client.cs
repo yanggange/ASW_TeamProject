@@ -137,6 +137,11 @@ namespace Catch_Music
                 e.Handled = true; // 이벤트처리 중지
             }
         }
+
+        private void Client_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            dataset.Tables["clientINFO"].Rows.Clear();
+        }
     }
 
     public class ChatHandler
