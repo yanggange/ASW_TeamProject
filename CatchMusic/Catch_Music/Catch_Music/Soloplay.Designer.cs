@@ -37,6 +37,11 @@
             this.hintBtn1 = new System.Windows.Forms.Button();
             this.hintBtn2 = new System.Windows.Forms.Button();
             this.hintBtn3 = new System.Windows.Forms.Button();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.hignBtn = new System.Windows.Forms.RadioButton();
+            this.nomalBtn = new System.Windows.Forms.RadioButton();
+            this.easyBtn = new System.Windows.Forms.RadioButton();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // txtMsg
@@ -68,13 +73,13 @@
             // 
             // Nickname
             // 
-            this.Nickname.AutoSize = true;
             this.Nickname.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.Nickname.Location = new System.Drawing.Point(456, 26);
+            this.Nickname.Location = new System.Drawing.Point(165, 26);
             this.Nickname.Name = "Nickname";
-            this.Nickname.Size = new System.Drawing.Size(11, 12);
+            this.Nickname.Size = new System.Drawing.Size(302, 12);
             this.Nickname.TabIndex = 17;
-            this.Nickname.Text = "0";
+            this.Nickname.Text = "name";
+            this.Nickname.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // label1
             // 
@@ -126,11 +131,60 @@
             this.hintBtn3.UseVisualStyleBackColor = true;
             this.hintBtn3.Click += new System.EventHandler(this.hintBtn3_Click);
             // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.easyBtn);
+            this.groupBox1.Controls.Add(this.nomalBtn);
+            this.groupBox1.Controls.Add(this.hignBtn);
+            this.groupBox1.Location = new System.Drawing.Point(12, 305);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(137, 161);
+            this.groupBox1.TabIndex = 24;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "시간선택";
+            // 
+            // hignBtn
+            // 
+            this.hignBtn.AutoSize = true;
+            this.hignBtn.Location = new System.Drawing.Point(12, 30);
+            this.hignBtn.Name = "hignBtn";
+            this.hignBtn.Size = new System.Drawing.Size(87, 16);
+            this.hignBtn.TabIndex = 0;
+            this.hignBtn.TabStop = true;
+            this.hignBtn.Text = "어려움(5초)";
+            this.hignBtn.UseVisualStyleBackColor = true;
+            this.hignBtn.CheckedChanged += new System.EventHandler(this.hignBtn_CheckedChanged);
+            // 
+            // nomalBtn
+            // 
+            this.nomalBtn.AutoSize = true;
+            this.nomalBtn.Location = new System.Drawing.Point(12, 75);
+            this.nomalBtn.Name = "nomalBtn";
+            this.nomalBtn.Size = new System.Drawing.Size(81, 16);
+            this.nomalBtn.TabIndex = 1;
+            this.nomalBtn.TabStop = true;
+            this.nomalBtn.Text = "보통(10초)";
+            this.nomalBtn.UseVisualStyleBackColor = true;
+            this.nomalBtn.CheckedChanged += new System.EventHandler(this.nomalBtn_CheckedChanged);
+            // 
+            // easyBtn
+            // 
+            this.easyBtn.AutoSize = true;
+            this.easyBtn.Location = new System.Drawing.Point(12, 123);
+            this.easyBtn.Name = "easyBtn";
+            this.easyBtn.Size = new System.Drawing.Size(81, 16);
+            this.easyBtn.TabIndex = 2;
+            this.easyBtn.TabStop = true;
+            this.easyBtn.Text = "쉬움(15초)";
+            this.easyBtn.UseVisualStyleBackColor = true;
+            this.easyBtn.CheckedChanged += new System.EventHandler(this.easyBtn_CheckedChanged);
+            // 
             // Soloplay
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(584, 561);
+            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.hintBtn3);
             this.Controls.Add(this.hintBtn2);
             this.Controls.Add(this.hintBtn1);
@@ -142,7 +196,10 @@
             this.Controls.Add(this.txtChatMsg);
             this.Name = "Soloplay";
             this.Text = "Soloplay";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Soloplay_FormClosed);
             this.Load += new System.EventHandler(this.Soloplay_Load);
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -159,5 +216,9 @@
         private System.Windows.Forms.Button hintBtn1;
         private System.Windows.Forms.Button hintBtn2;
         private System.Windows.Forms.Button hintBtn3;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.RadioButton easyBtn;
+        private System.Windows.Forms.RadioButton nomalBtn;
+        private System.Windows.Forms.RadioButton hignBtn;
     }
 }
