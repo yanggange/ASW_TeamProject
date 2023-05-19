@@ -48,6 +48,8 @@
             this.lblTitle = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.labelTimer = new System.Windows.Forms.Label();
+            this.serverChatMsg = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -108,7 +110,7 @@
             // musicAnswerP
             // 
             this.musicAnswerP.Enabled = false;
-            this.musicAnswerP.Location = new System.Drawing.Point(423, 500);
+            this.musicAnswerP.Location = new System.Drawing.Point(419, 492);
             this.musicAnswerP.Name = "musicAnswerP";
             this.musicAnswerP.Size = new System.Drawing.Size(100, 21);
             this.musicAnswerP.TabIndex = 24;
@@ -118,7 +120,7 @@
             // 
             this.answerTxt.AutoSize = true;
             this.answerTxt.Enabled = false;
-            this.answerTxt.Location = new System.Drawing.Point(376, 503);
+            this.answerTxt.Location = new System.Drawing.Point(372, 495);
             this.answerTxt.Name = "answerTxt";
             this.answerTxt.Size = new System.Drawing.Size(41, 12);
             this.answerTxt.TabIndex = 23;
@@ -179,7 +181,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(2, 374);
+            this.label2.Location = new System.Drawing.Point(8, 377);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(69, 12);
             this.label2.TabIndex = 25;
@@ -241,11 +243,31 @@
             this.labelTimer.TabIndex = 31;
             this.labelTimer.Text = "노래재생시간";
             // 
+            // serverChatMsg
+            // 
+            this.serverChatMsg.Location = new System.Drawing.Point(83, 528);
+            this.serverChatMsg.Name = "serverChatMsg";
+            this.serverChatMsg.Size = new System.Drawing.Size(463, 21);
+            this.serverChatMsg.TabIndex = 32;
+            this.serverChatMsg.TextChanged += new System.EventHandler(this.serverChatMsg_TextChanged);
+            this.serverChatMsg.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.serverChatMsg_KeyPress);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(12, 531);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(53, 12);
+            this.label3.TabIndex = 33;
+            this.label3.Text = "방장채팅";
+            // 
             // Server
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(584, 561);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.serverChatMsg);
             this.Controls.Add(this.labelTimer);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.lblTitle);
@@ -298,5 +320,7 @@
         private System.Windows.Forms.Label lblTitle;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Label labelTimer;
+        private System.Windows.Forms.TextBox serverChatMsg;
+        private System.Windows.Forms.Label label3;
     }
 }

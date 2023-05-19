@@ -465,6 +465,34 @@ namespace Catch_Music
             lblStatus.Text = "비디오를 재생할 수 있습니다.";
             musicStartBtn.Enabled = true;
         }
+
+        private void serverChatMsg_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void serverChatMsg_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            // Enter키를 누른경우
+            if (e.KeyChar == 13)
+            {
+                string lstMessage = "< 서버 > " + serverChatMsg.Text;
+                serverChatMsg.Text = "";
+                if (lstMessage != null && lstMessage != "")
+                {
+                    byte[] bytSand_Data = Encoding.UTF8.GetBytes(lstMessage + "\r\n");
+                    lock (Server.clientSocketArray)
+                    {
+                        // 접속해 있는 모든 클라이언트에게 글을 쓰는
+                        foreach (Socket soket in Server.clientSocketArray)
+                        {
+                            NetworkStream stream = new NetworkStream(soket);
+                            stream.Write(bytSand_Data, 0, bytSand_Data.Length);
+                        }
+                    }
+                }
+            }
+        }
     }
 
     public class ClientHandler
