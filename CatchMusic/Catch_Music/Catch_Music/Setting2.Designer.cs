@@ -65,6 +65,8 @@
             this.Controls.Add(this.btnTeam);
             this.Name = "MySet2";
             this.Text = "MySet2";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.MySet2_FormClosed);
+            this.Load += new System.EventHandler(this.MySet2_Load);
             this.ResumeLayout(false);
 
         }

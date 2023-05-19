@@ -17,25 +17,30 @@ namespace Catch_Music
             InitializeComponent();
         }
 
-        private void btnIndividual_Click(object sender, EventArgs e)
-        {
-            this.Hide();
-            MySet3 mySet3 = new MySet3();
-            mySet3.ShowDialog();
-        }
-
         private void btnTeam_Click(object sender, EventArgs e)
         {
             this.Hide();
             MySet3 mySet3 = new MySet3();
             mySet3.ShowDialog();
+            this.Show();
         }
 
         private void btnSolo_Click(object sender, EventArgs e)
         {
             this.Hide();
-            MySet3 mySet3 = new MySet3();
-            mySet3.ShowDialog();
+            Soloplay solo = new Soloplay();
+            solo.ShowDialog();
+            this.Show();
+        }
+
+        private void MySet2_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Environment.Exit(0);
+        }
+
+        private void MySet2_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

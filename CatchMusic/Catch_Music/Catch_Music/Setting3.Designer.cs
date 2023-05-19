@@ -36,7 +36,7 @@
             // btnHigh
             // 
             this.btnHigh.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnHigh.Font = new System.Drawing.Font("한컴 소망 B", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.btnHigh.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.btnHigh.Location = new System.Drawing.Point(125, 175);
             this.btnHigh.Name = "btnHigh";
             this.btnHigh.Size = new System.Drawing.Size(160, 75);
@@ -48,7 +48,7 @@
             // btnMedium
             // 
             this.btnMedium.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnMedium.Font = new System.Drawing.Font("한컴 소망 B", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.btnMedium.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.btnMedium.Location = new System.Drawing.Point(325, 175);
             this.btnMedium.Name = "btnMedium";
             this.btnMedium.Size = new System.Drawing.Size(160, 75);
@@ -60,7 +60,7 @@
             // btnLow
             // 
             this.btnLow.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnLow.Font = new System.Drawing.Font("한컴 소망 B", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.btnLow.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.btnLow.Location = new System.Drawing.Point(525, 175);
             this.btnLow.Name = "btnLow";
             this.btnLow.Size = new System.Drawing.Size(160, 75);
@@ -79,6 +79,7 @@
             this.Controls.Add(this.btnHigh);
             this.Name = "MySet3";
             this.Text = "MySet3";
+            this.Load += new System.EventHandler(this.MySet3_Load);
             this.ResumeLayout(false);
 
         }

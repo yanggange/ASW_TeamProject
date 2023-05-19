@@ -37,5 +37,10 @@ namespace Catch_Music
             MultiChoose multiChoose = new MultiChoose();
             multiChoose.Show();
         }
+
+        private void MySet3_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
