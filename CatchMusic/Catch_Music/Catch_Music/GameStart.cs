@@ -20,8 +20,8 @@ namespace Catch_Music
         private void btnStart_Click(object sender, EventArgs e)
         {
             this.Hide();
-            MySet1 mySet1 = new MySet1();
-            mySet1.ShowDialog();
+            MySet2 mySet2 = new MySet2();
+            mySet2.ShowDialog();
         }
     }
 }
