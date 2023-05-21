@@ -38,9 +38,9 @@
             this.hintBtn2 = new System.Windows.Forms.Button();
             this.hintBtn3 = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.hignBtn = new System.Windows.Forms.RadioButton();
-            this.nomalBtn = new System.Windows.Forms.RadioButton();
             this.easyBtn = new System.Windows.Forms.RadioButton();
+            this.nomalBtn = new System.Windows.Forms.RadioButton();
+            this.hignBtn = new System.Windows.Forms.RadioButton();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -143,17 +143,17 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "시간선택";
             // 
-            // hignBtn
+            // easyBtn
             // 
-            this.hignBtn.AutoSize = true;
-            this.hignBtn.Location = new System.Drawing.Point(12, 30);
-            this.hignBtn.Name = "hignBtn";
-            this.hignBtn.Size = new System.Drawing.Size(87, 16);
-            this.hignBtn.TabIndex = 0;
-            this.hignBtn.TabStop = true;
-            this.hignBtn.Text = "어려움(5초)";
-            this.hignBtn.UseVisualStyleBackColor = true;
-            this.hignBtn.CheckedChanged += new System.EventHandler(this.hignBtn_CheckedChanged);
+            this.easyBtn.AutoSize = true;
+            this.easyBtn.Location = new System.Drawing.Point(12, 123);
+            this.easyBtn.Name = "easyBtn";
+            this.easyBtn.Size = new System.Drawing.Size(81, 16);
+            this.easyBtn.TabIndex = 2;
+            this.easyBtn.TabStop = true;
+            this.easyBtn.Text = "쉬움(15초)";
+            this.easyBtn.UseVisualStyleBackColor = true;
+            this.easyBtn.CheckedChanged += new System.EventHandler(this.easyBtn_CheckedChanged);
             // 
             // nomalBtn
             // 
@@ -167,17 +167,17 @@
             this.nomalBtn.UseVisualStyleBackColor = true;
             this.nomalBtn.CheckedChanged += new System.EventHandler(this.nomalBtn_CheckedChanged);
             // 
-            // easyBtn
+            // hignBtn
             // 
-            this.easyBtn.AutoSize = true;
-            this.easyBtn.Location = new System.Drawing.Point(12, 123);
-            this.easyBtn.Name = "easyBtn";
-            this.easyBtn.Size = new System.Drawing.Size(81, 16);
-            this.easyBtn.TabIndex = 2;
-            this.easyBtn.TabStop = true;
-            this.easyBtn.Text = "쉬움(15초)";
-            this.easyBtn.UseVisualStyleBackColor = true;
-            this.easyBtn.CheckedChanged += new System.EventHandler(this.easyBtn_CheckedChanged);
+            this.hignBtn.AutoSize = true;
+            this.hignBtn.Location = new System.Drawing.Point(12, 30);
+            this.hignBtn.Name = "hignBtn";
+            this.hignBtn.Size = new System.Drawing.Size(87, 16);
+            this.hignBtn.TabIndex = 0;
+            this.hignBtn.TabStop = true;
+            this.hignBtn.Text = "어려움(5초)";
+            this.hignBtn.UseVisualStyleBackColor = true;
+            this.hignBtn.CheckedChanged += new System.EventHandler(this.hignBtn_CheckedChanged);
             // 
             // Soloplay
             // 

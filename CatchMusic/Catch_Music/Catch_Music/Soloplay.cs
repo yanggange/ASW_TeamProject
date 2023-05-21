@@ -8,6 +8,16 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Threading;
+using Google.Apis.Services;
+using Google.Apis.YouTube.v3;
+using System.Diagnostics;
+using System.IO;
+using System.Net;
+using Newtonsoft.Json.Linq;
+using Newtonsoft.Json;
+using Google.Apis.YouTube.v3.Data;
+using System.Timers;
+using System.Diagnostics.Eventing.Reader;
 
 namespace Catch_Music
 {
@@ -16,13 +26,18 @@ namespace Catch_Music
         delegate void SetTextDelegate(string s);
         delegate void InitDelegate();
         public string name = "unknown"; // 로그인하면 가져오는 닉네임을 저장하는 변수
-        public string musicTitle = ""; // 게임시작시 실행되는 음악의 제목이 저장되는 변수
+        public string musicTitle = "블루밍 무대"; // 게임시작시 실행되는 음악의 제목이 저장되는 변수 (test --> "블루밍 무대")
         public string musicMakeP = ""; // 게임시작시 실행되는 음악의 제작자가 저장되는 변수
         public int score;
         private int maxScore = 5; // 얻으면 종료되는 점수
         public string checkText = "fjciwknkfl123"; // 적은 1줄의 text가 기록되는 변수
         private int gameDiff = 10; // 기본으로 설정 된 난이도
         Thread gameThread;
+
+        private YouTubeService youtubeService;
+        private string videoId;
+        private string audioUrl;
+        private Process audioProcess;
 
         public Soloplay()
         {
@@ -36,7 +51,14 @@ namespace Catch_Music
             hintBtn1.Enabled = false;
             hintBtn2.Enabled = false;
             hintBtn3.Enabled = false;
+            youtubeService = new YouTubeService(new BaseClientService.Initializer()
+            {
+                ApiKey = "AIzaSyCXYRYadXpJP9AzdPidWCYKVO_Xj5wcQM4", // Google API Console에서 생성한 인증키를 입력하세요.
+                ApplicationName = this.GetType().ToString()
+            });
+
         }
+
 
         private void PlayerText(string text)
         {
@@ -88,6 +110,76 @@ namespace Catch_Music
         private void Soloplay_Load(object sender, EventArgs e)
         {
         }
+        private string GetHtml(string url)
+        {
+            try
+            {
+                HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
+                HttpWebResponse response = (HttpWebResponse)request.GetResponse();
+                StreamReader reader = new StreamReader(response.GetResponseStream());
+                string html = reader.ReadToEnd();
+                reader.Close();
+                response.Close();
+                return html;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("오류가 발생했습니다: " + ex.Message);
+                return null;
+            }
+        }
+        private string GetAudioUrl(string html)
+        {
+            int fintWord = html.IndexOf("adaptiveFormats") + 17; //+17
+            if (fintWord == -1)
+            {
+                return null;
+            }
+
+            int start = html.IndexOf("[", fintWord);
+            if (start == -1)
+            {
+                return null;
+            }
+
+            int end = html.IndexOf("]", start);
+            if (end == -1)
+            {
+                return null;
+            }
+
+            string json = html.Substring(start, end - start + 1);
+
+            if (!IsJson(json))
+            {
+                return null; // 만약 json 형식이 아니라면 null 반환
+            }
+
+            dynamic data = Newtonsoft.Json.JsonConvert.DeserializeObject(json);
+            foreach (var item in data)
+            {
+                string mimeType = item.mimeType;
+                if (mimeType.StartsWith("audio/mp4"))
+                {
+                    string url = item.url;
+                    return url;
+                }
+            }
+
+            return null;
+        }
+        private bool IsJson(string input)
+        {
+            try
+            {
+                JToken.Parse(input);
+                return true;
+            }
+            catch (JsonReaderException)
+            {
+                return false;
+            }
+        }
 
         private void soloGame()
         {
@@ -115,8 +207,79 @@ namespace Catch_Music
                 /// 여기에 유튜브 API 코드작성
                 /// musicTitle, 즉 실행할 음악제목이 들어있는 변수를 가지고
                 /// 유튜브의 음원을 실행하는 코드 작성
-                /// 게임 난이도에 대한 시간변수(15초, 10초, 5초)는 gameDiff에 저장되어 있습니다.
-                ///
+                string query = musicTitle;
+                if (string.IsNullOrEmpty(query))
+                {
+                    MessageBox.Show(".");
+                    return;
+                }
+
+                SearchResource.ListRequest listRequest = youtubeService.Search.List("snippet");
+                listRequest.Q = query;
+                listRequest.MaxResults = 1;
+
+                SearchListResponse searchListResponse = listRequest.Execute();
+                if (searchListResponse.Items.Count == 0)
+                {
+                    MessageBox.Show("검색 결과가 없습니다.");
+                    return;
+                }
+
+                SearchResult result = searchListResponse.Items[0];
+                videoId = result.Id.VideoId;
+
+                videoId = videoId.Trim();
+                string videoUrl = $"https://www.youtube.com/watch?v={videoId}";
+                string html = GetHtml(videoUrl);
+                if (html == null)
+                {
+                    MessageBox.Show("비디오를 재생할 수 없습니다.");
+                    return;
+                }
+
+                audioUrl = GetAudioUrl(html);
+                if (audioUrl == null)
+                {
+                    MessageBox.Show("오디오를 재생할 수 없습니다.");
+                    return;
+                }
+
+                string mpv_path = Path.GetDirectoryName(Path.GetDirectoryName(Environment.CurrentDirectory)) + "\\MPV\\mpv.exe";
+
+                audioProcess = new Process();
+                audioProcess.StartInfo.FileName = mpv_path; // mpv.exe 파일 경로를 입력하세요.
+                audioProcess.StartInfo.Arguments = $"--no-video {audioUrl}";
+                audioProcess.StartInfo.UseShellExecute = false;
+                audioProcess.StartInfo.RedirectStandardOutput = true;
+                audioProcess.StartInfo.CreateNoWindow = true;
+                audioProcess.Start();
+
+                /// 게임 난이도에 대한 시간변수(15초, 10초, 5초)는 gameDiff에 저장
+                int delayTime;
+                switch (gameDiff)
+                {
+                    case 5:
+                        delayTime = 7000; // 게임 난이도 상(5초)
+                        break;
+                    case 10:
+                        delayTime = 12000; // 게임 난이도 중(10초)
+                        break;
+                    case 15:
+                    default:
+                        delayTime = 17000; // 게임 난이도 하(15초)
+                        break;
+                }
+
+                System.Timers.Timer timer = new System.Timers.Timer(delayTime);
+                timer.AutoReset = false; // make it run only once
+                timer.Elapsed += (sender, e) => {
+                    if (!audioProcess.HasExited)
+                    {
+                        audioProcess.Kill();
+                    }
+                };
+                timer.Start();
+
 
                 while (true)
                 {
@@ -153,6 +316,9 @@ namespace Catch_Music
 
             groupBox1.Enabled = false;
             gameStartBtn.Enabled = false;
+
+
+            
 
             gameThread = new Thread(new ThreadStart(soloGame));
             gameThread.Start();  
