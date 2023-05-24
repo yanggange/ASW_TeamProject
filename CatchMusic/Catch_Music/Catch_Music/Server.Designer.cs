@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Server));
             this.txtChatMsg = new System.Windows.Forms.TextBox();
             this.OnOffsv = new System.Windows.Forms.Label();
             this.btnStart = new System.Windows.Forms.Button();
@@ -50,7 +51,9 @@
             this.labelTimer = new System.Windows.Forms.Label();
             this.serverChatMsg = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // txtChatMsg
@@ -262,6 +265,16 @@
             this.label3.TabIndex = 33;
             this.label3.Text = "방장채팅";
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(-11, 257);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(100, 60);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 34;
+            this.pictureBox1.TabStop = false;
+            // 
             // Server
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
@@ -289,11 +302,13 @@
             this.Controls.Add(this.btnStart);
             this.Controls.Add(this.OnOffsv);
             this.Controls.Add(this.txtChatMsg);
+            this.Controls.Add(this.pictureBox1);
             this.Name = "Server";
             this.Text = "Server";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Server_FormClosed);
             this.Load += new System.EventHandler(this.Server_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -323,5 +338,6 @@
         private System.Windows.Forms.Label labelTimer;
         private System.Windows.Forms.TextBox serverChatMsg;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }

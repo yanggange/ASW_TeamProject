@@ -85,3 +85,21 @@ C:\Users\didru\OneDrive\바탕 화면\ASW_TeamProject\CatchMusic\Catch_Music\Cat
 C:\Users\didru\OneDrive\바탕 화면\ASW_TeamProject\CatchMusic\Catch_Music\Catch_Music\obj\Debug\Catch_Music.csproj.CopyComplete
 C:\Users\didru\OneDrive\바탕 화면\ASW_TeamProject\CatchMusic\Catch_Music\Catch_Music\obj\Debug\Catch_Music.Soloplay.resources
 C:\Users\82105\Desktop\ASW_TeamProject\CatchMusic\Catch_Music\Catch_Music\obj\Debug\Catch_Music.Soloplay.resources
+C:\Users\lgpc\Desktop\응소실\ASW_TeamProject\CatchMusic\Catch_Music\Catch_Music\bin\Debug\Google.Apis.Auth.dll
+C:\Users\lgpc\Desktop\응소실\ASW_TeamProject\CatchMusic\Catch_Music\Catch_Music\bin\Debug\Google.Apis.Auth.PlatformServices.dll
+C:\Users\lgpc\Desktop\응소실\ASW_TeamProject\CatchMusic\Catch_Music\Catch_Music\bin\Debug\Google.Apis.Core.dll
+C:\Users\lgpc\Desktop\응소실\ASW_TeamProject\CatchMusic\Catch_Music\Catch_Music\bin\Debug\Google.Apis.dll
+C:\Users\lgpc\Desktop\응소실\ASW_TeamProject\CatchMusic\Catch_Music\Catch_Music\bin\Debug\Google.Apis.PlatformServices.dll
+C:\Users\lgpc\Desktop\응소실\ASW_TeamProject\CatchMusic\Catch_Music\Catch_Music\bin\Debug\Google.Apis.YouTube.v3.dll
+C:\Users\lgpc\Desktop\응소실\ASW_TeamProject\CatchMusic\Catch_Music\Catch_Music\bin\Debug\Newtonsoft.Json.dll
+C:\Users\lgpc\Desktop\응소실\ASW_TeamProject\CatchMusic\Catch_Music\Catch_Music\bin\Debug\Google.Apis.pdb
+C:\Users\lgpc\Desktop\응소실\ASW_TeamProject\CatchMusic\Catch_Music\Catch_Music\bin\Debug\Google.Apis.xml
+C:\Users\lgpc\Desktop\응소실\ASW_TeamProject\CatchMusic\Catch_Music\Catch_Music\bin\Debug\Google.Apis.Auth.pdb
+C:\Users\lgpc\Desktop\응소실\ASW_TeamProject\CatchMusic\Catch_Music\Catch_Music\bin\Debug\Google.Apis.Auth.xml
+C:\Users\lgpc\Desktop\응소실\ASW_TeamProject\CatchMusic\Catch_Music\Catch_Music\bin\Debug\Google.Apis.Core.pdb
+C:\Users\lgpc\Desktop\응소실\ASW_TeamProject\CatchMusic\Catch_Music\Catch_Music\bin\Debug\Google.Apis.Core.xml
+C:\Users\lgpc\Desktop\응소실\ASW_TeamProject\CatchMusic\Catch_Music\Catch_Music\bin\Debug\Google.Apis.YouTube.v3.pdb
+C:\Users\lgpc\Desktop\응소실\ASW_TeamProject\CatchMusic\Catch_Music\Catch_Music\bin\Debug\Google.Apis.YouTube.v3.xml
+C:\Users\lgpc\Desktop\응소실\ASW_TeamProject\CatchMusic\Catch_Music\Catch_Music\bin\Debug\Newtonsoft.Json.xml
+C:\Users\lgpc\Desktop\응소실\ASW_TeamProject\CatchMusic\Catch_Music\Catch_Music\obj\Debug\Catch_Music.Soloplay.resources
+C:\Users\lgpc\Desktop\응소실\ASW_TeamProject\CatchMusic\Catch_Music\Catch_Music\obj\Debug\Catch_Music.csproj.CopyComplete

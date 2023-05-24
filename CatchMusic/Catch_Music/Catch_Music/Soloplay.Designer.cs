@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Soloplay));
             this.txtMsg = new System.Windows.Forms.TextBox();
             this.txtChatMsg = new System.Windows.Forms.TextBox();
             this.gameStartBtn = new System.Windows.Forms.Button();
@@ -41,7 +42,9 @@
             this.easyBtn = new System.Windows.Forms.RadioButton();
             this.nomalBtn = new System.Windows.Forms.RadioButton();
             this.hignBtn = new System.Windows.Forms.RadioButton();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // txtMsg
@@ -179,11 +182,22 @@
             this.hignBtn.UseVisualStyleBackColor = true;
             this.hignBtn.CheckedChanged += new System.EventHandler(this.hignBtn_CheckedChanged);
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(10, -2);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(100, 60);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 25;
+            this.pictureBox1.TabStop = false;
+            // 
             // Soloplay
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(584, 561);
+            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.hintBtn3);
             this.Controls.Add(this.hintBtn2);
@@ -200,6 +214,7 @@
             this.Load += new System.EventHandler(this.Soloplay_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -220,5 +235,6 @@
         private System.Windows.Forms.RadioButton easyBtn;
         private System.Windows.Forms.RadioButton nomalBtn;
         private System.Windows.Forms.RadioButton hignBtn;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }
