@@ -437,6 +437,23 @@ namespace Catch_Music
             }
 
             timer.Stop();
+
+            // 클라이언트에게 노래 재생 시간이 끝났음을 알리는 메시지 보내기
+            string lstMessage = "./stop ";
+            if (lstMessage != null && lstMessage != "")
+            {
+                txtChatMsg.Text = txtChatMsg.Text + "노래 재생 시간이 끝났습니다" + "\r\n";
+                byte[] bytSand_Data = Encoding.UTF8.GetBytes(lstMessage + "\r\n");
+                lock (Server.clientSocketArray)
+                {
+                    // 접속해 있는 모든 클라이언트에게 메시지를 보냄
+                    foreach (Socket soket in Server.clientSocketArray)
+                    {
+                        NetworkStream stream = new NetworkStream(soket);
+                        stream.Write(bytSand_Data, 0, bytSand_Data.Length);
+                    }
+                }
+            }
         }
 
         private void btnSearch_Click(object sender, EventArgs e)

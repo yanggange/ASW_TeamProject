@@ -157,6 +157,17 @@ namespace Catch_Music
             audioProcess.StartInfo.CreateNoWindow = true;
             audioProcess.Start();
         }
+
+        public void StopMusic()
+        {
+            if (audioProcess != null && !audioProcess.HasExited)
+            {
+                audioProcess.Kill();
+            }
+        }
+
+
+
         private void Client_Load(object sender, EventArgs e)
         {
 
@@ -307,20 +318,28 @@ namespace Catch_Music
                     {
                         // Substring을 통해 음악제목 가져오기
                         ce.musicTitle = lstMessage.Substring(8);
+                   
 
-                        ///
                         // 서버 폼에서 음악실행 버튼을 누르면
                         // 실행할 노래의 제목이 musicTitle에 저장됩니다.
 
                         // 음악 실행하는 코드 작성(ce.musicTitle 변수가 음악 제목)
                         //server에서 노래 재생 버튼을 누르면 시간차를 두고 client에서도 노래가 재생된다.
                         //시연 할때는 아래 코드를 주석처리 할 예정(기능은 확인 됬으니 원활한 시연을 위해서)
-                        //ce.PlayMusic(ce.musicTitle);
+                        ce.PlayMusic(ce.musicTitle);
 
                         continue;
                     }
 
-                    if (lstMessage.StartsWith("./name ") == true)
+                    //서버에서 음악중지가 되었을 경우
+                    if (lstMessage.StartsWith("./stop ") == true)
+                    {
+                        //얘는 딜레이 없이 서버에서 음악이 중지되면, 노래가 거의 동시에 중지됨.
+                        ce.StopMusic();
+
+                    }
+
+                        if (lstMessage.StartsWith("./name ") == true)
                     {
                         // 닉네임 저장
                         ce.dataset.Tables["clientINFO"].Rows.Add(new object[] { lstMessage.Substring(7), 0 });
