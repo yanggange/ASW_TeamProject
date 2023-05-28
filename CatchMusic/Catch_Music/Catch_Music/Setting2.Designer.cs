@@ -33,6 +33,7 @@
             this.btnSolo = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.txtNick = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
@@ -40,7 +41,7 @@
             // btnTeam
             // 
             this.btnTeam.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnTeam.Font = new System.Drawing.Font("한컴 윤체 B", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.btnTeam.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.btnTeam.Location = new System.Drawing.Point(454, 201);
             this.btnTeam.Name = "btnTeam";
             this.btnTeam.Size = new System.Drawing.Size(241, 88);
@@ -52,7 +53,7 @@
             // btnSolo
             // 
             this.btnSolo.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnSolo.Font = new System.Drawing.Font("한컴 윤체 B", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.btnSolo.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.btnSolo.Location = new System.Drawing.Point(77, 201);
             this.btnSolo.Name = "btnSolo";
             this.btnSolo.Size = new System.Drawing.Size(242, 88);
@@ -79,11 +80,22 @@
             this.pictureBox2.TabIndex = 4;
             this.pictureBox2.TabStop = false;
             // 
+            // txtNick
+            // 
+            this.txtNick.Font = new System.Drawing.Font("굴림", 15F);
+            this.txtNick.Location = new System.Drawing.Point(365, 63);
+            this.txtNick.Name = "txtNick";
+            this.txtNick.Size = new System.Drawing.Size(388, 35);
+            this.txtNick.TabIndex = 5;
+            this.txtNick.Text = "unknown";
+            this.txtNick.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
             // MySet2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.txtNick);
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.btnTeam);
             this.Controls.Add(this.btnSolo);
@@ -103,5 +115,6 @@
         private System.Windows.Forms.Button btnSolo;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.Label txtNick;
     }
 }

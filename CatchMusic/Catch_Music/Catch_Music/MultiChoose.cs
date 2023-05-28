@@ -12,7 +12,10 @@ namespace Catch_Music
 {
     public partial class MultiChoose : Form
     {
-        //string name = ""; // 로그인 했을 때 주어지는 닉네임을 저장할 변수
+        public string name; // 로그인 했을 때 주어지는 닉네임을 저장할 변수
+        public string PassNick
+        { get; set; }
+
 
         public MultiChoose()
         {
@@ -29,13 +32,15 @@ namespace Catch_Music
         private void multiBtn_Click(object sender, EventArgs e)
         {
             Client ce = new Client();
+            ce.PassNick = txtNick.Text;
             ce.Show(); // 테스트때문에 ShowDialog()가 아닌 Show() 사용
+
             //this.Close();
         }
 
         private void MultiChoose_Load(object sender, EventArgs e)
         {
-
+            txtNick.Text = PassNick;
         }
     }
 }

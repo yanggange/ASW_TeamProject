@@ -36,10 +36,10 @@
             this.txtMsg = new System.Windows.Forms.TextBox();
             this.txtChatMsg = new System.Windows.Forms.TextBox();
             this.btnConnect = new System.Windows.Forms.Button();
-            this.txtName = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.txtName = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -103,13 +103,6 @@
             this.btnConnect.UseVisualStyleBackColor = true;
             this.btnConnect.Click += new System.EventHandler(this.btnConnect_Click);
             // 
-            // txtName
-            // 
-            this.txtName.Location = new System.Drawing.Point(66, 42);
-            this.txtName.Name = "txtName";
-            this.txtName.Size = new System.Drawing.Size(91, 21);
-            this.txtName.TabIndex = 10;
-            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -139,11 +132,21 @@
             this.pictureBox1.TabIndex = 19;
             this.pictureBox1.TabStop = false;
             // 
+            // txtName
+            // 
+            this.txtName.AutoSize = true;
+            this.txtName.Location = new System.Drawing.Point(66, 45);
+            this.txtName.Name = "txtName";
+            this.txtName.Size = new System.Drawing.Size(56, 12);
+            this.txtName.TabIndex = 20;
+            this.txtName.Text = "unknown";
+            // 
             // Client
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(584, 561);
+            this.Controls.Add(this.txtName);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.IPtxtMsg);
             this.Controls.Add(this.IPtxt);
@@ -152,7 +155,6 @@
             this.Controls.Add(this.txtMsg);
             this.Controls.Add(this.txtChatMsg);
             this.Controls.Add(this.btnConnect);
-            this.Controls.Add(this.txtName);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.pictureBox1);
             this.Name = "Client";
@@ -175,9 +177,9 @@
         private System.Windows.Forms.TextBox txtMsg;
         private System.Windows.Forms.TextBox txtChatMsg;
         private System.Windows.Forms.Button btnConnect;
-        private System.Windows.Forms.TextBox txtName;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Label txtName;
     }
 }

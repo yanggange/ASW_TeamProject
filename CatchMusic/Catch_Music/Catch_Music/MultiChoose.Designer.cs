@@ -30,6 +30,7 @@
         {
             this.makeBtn = new System.Windows.Forms.Button();
             this.multiBtn = new System.Windows.Forms.Button();
+            this.txtNick = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // makeBtn
@@ -52,11 +53,22 @@
             this.multiBtn.UseVisualStyleBackColor = true;
             this.multiBtn.Click += new System.EventHandler(this.multiBtn_Click);
             // 
+            // txtNick
+            // 
+            this.txtNick.Font = new System.Drawing.Font("굴림", 7F);
+            this.txtNick.Location = new System.Drawing.Point(141, 4);
+            this.txtNick.Name = "txtNick";
+            this.txtNick.Size = new System.Drawing.Size(212, 18);
+            this.txtNick.TabIndex = 3;
+            this.txtNick.Text = "unknown";
+            this.txtNick.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
             // MultiChoose
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(384, 141);
+            this.Controls.Add(this.txtNick);
             this.Controls.Add(this.multiBtn);
             this.Controls.Add(this.makeBtn);
             this.Name = "MultiChoose";
@@ -69,6 +81,7 @@
         #endregion
         private System.Windows.Forms.Button makeBtn;
         private System.Windows.Forms.Button multiBtn;
+        private System.Windows.Forms.Label txtNick;
     }
 }
 

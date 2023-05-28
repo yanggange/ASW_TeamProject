@@ -34,6 +34,8 @@
             this.btnLow = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.btnPrev = new System.Windows.Forms.Button();
+            this.txtNick = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
@@ -41,7 +43,7 @@
             // btnHigh
             // 
             this.btnHigh.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnHigh.Font = new System.Drawing.Font("한컴 윤체 B", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.btnHigh.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.btnHigh.Location = new System.Drawing.Point(43, 204);
             this.btnHigh.Name = "btnHigh";
             this.btnHigh.Size = new System.Drawing.Size(176, 82);
@@ -53,7 +55,7 @@
             // btnMedium
             // 
             this.btnMedium.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnMedium.Font = new System.Drawing.Font("한컴 윤체 B", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.btnMedium.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.btnMedium.Location = new System.Drawing.Point(308, 204);
             this.btnMedium.Name = "btnMedium";
             this.btnMedium.Size = new System.Drawing.Size(175, 82);
@@ -65,7 +67,7 @@
             // btnLow
             // 
             this.btnLow.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnLow.Font = new System.Drawing.Font("한컴 윤체 B", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.btnLow.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.btnLow.Location = new System.Drawing.Point(573, 204);
             this.btnLow.Name = "btnLow";
             this.btnLow.Size = new System.Drawing.Size(175, 82);
@@ -92,11 +94,34 @@
             this.pictureBox2.TabIndex = 5;
             this.pictureBox2.TabStop = false;
             // 
+            // btnPrev
+            // 
+            this.btnPrev.Font = new System.Drawing.Font("굴림", 12F);
+            this.btnPrev.Location = new System.Drawing.Point(683, 54);
+            this.btnPrev.Name = "btnPrev";
+            this.btnPrev.Size = new System.Drawing.Size(104, 37);
+            this.btnPrev.TabIndex = 6;
+            this.btnPrev.Text = "이전";
+            this.btnPrev.UseVisualStyleBackColor = true;
+            this.btnPrev.Click += new System.EventHandler(this.btnPrev_Click);
+            // 
+            // txtNick
+            // 
+            this.txtNick.Font = new System.Drawing.Font("굴림", 12F);
+            this.txtNick.Location = new System.Drawing.Point(654, 101);
+            this.txtNick.Name = "txtNick";
+            this.txtNick.Size = new System.Drawing.Size(133, 27);
+            this.txtNick.TabIndex = 7;
+            this.txtNick.Text = "unknown";
+            this.txtNick.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
             // MySet3
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.txtNick);
+            this.Controls.Add(this.btnPrev);
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.btnLow);
             this.Controls.Add(this.btnMedium);
@@ -118,5 +143,7 @@
         private System.Windows.Forms.Button btnLow;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.Button btnPrev;
+        private System.Windows.Forms.Label txtNick;
     }
 }

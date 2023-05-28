@@ -19,9 +19,9 @@ namespace Catch_Music
 
         private void btnStart_Click(object sender, EventArgs e)
         {
+            Login login = new Login();
             this.Hide();
-            MySet2 mySet2 = new MySet2();
-            mySet2.ShowDialog();
+            login.ShowDialog();
         }
     }
 }

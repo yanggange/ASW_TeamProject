@@ -34,7 +34,8 @@ namespace Catch_Music
         private string videoId;
         private string audioUrl;
         private Process audioProcess;
-
+        public string name;
+        public string PassNick{get;set;}
         public Client()
         {
             InitializeComponent();
@@ -170,7 +171,8 @@ namespace Catch_Music
 
         private void Client_Load(object sender, EventArgs e)
         {
-
+            txtName.Text = PassNick;
+            name = txtName.Text;
         }
 
         private void btnConnect_Click(object sender, EventArgs e)

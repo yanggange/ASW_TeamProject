@@ -25,7 +25,7 @@ namespace Catch_Music
     {
         delegate void SetTextDelegate(string s);
         delegate void InitDelegate();
-        public string name = "unknown"; // 로그인하면 가져오는 닉네임을 저장하는 변수
+        public string name; // 로그인하면 가져오는 닉네임을 저장하는 변수
         public string musicTitle = "블루밍 무대"; // 게임시작시 실행되는 음악의 제목이 저장되는 변수 (test --> "블루밍 무대")
         public string musicMakeP = ""; // 게임시작시 실행되는 음악의 제작자가 저장되는 변수
         public int score;
@@ -33,6 +33,8 @@ namespace Catch_Music
         public string checkText = "fjciwknkfl123"; // 적은 1줄의 text가 기록되는 변수
         private int gameDiff = 10; // 기본으로 설정 된 난이도
         Thread gameThread;
+        public string PassNick
+        { get; set; }
 
         private YouTubeService youtubeService;
         private string videoId;
@@ -42,9 +44,8 @@ namespace Catch_Music
         public Soloplay()
         {
             InitializeComponent();
-            Nickname.Text = name;
             score = 0;
-            txtChatMsg.Text += "< 서버 > " + name + "님 반갑습니다!\r\n";
+            //txtChatMsg.Text += "< 서버 > " + name + "님 반갑습니다!\r\n";
             txtChatMsg.Text += "< 서버 > 왼쪽하단의 난이도를 고른뒤 게임을 시작하세요!\r\n";
             txtChatMsg.Text += "< 서버 > 난이도를 고르지 않을 시 보통 난이도로 설정 됩니다.\r\n";
             txtMsg.Enabled = false;
@@ -109,6 +110,8 @@ namespace Catch_Music
 
         private void Soloplay_Load(object sender, EventArgs e)
         {
+            Nickname.Text = PassNick;
+            name = Nickname.Text;
         }
         private string GetHtml(string url)
         {
