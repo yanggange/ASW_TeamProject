@@ -152,3 +152,17 @@ C:\Users\장시원\Documents\GitHub\ASW_TeamProject\CatchMusic\Catch_Music\Catch
 C:\Users\장시원\Documents\GitHub\ASW_TeamProject\CatchMusic\Catch_Music\Catch_Music\bin\Debug\Microsoft.Threading.Tasks.Extensions.Desktop.xml
 C:\Users\장시원\Documents\GitHub\ASW_TeamProject\CatchMusic\Catch_Music\Catch_Music\bin\Debug\System.Net.Http.Extensions.xml
 C:\Users\장시원\Documents\GitHub\ASW_TeamProject\CatchMusic\Catch_Music\Catch_Music\bin\Debug\System.Net.Http.Primitives.xml
+C:\Users\didru\OneDrive\바탕 화면\ASW_TeamProject\CatchMusic\Catch_Music\Catch_Music\bin\Debug\FireSharp.dll
+C:\Users\didru\OneDrive\바탕 화면\ASW_TeamProject\CatchMusic\Catch_Music\Catch_Music\bin\Debug\Microsoft.Threading.Tasks.dll
+C:\Users\didru\OneDrive\바탕 화면\ASW_TeamProject\CatchMusic\Catch_Music\Catch_Music\bin\Debug\Microsoft.Threading.Tasks.Extensions.Desktop.dll
+C:\Users\didru\OneDrive\바탕 화면\ASW_TeamProject\CatchMusic\Catch_Music\Catch_Music\bin\Debug\Microsoft.Threading.Tasks.Extensions.dll
+C:\Users\didru\OneDrive\바탕 화면\ASW_TeamProject\CatchMusic\Catch_Music\Catch_Music\bin\Debug\System.Net.Http.Extensions.dll
+C:\Users\didru\OneDrive\바탕 화면\ASW_TeamProject\CatchMusic\Catch_Music\Catch_Music\bin\Debug\System.Net.Http.Primitives.dll
+C:\Users\didru\OneDrive\바탕 화면\ASW_TeamProject\CatchMusic\Catch_Music\Catch_Music\bin\Debug\Microsoft.Threading.Tasks.xml
+C:\Users\didru\OneDrive\바탕 화면\ASW_TeamProject\CatchMusic\Catch_Music\Catch_Music\bin\Debug\Microsoft.Threading.Tasks.Extensions.xml
+C:\Users\didru\OneDrive\바탕 화면\ASW_TeamProject\CatchMusic\Catch_Music\Catch_Music\bin\Debug\Microsoft.Threading.Tasks.Extensions.Desktop.xml
+C:\Users\didru\OneDrive\바탕 화면\ASW_TeamProject\CatchMusic\Catch_Music\Catch_Music\bin\Debug\System.Net.Http.Extensions.xml
+C:\Users\didru\OneDrive\바탕 화면\ASW_TeamProject\CatchMusic\Catch_Music\Catch_Music\bin\Debug\System.Net.Http.Primitives.xml
+C:\Users\didru\OneDrive\바탕 화면\ASW_TeamProject\CatchMusic\Catch_Music\Catch_Music\obj\Debug\Catch_Music.csproj.App.config
+C:\Users\didru\OneDrive\바탕 화면\ASW_TeamProject\CatchMusic\Catch_Music\Catch_Music\obj\Debug\Catch_Music.Login.resources
+C:\Users\didru\OneDrive\바탕 화면\ASW_TeamProject\CatchMusic\Catch_Music\Catch_Music\obj\Debug\Catch_Music.SignUp.resources

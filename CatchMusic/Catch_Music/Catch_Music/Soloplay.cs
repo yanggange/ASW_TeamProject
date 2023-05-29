@@ -18,12 +18,14 @@ using Newtonsoft.Json;
 using Google.Apis.YouTube.v3.Data;
 using System.Timers;
 using System.Diagnostics.Eventing.Reader;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace Catch_Music
 {
     public partial class Soloplay : Form
     {
         delegate void SetTextDelegate(string s);
+        public delegate void DelegatePlus();
         delegate void InitDelegate();
         public string name; // 로그인하면 가져오는 닉네임을 저장하는 변수
         public string musicTitle = "블루밍 무대"; // 게임시작시 실행되는 음악의 제목이 저장되는 변수 (test --> "블루밍 무대")
@@ -186,6 +188,11 @@ namespace Catch_Music
 
         private void soloGame()
         {
+
+            DelegatePlus scoreText = () => {
+                Score.Text = score.ToString();
+            };
+
             ServerText("게임이 곧 시작합니다...");
             if (gameDiff == 15)
             {
@@ -289,9 +296,15 @@ namespace Catch_Music
                     // 엔터키 누른것을 어떻게 인지하나? -> 변수의 값변화로
                     if (checkText == musicTitle)
                     {
+                        timer.Stop();
+                        if (!audioProcess.HasExited)
+                        {
+                            audioProcess.Kill();
+                        }
                         ServerText("정답입니다!!!");
                         checkText = "fjciwknkfl123";
                         score++;
+                        Score.Invoke(scoreText, new object[] { });
                         break;
                     }
                 }
@@ -356,6 +369,10 @@ namespace Catch_Music
 
         private void Soloplay_FormClosed(object sender, FormClosedEventArgs e)
         {
+            if (!audioProcess.HasExited)
+            {
+                audioProcess.Kill();
+            }
             if (gameThread != null)
             {
                 // 스레드 종료
