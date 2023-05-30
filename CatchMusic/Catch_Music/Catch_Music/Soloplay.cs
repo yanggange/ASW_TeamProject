@@ -290,7 +290,6 @@ namespace Catch_Music
                 };
                 timer.Start();
 
-
                 while (true)
                 {
                     // 엔터키 누른것을 어떻게 인지하나? -> 변수의 값변화로

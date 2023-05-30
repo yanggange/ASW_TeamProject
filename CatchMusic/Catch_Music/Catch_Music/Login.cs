@@ -65,6 +65,7 @@ namespace Catch_Music
             SignUp newsign = new SignUp();
             this.Hide();
             newsign.ShowDialog();
+            this.Show();
         }
         FirebaseConfig fbc = new FirebaseConfig()
         {
@@ -101,6 +102,11 @@ namespace Catch_Music
             {
                 MessageBox.Show("Error");
             }
+        }
+
+        private void Login_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Environment.Exit(0);
         }
     }
 }

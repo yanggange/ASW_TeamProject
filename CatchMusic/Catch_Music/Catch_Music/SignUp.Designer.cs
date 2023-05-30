@@ -40,7 +40,6 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.btnSignUp = new System.Windows.Forms.Button();
-            this.btncancel = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
             this.txtNick = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
@@ -76,6 +75,7 @@
             this.txtPW.Font = new System.Drawing.Font("굴림", 12F);
             this.txtPW.Location = new System.Drawing.Point(145, 200);
             this.txtPW.Name = "txtPW";
+            this.txtPW.PasswordChar = '*';
             this.txtPW.Size = new System.Drawing.Size(200, 26);
             this.txtPW.TabIndex = 1;
             // 
@@ -84,6 +84,7 @@
             this.txtPWch.Font = new System.Drawing.Font("굴림", 12F);
             this.txtPWch.Location = new System.Drawing.Point(145, 260);
             this.txtPWch.Name = "txtPWch";
+            this.txtPWch.PasswordChar = '*';
             this.txtPWch.Size = new System.Drawing.Size(200, 26);
             this.txtPWch.TabIndex = 1;
             // 
@@ -148,23 +149,13 @@
             // btnSignUp
             // 
             this.btnSignUp.Font = new System.Drawing.Font("굴림", 12F);
-            this.btnSignUp.Location = new System.Drawing.Point(67, 419);
+            this.btnSignUp.Location = new System.Drawing.Point(145, 419);
             this.btnSignUp.Name = "btnSignUp";
             this.btnSignUp.Size = new System.Drawing.Size(100, 30);
             this.btnSignUp.TabIndex = 3;
             this.btnSignUp.Text = "회원가입";
             this.btnSignUp.UseVisualStyleBackColor = true;
             this.btnSignUp.Click += new System.EventHandler(this.btnSignUp_Click);
-            // 
-            // btncancel
-            // 
-            this.btncancel.Font = new System.Drawing.Font("굴림", 12F);
-            this.btncancel.Location = new System.Drawing.Point(245, 419);
-            this.btncancel.Name = "btncancel";
-            this.btncancel.Size = new System.Drawing.Size(100, 30);
-            this.btncancel.TabIndex = 3;
-            this.btncancel.Text = "취소";
-            this.btncancel.UseVisualStyleBackColor = true;
             // 
             // label6
             // 
@@ -190,7 +181,6 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(384, 461);
             this.Controls.Add(this.label6);
-            this.Controls.Add(this.btncancel);
             this.Controls.Add(this.btnSignUp);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
@@ -226,7 +216,6 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Button btnSignUp;
-        private System.Windows.Forms.Button btncancel;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox txtNick;
     }
