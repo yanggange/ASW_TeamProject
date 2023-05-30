@@ -48,61 +48,66 @@
             // 
             this.Sign.AutoSize = true;
             this.Sign.Font = new System.Drawing.Font("굴림", 20F);
-            this.Sign.Location = new System.Drawing.Point(140, 20);
+            this.Sign.Location = new System.Drawing.Point(160, 25);
             this.Sign.Name = "Sign";
-            this.Sign.Size = new System.Drawing.Size(120, 27);
+            this.Sign.Size = new System.Drawing.Size(151, 34);
             this.Sign.TabIndex = 0;
             this.Sign.Text = "회원가입";
             // 
             // txtName
             // 
             this.txtName.Font = new System.Drawing.Font("굴림", 12F);
-            this.txtName.Location = new System.Drawing.Point(145, 80);
+            this.txtName.Location = new System.Drawing.Point(166, 100);
+            this.txtName.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtName.Name = "txtName";
-            this.txtName.Size = new System.Drawing.Size(200, 26);
+            this.txtName.Size = new System.Drawing.Size(228, 30);
             this.txtName.TabIndex = 1;
             // 
             // txtID
             // 
             this.txtID.Font = new System.Drawing.Font("굴림", 12F);
-            this.txtID.Location = new System.Drawing.Point(145, 140);
+            this.txtID.Location = new System.Drawing.Point(166, 175);
+            this.txtID.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtID.Name = "txtID";
-            this.txtID.Size = new System.Drawing.Size(200, 26);
+            this.txtID.Size = new System.Drawing.Size(228, 30);
             this.txtID.TabIndex = 1;
             // 
             // txtPW
             // 
             this.txtPW.Font = new System.Drawing.Font("굴림", 12F);
-            this.txtPW.Location = new System.Drawing.Point(145, 200);
+            this.txtPW.Location = new System.Drawing.Point(166, 250);
+            this.txtPW.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtPW.Name = "txtPW";
-            this.txtPW.PasswordChar = '*';
-            this.txtPW.Size = new System.Drawing.Size(200, 26);
+            this.txtPW.PasswordChar = '●';
+            this.txtPW.Size = new System.Drawing.Size(228, 30);
             this.txtPW.TabIndex = 1;
             // 
             // txtPWch
             // 
             this.txtPWch.Font = new System.Drawing.Font("굴림", 12F);
-            this.txtPWch.Location = new System.Drawing.Point(145, 260);
+            this.txtPWch.Location = new System.Drawing.Point(166, 325);
+            this.txtPWch.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtPWch.Name = "txtPWch";
-            this.txtPWch.PasswordChar = '*';
-            this.txtPWch.Size = new System.Drawing.Size(200, 26);
+            this.txtPWch.PasswordChar = '●';
+            this.txtPWch.Size = new System.Drawing.Size(228, 30);
             this.txtPWch.TabIndex = 1;
             // 
             // txtBirth
             // 
             this.txtBirth.Font = new System.Drawing.Font("굴림", 12F);
-            this.txtBirth.Location = new System.Drawing.Point(145, 320);
+            this.txtBirth.Location = new System.Drawing.Point(166, 400);
+            this.txtBirth.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtBirth.Name = "txtBirth";
-            this.txtBirth.Size = new System.Drawing.Size(200, 26);
+            this.txtBirth.Size = new System.Drawing.Size(228, 30);
             this.txtBirth.TabIndex = 1;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("굴림", 12F);
-            this.label1.Location = new System.Drawing.Point(96, 90);
+            this.label1.Location = new System.Drawing.Point(110, 112);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(39, 16);
+            this.label1.Size = new System.Drawing.Size(49, 20);
             this.label1.TabIndex = 2;
             this.label1.Text = "이름";
             // 
@@ -110,9 +115,9 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("굴림", 12F);
-            this.label2.Location = new System.Drawing.Point(80, 143);
+            this.label2.Location = new System.Drawing.Point(91, 179);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(55, 16);
+            this.label2.Size = new System.Drawing.Size(69, 20);
             this.label2.TabIndex = 2;
             this.label2.Text = "아이디";
             // 
@@ -120,9 +125,9 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("굴림", 12F);
-            this.label3.Location = new System.Drawing.Point(64, 203);
+            this.label3.Location = new System.Drawing.Point(73, 254);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(71, 16);
+            this.label3.Size = new System.Drawing.Size(89, 20);
             this.label3.TabIndex = 2;
             this.label3.Text = "비밀번호";
             // 
@@ -130,9 +135,9 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("굴림", 12F);
-            this.label4.Location = new System.Drawing.Point(27, 263);
+            this.label4.Location = new System.Drawing.Point(31, 329);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(108, 16);
+            this.label4.Size = new System.Drawing.Size(136, 20);
             this.label4.TabIndex = 2;
             this.label4.Text = "비밀번호 확인";
             // 
@@ -140,18 +145,19 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("굴림", 12F);
-            this.label5.Location = new System.Drawing.Point(12, 323);
+            this.label5.Location = new System.Drawing.Point(14, 404);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(123, 16);
+            this.label5.Size = new System.Drawing.Size(152, 20);
             this.label5.TabIndex = 2;
             this.label5.Text = "생년월일(8자리)";
             // 
             // btnSignUp
             // 
             this.btnSignUp.Font = new System.Drawing.Font("굴림", 12F);
-            this.btnSignUp.Location = new System.Drawing.Point(145, 419);
+            this.btnSignUp.Location = new System.Drawing.Point(166, 524);
+            this.btnSignUp.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnSignUp.Name = "btnSignUp";
-            this.btnSignUp.Size = new System.Drawing.Size(100, 30);
+            this.btnSignUp.Size = new System.Drawing.Size(114, 38);
             this.btnSignUp.TabIndex = 3;
             this.btnSignUp.Text = "회원가입";
             this.btnSignUp.UseVisualStyleBackColor = true;
@@ -161,25 +167,26 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("굴림", 12F);
-            this.label6.Location = new System.Drawing.Point(80, 373);
+            this.label6.Location = new System.Drawing.Point(91, 466);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(55, 16);
+            this.label6.Size = new System.Drawing.Size(69, 20);
             this.label6.TabIndex = 4;
             this.label6.Text = "닉네임";
             // 
             // txtNick
             // 
             this.txtNick.Font = new System.Drawing.Font("굴림", 12F);
-            this.txtNick.Location = new System.Drawing.Point(145, 370);
+            this.txtNick.Location = new System.Drawing.Point(166, 462);
+            this.txtNick.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtNick.Name = "txtNick";
-            this.txtNick.Size = new System.Drawing.Size(200, 26);
+            this.txtNick.Size = new System.Drawing.Size(228, 30);
             this.txtNick.TabIndex = 1;
             // 
             // SignUp
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(384, 461);
+            this.ClientSize = new System.Drawing.Size(439, 576);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.btnSignUp);
             this.Controls.Add(this.label5);
@@ -194,6 +201,7 @@
             this.Controls.Add(this.txtID);
             this.Controls.Add(this.txtName);
             this.Controls.Add(this.Sign);
+            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "SignUp";
             this.Text = "SignUp";
             this.Load += new System.EventHandler(this.SignUp_Load);

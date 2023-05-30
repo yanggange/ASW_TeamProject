@@ -19,6 +19,9 @@ using Google.Apis.YouTube.v3.Data;
 using System.Timers;
 using System.Diagnostics.Eventing.Reader;
 using static System.Net.Mime.MediaTypeNames;
+using FireSharp.Config;
+using FireSharp.Interfaces;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.Rebar;
 
 namespace Catch_Music
 {
@@ -28,8 +31,8 @@ namespace Catch_Music
         public delegate void DelegatePlus();
         delegate void InitDelegate();
         public string name; // 로그인하면 가져오는 닉네임을 저장하는 변수
-        public string musicTitle = "블루밍 무대"; // 게임시작시 실행되는 음악의 제목이 저장되는 변수 (test --> "블루밍 무대")
-        public string musicMakeP = ""; // 게임시작시 실행되는 음악의 제작자가 저장되는 변수
+        public string musicTitle; // 게임시작시 실행되는 음악의 제목이 저장되는 변수 (test --> "블루밍 무대")
+        public string musicMakeP; // 게임시작시 실행되는 음악의 제작자가 저장되는 변수
         public int score;
         private int maxScore = 5; // 얻으면 종료되는 점수
         public string checkText = "fjciwknkfl123"; // 적은 1줄의 text가 기록되는 변수
@@ -61,7 +64,12 @@ namespace Catch_Music
             });
 
         }
-
+        FirebaseConfig fbc = new FirebaseConfig()
+        {
+            AuthSecret = "D0WK5xAXo5XhSBVN8dlcMxuvp4iRQuu0VypUeVbu",
+            BasePath = "https://account-fc107-default-rtdb.firebaseio.com/"
+        };
+        IFirebaseClient client;
 
         private void PlayerText(string text)
         {
@@ -114,6 +122,14 @@ namespace Catch_Music
         {
             Nickname.Text = PassNick;
             name = Nickname.Text;
+            try
+            {
+                client = new FireSharp.FirebaseClient(fbc);
+            }
+            catch
+            {
+                MessageBox.Show("Error");
+            }
         }
         private string GetHtml(string url)
         {
@@ -205,6 +221,13 @@ namespace Catch_Music
                 /// 노래정보들이 저장되어 있는 db에서 랜덤하게 하나를 가져와
                 /// 정보를 musicTitle, musicMakeP 변수에 저장
                 ///
+                Random rand = new Random();
+                int a = rand.Next(1, 3);
+                var res = client.Get("music/" + a);
+                Music muse = res.ResultAs<Music>();
+
+                musicTitle = muse.musicSearch;
+                musicMakeP = muse.musicMakeP;
 
                 Thread.Sleep(1000);
                 ServerText("3...");
@@ -332,8 +355,6 @@ namespace Catch_Music
             groupBox1.Enabled = false;
             gameStartBtn.Enabled = false;
 
-
-            
 
             gameThread = new Thread(new ThreadStart(soloGame));
             gameThread.Start();  
