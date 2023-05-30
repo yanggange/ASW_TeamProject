@@ -351,7 +351,8 @@ namespace Catch_Music
 
                     if (lstMessage == "./hint1")
                     {
-                        ce.SetText("hint1!!!!!!!!!" + "\r\n");
+                        ce.SetText((lstMessage.Substring(8), 0) + "\r\n");
+
                         continue;
                     }
 

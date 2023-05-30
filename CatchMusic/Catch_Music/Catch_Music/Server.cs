@@ -370,8 +370,19 @@ namespace Catch_Music
 
         private void hintBtn1_Click(object sender, EventArgs e)
         {
+
+            //해당 유튜브 영상 댓글 중 랜덤하게 하나 전송하기
+            var comments = GetComments(videoId);
+            if (comments.Count > 0)
+            {
+                Random rnd = new Random();
+                int r = rnd.Next(comments.Count);
+                lblRandomComment.Text = comments[r];
+            }
+
+
             // 모든 클라이언트들에게 힌트1실행 코드를 보내는 방법은?
-            string lstMessage = "./hint1";
+            string lstMessage = "./hint1"+ lblRandomComment.Text;
             if (lstMessage != null && lstMessage != "")
             {
                 txtChatMsg.Text = txtChatMsg.Text + "힌트1버튼을 서버장이 눌렀습니다." + "\r\n";
@@ -386,6 +397,22 @@ namespace Catch_Music
                     }
                 }
             }
+        }
+
+        private List<string> GetComments(string videoId)
+        {
+            var commentThreadsRequest = youtubeService.CommentThreads.List("snippet");
+            commentThreadsRequest.VideoId = videoId;
+            commentThreadsRequest.MaxResults = 100; // get up to 100 comments
+            var response = commentThreadsRequest.Execute();
+
+            var comments = new List<string>();
+            foreach (var commentThread in response.Items)
+            {
+                comments.Add(commentThread.Snippet.TopLevelComment.Snippet.TextDisplay);
+            }
+
+            return comments;
         }
 
         private void hintBtn2_Click(object sender, EventArgs e)

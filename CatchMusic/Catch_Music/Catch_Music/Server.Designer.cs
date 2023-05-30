@@ -52,6 +52,7 @@
             this.serverChatMsg = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.lblRandomComment = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -249,7 +250,7 @@
             // 
             // serverChatMsg
             // 
-            this.serverChatMsg.Location = new System.Drawing.Point(83, 528);
+            this.serverChatMsg.Location = new System.Drawing.Point(83, 559);
             this.serverChatMsg.Name = "serverChatMsg";
             this.serverChatMsg.Size = new System.Drawing.Size(463, 21);
             this.serverChatMsg.TabIndex = 32;
@@ -259,7 +260,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(12, 531);
+            this.label3.Location = new System.Drawing.Point(12, 562);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(53, 12);
             this.label3.TabIndex = 33;
@@ -275,11 +276,21 @@
             this.pictureBox1.TabIndex = 34;
             this.pictureBox1.TabStop = false;
             // 
+            // lblRandomComment
+            // 
+            this.lblRandomComment.AutoSize = true;
+            this.lblRandomComment.Location = new System.Drawing.Point(81, 531);
+            this.lblRandomComment.Name = "lblRandomComment";
+            this.lblRandomComment.Size = new System.Drawing.Size(79, 12);
+            this.lblRandomComment.TabIndex = 35;
+            this.lblRandomComment.Text = "랜덤 댓글 1개";
+            // 
             // Server
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(584, 561);
+            this.ClientSize = new System.Drawing.Size(584, 600);
+            this.Controls.Add(this.lblRandomComment);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.serverChatMsg);
             this.Controls.Add(this.labelTimer);
@@ -339,5 +350,6 @@
         private System.Windows.Forms.TextBox serverChatMsg;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Label lblRandomComment;
     }
 }
