@@ -1,27 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using System.Threading;
+﻿using FireSharp.Config;
+using FireSharp.Interfaces;
 using Google.Apis.Services;
 using Google.Apis.YouTube.v3;
+using Google.Apis.YouTube.v3.Data;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+using System;
 using System.Diagnostics;
 using System.IO;
 using System.Net;
-using Newtonsoft.Json.Linq;
-using Newtonsoft.Json;
-using Google.Apis.YouTube.v3.Data;
-using System.Timers;
-using System.Diagnostics.Eventing.Reader;
-using static System.Net.Mime.MediaTypeNames;
-using FireSharp.Config;
-using FireSharp.Interfaces;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.Rebar;
+using System.Threading;
+using System.Windows.Forms;
 
 namespace Catch_Music
 {
@@ -33,6 +22,8 @@ namespace Catch_Music
         public string name; // 로그인하면 가져오는 닉네임을 저장하는 변수
         public string musicTitle; // 게임시작시 실행되는 음악의 제목이 저장되는 변수 (test --> "블루밍 무대")
         public string musicMakeP; // 게임시작시 실행되는 음악의 제작자가 저장되는 변수
+        public string musicSearch; //검색 쿼리 제목
+        public string musicYear; //발매년도
         public int score;
         private int maxScore = 5; // 얻으면 종료되는 점수
         public string checkText = "fjciwknkfl123"; // 적은 1줄의 text가 기록되는 변수
@@ -76,7 +67,7 @@ namespace Catch_Music
             if (this.txtChatMsg.InvokeRequired)
             {
                 SetTextDelegate d = new SetTextDelegate(PlayerText); // 대리자 선언
-                this.Invoke(d, new object[] { "<" + name + "> " + text + "\r\n"}); // 대리자를 통해 글을 쓰는
+                this.Invoke(d, new object[] { "<" + name + "> " + text + "\r\n" }); // 대리자를 통해 글을 쓰는
             }
             else // UI Thread 이면
             {
@@ -205,7 +196,8 @@ namespace Catch_Music
         private void soloGame()
         {
 
-            DelegatePlus scoreText = () => {
+            DelegatePlus scoreText = () =>
+            {
                 Score.Text = score.ToString();
             };
 
@@ -226,8 +218,10 @@ namespace Catch_Music
                 var res = client.Get("music/" + a);
                 Music muse = res.ResultAs<Music>();
 
-                musicTitle = muse.musicSearch;
+                musicSearch = muse.musicSearch;
                 musicMakeP = muse.musicMakeP;
+                musicTitle = muse.musicTitle;
+                musicYear = muse.musicYear;
 
                 Thread.Sleep(1000);
                 ServerText("3...");
@@ -240,7 +234,7 @@ namespace Catch_Music
                 /// 여기에 유튜브 API 코드작성
                 /// musicTitle, 즉 실행할 음악제목이 들어있는 변수를 가지고
                 /// 유튜브의 음원을 실행하는 코드 작성
-                string query = musicTitle;
+                string query = musicSearch;
                 if (string.IsNullOrEmpty(query))
                 {
                     MessageBox.Show(".");
@@ -305,7 +299,8 @@ namespace Catch_Music
 
                 System.Timers.Timer timer = new System.Timers.Timer(delayTime);
                 timer.AutoReset = false; // make it run only once
-                timer.Elapsed += (sender, e) => {
+                timer.Elapsed += (sender, e) =>
+                {
                     if (!audioProcess.HasExited)
                     {
                         audioProcess.Kill();
@@ -339,6 +334,7 @@ namespace Catch_Music
             Thread.Sleep(3000);
             checkText = "fjciwknkfl123";
             score = 0;
+            Score.Invoke(scoreText, new object[] { });
             gameDiff = 10;
             InitDelegate d = new InitDelegate(settingInit);
             this.Invoke(d, new object[] { });
@@ -357,7 +353,7 @@ namespace Catch_Music
 
 
             gameThread = new Thread(new ThreadStart(soloGame));
-            gameThread.Start();  
+            gameThread.Start();
         }
 
         private void hintBtn1_Click(object sender, EventArgs e)
@@ -371,7 +367,7 @@ namespace Catch_Music
 
         private void hintBtn2_Click(object sender, EventArgs e)
         {
-            string hintText = "";
+            string hintText = "가수명 : "+musicMakeP+"\r\n";
             ///
             /// 힌트에 관련된 정보를 db에서 가져와 hintText 변수에 저장하는 코드작성
             ///
@@ -380,7 +376,7 @@ namespace Catch_Music
 
         private void hintBtn3_Click(object sender, EventArgs e)
         {
-            string hintText = "";
+            string hintText = "발매년도 : "+musicYear+"년\r\n";
             ///
             /// 힌트에 관련된 정보를 db에서 가져와 hintText 변수에 저장하는 코드작성
             ///
