@@ -17,6 +17,7 @@ using Google.Apis.YouTube.v3;
 using Google.Apis.YouTube.v3.Data;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using static Catch_Music.Soloplay;
 
 namespace Catch_Music
 {
@@ -36,10 +37,16 @@ namespace Catch_Music
         private Process audioProcess;
         public string name;
         public string PassNick{get;set;}
+
+        Thread dataThread;
+
         public Client()
         {
             InitializeComponent();
             dataGridView1.DataSource = dataset.Tables["clientINFO"];
+            dataThread = new Thread(new ThreadStart(refreshData));
+            dataThread.Start();
+
             youtubeService = new YouTubeService(new BaseClientService.Initializer()
             {
                 ApiKey = "AIzaSyCXYRYadXpJP9AzdPidWCYKVO_Xj5wcQM4", // Google API Console에서 생성한 인증키를 입력하세요.
@@ -202,10 +209,11 @@ namespace Catch_Music
             }
             else
             {
-                Message_Snd("/close " + txtName.Text, true);
+                Message_Snd("./close " + txtName.Text, true);
                 Message_Snd("서버 : <" + txtName.Text + "> 님께서 접속해제 하셨습니다.", false);
                 btnConnect.Text = "서버 들어가기";
                 chatHandler.ChatClose();
+                dataset.Tables["clientINFO"].Rows.Clear();
                 ntwStream.Close();
                 tcpClient.Close();
                 txtChatMsg.Text = "";
@@ -280,7 +288,20 @@ namespace Catch_Music
 
         private void Client_FormClosed(object sender, FormClosedEventArgs e)
         {
+            dataThread.Abort();
             dataset.Tables["clientINFO"].Rows.Clear();
+        }
+        private void refreshData()
+        {
+            DelegatePlus dataRef = () =>
+            {
+                dataGridView1.Refresh();
+            };
+            while (true)
+            {
+                Thread.Sleep(1000);
+                dataGridView1.Invoke(dataRef, new object[] { });
+            }
         }
     }
 
@@ -341,7 +362,7 @@ namespace Catch_Music
 
                     }
 
-                        if (lstMessage.StartsWith("./name ") == true)
+                    if (lstMessage.StartsWith("./name ") == true)
                     {
                         // 닉네임 저장
                         ce.dataset.Tables["clientINFO"].Rows.Add(new object[] { lstMessage.Substring(7), 0 });
@@ -349,10 +370,9 @@ namespace Catch_Music
                         // Form에 닉네임과 점수 띄우기 필요
                     }
 
-                    if (lstMessage == "./hint1")
+                    if (lstMessage.StartsWith("./hint1 ") == true)
                     {
-                        ce.SetText((lstMessage.Substring(8), 0) + "\r\n");
-
+                        ce.SetText("<유튜브댓글>" + lstMessage.Substring(8) + "\r\n");
                         continue;
                     }
 
@@ -365,6 +385,36 @@ namespace Catch_Music
                     if (lstMessage == "./hint3")
                     {
                         ce.SetText("hint3!!!!!!!!!" + "\r\n");
+                        continue;
+                    }
+
+                    if (lstMessage.StartsWith("./plus ") == true)
+                    {
+                        // 서버장이 지정한 대상에게 점수 추가
+                        foreach (DataRow row in ce.dataset.Tables["clientINFO"].Rows)
+                        {
+                            if (Convert.ToString(row["name"]) == lstMessage.Substring(7))
+                            {
+                                row["score"] = (int.Parse(Convert.ToString(row["score"])) + 1).ToString();
+                            }
+                        }
+
+                        ce.SetText("서버 : " + lstMessage.Substring(7) + "님 정답! 1점 추가!" + "\r\n");
+
+                        continue;
+                    }
+
+                    if (lstMessage.StartsWith("./close ") == true)
+                    {
+                        foreach (DataRow row in ce.dataset.Tables["clientINFO"].Rows)
+                        {
+                            if (Convert.ToString(row["name"]) == lstMessage.Substring(8))
+                            {
+                                ce.dataset.Tables["clientINFO"].Rows.Remove(row);
+                                break;
+                            }
+                        }
+                        ce.SetText("서버 : " + lstMessage.Substring(8) + "님이 퇴장하셨습니다." + "\r\n");
                         continue;
                     }
 

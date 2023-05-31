@@ -9,14 +9,14 @@
       </DataSource>
     </xs:appinfo>
   </xs:annotation>
-  <xs:element name="ClientINFO" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_UserDSName="ClientINFO" msprop:Generator_DataSetName="ClientINFO">
+  <xs:element name="ClientINFO" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:Generator_UserDSName="ClientINFO" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="ClientINFO">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="clientINFO" msprop:Generator_RowEvHandlerName="clientINFORowChangeEventHandler" msprop:Generator_RowDeletedName="clientINFORowDeleted" msprop:Generator_RowDeletingName="clientINFORowDeleting" msprop:Generator_RowEvArgName="clientINFORowChangeEvent" msprop:Generator_TablePropName="clientINFO" msprop:Generator_RowChangedName="clientINFORowChanged" msprop:Generator_RowChangingName="clientINFORowChanging" msprop:Generator_TableClassName="clientINFODataTable" msprop:Generator_RowClassName="clientINFORow" msprop:Generator_TableVarName="tableclientINFO" msprop:Generator_UserTableName="clientINFO">
+        <xs:element name="clientINFO" msprop:Generator_RowClassName="clientINFORow" msprop:Generator_RowEvHandlerName="clientINFORowChangeEventHandler" msprop:Generator_RowDeletedName="clientINFORowDeleted" msprop:Generator_RowDeletingName="clientINFORowDeleting" msprop:Generator_RowEvArgName="clientINFORowChangeEvent" msprop:Generator_TablePropName="clientINFO" msprop:Generator_RowChangedName="clientINFORowChanged" msprop:Generator_UserTableName="clientINFO" msprop:Generator_RowChangingName="clientINFORowChanging" msprop:Generator_TableClassName="clientINFODataTable" msprop:Generator_TableVarName="tableclientINFO">
           <xs:complexType>
             <xs:sequence>
-              <xs:element name="name" msprop:Generator_ColumnPropNameInRow="name" msprop:Generator_ColumnPropNameInTable="nameColumn" msprop:Generator_ColumnVarNameInTable="columnname" msprop:Generator_UserColumnName="name" type="xs:string" minOccurs="0" />
-              <xs:element name="score" msprop:Generator_ColumnPropNameInRow="score" msprop:Generator_ColumnPropNameInTable="scoreColumn" msprop:Generator_ColumnVarNameInTable="columnscore" msprop:Generator_UserColumnName="score" type="xs:string" minOccurs="0" />
+              <xs:element name="name" msprop:Generator_UserColumnName="name" msprop:Generator_ColumnPropNameInTable="nameColumn" msprop:Generator_ColumnPropNameInRow="name" msprop:Generator_ColumnVarNameInTable="columnname" type="xs:string" minOccurs="0" />
+              <xs:element name="score" msprop:Generator_UserColumnName="score" msprop:Generator_ColumnPropNameInTable="scoreColumn" msprop:Generator_ColumnPropNameInRow="score" msprop:Generator_ColumnVarNameInTable="columnscore" type="xs:string" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>

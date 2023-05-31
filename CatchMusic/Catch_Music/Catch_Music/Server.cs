@@ -19,6 +19,8 @@ using Google.Apis.YouTube.v3.Data;
 using System.Diagnostics;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using System.Runtime.CompilerServices;
+using static Catch_Music.Soloplay;
 
 namespace Catch_Music
 {
@@ -39,10 +41,14 @@ namespace Catch_Music
         private System.Windows.Forms.Timer timer;
         private int elapsedTime;
 
+        Thread dataThread;
+
         public Server()
         {
             InitializeComponent();
             dataGridView1.DataSource = dataset.Tables["clientINFO"];
+            dataThread = new Thread(new ThreadStart(refreshData));
+            dataThread.Start();
 
             youtubeService = new YouTubeService(new BaseClientService.Initializer()
             {
@@ -126,10 +132,11 @@ namespace Catch_Music
                     musicTitleMsg.Enabled = true;
                     musicStartBtn.Enabled = true;
                     hintBtn1.Enabled = true;
-                    hintBtn2.Enabled = true;
-                    hintBtn3.Enabled = true;
                     answerTxt.Enabled = true;
                     musicAnswerP.Enabled = true;
+
+                    btnSearch.Enabled = true;
+                    musicStopBtn.Enabled = true;
                 }
                 else
                 {
@@ -139,6 +146,7 @@ namespace Catch_Music
                         soket.Close();
                     }
                     clientSocketArray.Clear();
+                    dataset.Tables["clientINFO"].Rows.Clear();
 
                     OnOffsv.Text = "방 닫기";
                     OnOffsv.Tag = "Stop";
@@ -149,10 +157,11 @@ namespace Catch_Music
                     musicTitleMsg.Enabled = false;
                     musicStartBtn.Enabled = false;
                     hintBtn1.Enabled = false;
-                    hintBtn2.Enabled = false;
-                    hintBtn3.Enabled = false;
                     answerTxt.Enabled = false;
                     musicAnswerP.Enabled = false;
+
+                    btnSearch.Enabled = false;
+                    musicStopBtn.Enabled = false;
                 }
             }
             catch (Exception ex)
@@ -200,6 +209,12 @@ namespace Catch_Music
 
         private void Server_FormClosed(object sender, FormClosedEventArgs e)
         {
+            if (audioProcess != null && !audioProcess.HasExited)
+            {
+                audioProcess.Kill();
+                lblStatus.Text = "중지됨";
+            }
+
             if (clientSocketArray.Count > 0)
             {
                 chatServer.Stop();
@@ -211,6 +226,7 @@ namespace Catch_Music
             }
 
             dataset.Tables["clientINFO"].Rows.Clear();
+            dataThread.Abort();
             Environment.Exit(0); // 테스트용
         }
 
@@ -221,9 +237,19 @@ namespace Catch_Music
                 // 적고 엔터키를 누르면 한라운드 끝
                 // 정답자에게 점수를 추가해야한다
                 string lstMessage = "./plus " + musicAnswerP.Text;
+
+                // 방장이 지정한 대상에게 점수 추가
+                foreach (DataRow row in dataset.Tables["clientINFO"].Rows)
+                {
+                    if (Convert.ToString(row["name"]) == musicAnswerP.Text)
+                    {
+                        row["score"] = (int.Parse(Convert.ToString(row["score"])) + 1).ToString();
+                    }
+                }
+                
                 if (lstMessage != null && lstMessage != "")
                 {
-                    txtChatMsg.Text = txtChatMsg.Text + "누군가에게 서버장님이 점수를 추가했습니다!" + "\r\n";
+                    txtChatMsg.Text = txtChatMsg.Text + musicAnswerP.Text + "에게 점수를 추가했습니다!" + "\r\n";
                     byte[] bytSand_Data = Encoding.UTF8.GetBytes(lstMessage + "\r\n");
                     lock (Server.clientSocketArray)
                     {
@@ -380,9 +406,11 @@ namespace Catch_Music
                 lblRandomComment.Text = comments[r];
             }
 
+            txtChatMsg.Text = txtChatMsg.Text + "<유튜브댓글>" + lblRandomComment.Text + "\r\n";
+
 
             // 모든 클라이언트들에게 힌트1실행 코드를 보내는 방법은?
-            string lstMessage = "./hint1"+ lblRandomComment.Text;
+            string lstMessage = "./hint1 "+ lblRandomComment.Text;
             if (lstMessage != null && lstMessage != "")
             {
                 txtChatMsg.Text = txtChatMsg.Text + "힌트1버튼을 서버장이 눌렀습니다." + "\r\n";
@@ -418,7 +446,7 @@ namespace Catch_Music
         private void hintBtn2_Click(object sender, EventArgs e)
         {
             // 모든 클라이언트들에게 힌트2실행 코드를 보내는 방법은?
-            string lstMessage = "./hint2";
+            string lstMessage = "./hint2 ";
             if (lstMessage != null && lstMessage != "")
             {
                 txtChatMsg.Text = txtChatMsg.Text + "힌트2버튼을 서버장이 눌렀습니다." + "\r\n";
@@ -438,7 +466,7 @@ namespace Catch_Music
         private void hintBtn3_Click(object sender, EventArgs e)
         {
             // 모든 클라이언트들에게 힌트2실행 코드를 보내는 방법은?
-            string lstMessage = "./hint3";
+            string lstMessage = "./hint3 ";
             if (lstMessage != null && lstMessage != "")
             {
                 txtChatMsg.Text = txtChatMsg.Text + "힌트3버튼을 서버장이 눌렀습니다." + "\r\n";
@@ -521,7 +549,7 @@ namespace Catch_Music
             // Enter키를 누른경우
             if (e.KeyChar == 13)
             {
-                string lstMessage = "< 서버 > " + serverChatMsg.Text;
+                string lstMessage = "<서버> " + serverChatMsg.Text;
                 serverChatMsg.Text = "";
                 if (lstMessage != null && lstMessage != "")
                 {
@@ -539,7 +567,27 @@ namespace Catch_Music
                 }
             }
         }
+
+        private void refreshData()
+        {
+            DelegatePlus dataRef = () =>
+            {
+                dataGridView1.Refresh();
+            };
+            while (true)
+            {
+                Thread.Sleep(1000);
+                dataGridView1.Invoke(dataRef, new object[] { });
+            }
+        }
+
+        private void musicAnswerP_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
+
+    ///////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     public class ClientHandler
     {
@@ -567,15 +615,56 @@ namespace Catch_Music
                 {
                     // 클라이언트에게 문자열을 받음
                     string lstMessage = strReader.ReadLine();
+                    byte[] bytSand_Data = Encoding.UTF8.GetBytes(lstMessage + "\r\n");
                     if (lstMessage != null && lstMessage != "")
                     {
                         if (lstMessage.StartsWith("./name ") == true) // 닉네임 정보를 저장하는 if문
                         {
                             sv.dataset.Tables["clientINFO"].Rows.Add(new object[] { lstMessage.Substring(7), 0 });
+
+                            // 문제점 발견 : 뒤 늦게 들어온 인원은 정보를 받을 수 없음...
+                            // 즉 뒤늦게 들어온 인원에게는 서버가 모든 인원에 대한 정보를 줘야함
+                            // 어떻게?
+
+                            //
+
+                            lock (Server.clientSocketArray)
+                            {
+                                // 접속해 있는 모든 클라이언트에게 글을 쓰는
+                                foreach (Socket soket in Server.clientSocketArray)
+                                {
+                                    NetworkStream stream = new NetworkStream(soket);
+                                    stream.Write(bytSand_Data, 0, bytSand_Data.Length);
+                                }
+                            }
                             continue;
                         }
+
+                        if (lstMessage.StartsWith("./close ") == true)
+                        {
+                            foreach (DataRow row in sv.dataset.Tables["clientINFO"].Rows)
+                            {
+                                if (Convert.ToString(row["name"]) == lstMessage.Substring(8))
+                                {
+                                    sv.dataset.Tables["clientINFO"].Rows.Remove(row);
+                                    break;
+                                }
+                            }
+
+                            sv.SetText(lstMessage.Substring(8) + "님이 퇴장하셨습니다." + "\r\n"); // delegate를 사용
+                            lock (Server.clientSocketArray)
+                            {
+                                // 접속해 있는 모든 클라이언트에게 글을 쓰는
+                                foreach (Socket soket in Server.clientSocketArray)
+                                {
+                                    NetworkStream stream = new NetworkStream(soket);
+                                    stream.Write(bytSand_Data, 0, bytSand_Data.Length);
+                                }
+                            }
+                            continue;
+                        }
+
                         sv.SetText(lstMessage + "\r\n"); // delegate를 사용
-                        byte[] bytSand_Data = Encoding.UTF8.GetBytes(lstMessage + "\r\n");
                         lock (Server.clientSocketArray)
                         {
                             // 접속해 있는 모든 클라이언트에게 글을 쓰는

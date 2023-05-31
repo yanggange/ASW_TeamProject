@@ -21,9 +21,9 @@ namespace Catch_Music
         private void btnTeam_Click(object sender, EventArgs e)
         {
             this.Hide();
-            MySet3 mySet3 = new MySet3();
-            mySet3.PassNick = txtNick.Text;
-            mySet3.ShowDialog();
+            MultiChoose multiChoose = new MultiChoose();
+            multiChoose.PassNick = txtNick.Text;
+            multiChoose.ShowDialog();
         }
 
         private void btnSolo_Click(object sender, EventArgs e)

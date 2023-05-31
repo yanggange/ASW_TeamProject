@@ -37,8 +37,6 @@
             this.portNumTxt = new System.Windows.Forms.TextBox();
             this.musicAnswerP = new System.Windows.Forms.TextBox();
             this.answerTxt = new System.Windows.Forms.Label();
-            this.hintBtn3 = new System.Windows.Forms.Button();
-            this.hintBtn2 = new System.Windows.Forms.Button();
             this.hintBtn1 = new System.Windows.Forms.Button();
             this.musicTitleMsg = new System.Windows.Forms.TextBox();
             this.musicStartBtn = new System.Windows.Forms.Button();
@@ -114,52 +112,31 @@
             // musicAnswerP
             // 
             this.musicAnswerP.Enabled = false;
-            this.musicAnswerP.Location = new System.Drawing.Point(419, 492);
+            this.musicAnswerP.Location = new System.Drawing.Point(243, 567);
             this.musicAnswerP.Name = "musicAnswerP";
             this.musicAnswerP.Size = new System.Drawing.Size(100, 21);
             this.musicAnswerP.TabIndex = 24;
+            this.musicAnswerP.TextChanged += new System.EventHandler(this.musicAnswerP_TextChanged);
             this.musicAnswerP.KeyDown += new System.Windows.Forms.KeyEventHandler(this.musicAnswerP_KeyDown);
             // 
             // answerTxt
             // 
             this.answerTxt.AutoSize = true;
             this.answerTxt.Enabled = false;
-            this.answerTxt.Location = new System.Drawing.Point(372, 495);
+            this.answerTxt.Location = new System.Drawing.Point(196, 570);
             this.answerTxt.Name = "answerTxt";
             this.answerTxt.Size = new System.Drawing.Size(41, 12);
             this.answerTxt.TabIndex = 23;
             this.answerTxt.Text = "정답자";
             // 
-            // hintBtn3
-            // 
-            this.hintBtn3.Enabled = false;
-            this.hintBtn3.Location = new System.Drawing.Point(245, 493);
-            this.hintBtn3.Name = "hintBtn3";
-            this.hintBtn3.Size = new System.Drawing.Size(75, 23);
-            this.hintBtn3.TabIndex = 22;
-            this.hintBtn3.Text = "힌트3";
-            this.hintBtn3.UseVisualStyleBackColor = true;
-            this.hintBtn3.Click += new System.EventHandler(this.hintBtn3_Click);
-            // 
-            // hintBtn2
-            // 
-            this.hintBtn2.Enabled = false;
-            this.hintBtn2.Location = new System.Drawing.Point(164, 492);
-            this.hintBtn2.Name = "hintBtn2";
-            this.hintBtn2.Size = new System.Drawing.Size(75, 23);
-            this.hintBtn2.TabIndex = 21;
-            this.hintBtn2.Text = "힌트2";
-            this.hintBtn2.UseVisualStyleBackColor = true;
-            this.hintBtn2.Click += new System.EventHandler(this.hintBtn2_Click);
-            // 
             // hintBtn1
             // 
             this.hintBtn1.Enabled = false;
-            this.hintBtn1.Location = new System.Drawing.Point(83, 493);
+            this.hintBtn1.Location = new System.Drawing.Point(10, 531);
             this.hintBtn1.Name = "hintBtn1";
             this.hintBtn1.Size = new System.Drawing.Size(75, 23);
             this.hintBtn1.TabIndex = 20;
-            this.hintBtn1.Text = "힌트1";
+            this.hintBtn1.Text = "랜덤 댓글";
             this.hintBtn1.UseVisualStyleBackColor = true;
             this.hintBtn1.Click += new System.EventHandler(this.hintBtn1_Click);
             // 
@@ -193,6 +170,7 @@
             // 
             // musicStopBtn
             // 
+            this.musicStopBtn.Enabled = false;
             this.musicStopBtn.Location = new System.Drawing.Point(267, 423);
             this.musicStopBtn.Name = "musicStopBtn";
             this.musicStopBtn.Size = new System.Drawing.Size(150, 57);
@@ -212,6 +190,7 @@
             // 
             // btnSearch
             // 
+            this.btnSearch.Enabled = false;
             this.btnSearch.Location = new System.Drawing.Point(439, 370);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Size = new System.Drawing.Size(96, 27);
@@ -250,9 +229,9 @@
             // 
             // serverChatMsg
             // 
-            this.serverChatMsg.Location = new System.Drawing.Point(83, 559);
+            this.serverChatMsg.Location = new System.Drawing.Point(71, 503);
             this.serverChatMsg.Name = "serverChatMsg";
-            this.serverChatMsg.Size = new System.Drawing.Size(463, 21);
+            this.serverChatMsg.Size = new System.Drawing.Size(501, 21);
             this.serverChatMsg.TabIndex = 32;
             this.serverChatMsg.TextChanged += new System.EventHandler(this.serverChatMsg_TextChanged);
             this.serverChatMsg.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.serverChatMsg_KeyPress);
@@ -260,7 +239,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(12, 562);
+            this.label3.Location = new System.Drawing.Point(12, 506);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(53, 12);
             this.label3.TabIndex = 33;
@@ -279,7 +258,7 @@
             // lblRandomComment
             // 
             this.lblRandomComment.AutoSize = true;
-            this.lblRandomComment.Location = new System.Drawing.Point(81, 531);
+            this.lblRandomComment.Location = new System.Drawing.Point(95, 536);
             this.lblRandomComment.Name = "lblRandomComment";
             this.lblRandomComment.Size = new System.Drawing.Size(79, 12);
             this.lblRandomComment.TabIndex = 35;
@@ -302,8 +281,6 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.musicAnswerP);
             this.Controls.Add(this.answerTxt);
-            this.Controls.Add(this.hintBtn3);
-            this.Controls.Add(this.hintBtn2);
             this.Controls.Add(this.hintBtn1);
             this.Controls.Add(this.musicTitleMsg);
             this.Controls.Add(this.musicStartBtn);
@@ -335,8 +312,6 @@
         private System.Windows.Forms.TextBox portNumTxt;
         private System.Windows.Forms.TextBox musicAnswerP;
         private System.Windows.Forms.Label answerTxt;
-        private System.Windows.Forms.Button hintBtn3;
-        private System.Windows.Forms.Button hintBtn2;
         private System.Windows.Forms.Button hintBtn1;
         private System.Windows.Forms.TextBox musicTitleMsg;
         private System.Windows.Forms.Button musicStartBtn;
