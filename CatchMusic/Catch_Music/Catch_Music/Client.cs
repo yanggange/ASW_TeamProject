@@ -364,10 +364,15 @@ namespace Catch_Music
 
                     if (lstMessage.StartsWith("./name ") == true)
                     {
+                        string splitT = lstMessage.Substring(7);
+                        string[] dataInfo = splitT.Split('\x020'); // 공백 기준으로 나누기 -> 공백이 없으면? -> 에러 안나면 정상
                         // 닉네임 저장
-                        ce.dataset.Tables["clientINFO"].Rows.Add(new object[] { lstMessage.Substring(7), 0 });
+                        foreach(string a in dataInfo)
+                        {
+                            // 수정필요
+                            ce.dataset.Tables["clientINFO"].Rows.Add(new object[] { a.Substring(0, a.Length), a.Substring(a.Length) });
+                        }
                         continue;
-                        // Form에 닉네임과 점수 띄우기 필요
                     }
 
                     if (lstMessage.StartsWith("./hint1 ") == true)

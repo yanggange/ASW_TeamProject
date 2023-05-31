@@ -615,28 +615,43 @@ namespace Catch_Music
                 {
                     // 클라이언트에게 문자열을 받음
                     string lstMessage = strReader.ReadLine();
-                    byte[] bytSand_Data = Encoding.UTF8.GetBytes(lstMessage + "\r\n");
+                    byte[] bytSand_Data;
                     if (lstMessage != null && lstMessage != "")
                     {
                         if (lstMessage.StartsWith("./name ") == true) // 닉네임 정보를 저장하는 if문
                         {
                             sv.dataset.Tables["clientINFO"].Rows.Add(new object[] { lstMessage.Substring(7), 0 });
 
-                            // 문제점 발견 : 뒤 늦게 들어온 인원은 정보를 받을 수 없음...
+                            // 문제점 발견 : 뒤 늦게 들어온 인원은 모든 인원에 대한 정보를 받을 수 없음...
                             // 즉 뒤늦게 들어온 인원에게는 서버가 모든 인원에 대한 정보를 줘야함
-                            // 어떻게?
-
-                            //
-
+                            // 어떻게? -> 이름 이름점수 이름점수 이름점수 이름점수...
+                            int i = 0;
                             lock (Server.clientSocketArray)
                             {
                                 // 접속해 있는 모든 클라이언트에게 글을 쓰는
                                 foreach (Socket soket in Server.clientSocketArray)
                                 {
                                     NetworkStream stream = new NetworkStream(soket);
+
+                                    // 뒤 늦게 들어온 인원이면
+                                    if (i == Server.clientSocketArray.Count - 1 && i != 0)
+                                    {
+                                        foreach (DataRow row in sv.dataset.Tables["clientINFO"].Rows)
+                                        {
+                                            lstMessage += " " + Convert.ToString(row["name"]) + Convert.ToString(row["score"]);
+                                        }
+
+                                        bytSand_Data = Encoding.UTF8.GetBytes(lstMessage + "\r\n");
+                                        stream.Write(bytSand_Data, 0, bytSand_Data.Length);
+                                        break;
+                                    }
+
+                                    bytSand_Data = Encoding.UTF8.GetBytes(lstMessage + "\r\n");
                                     stream.Write(bytSand_Data, 0, bytSand_Data.Length);
+                                    i++;
                                 }
                             }
+                            i = 0;
                             continue;
                         }
 
@@ -657,6 +672,7 @@ namespace Catch_Music
                                 // 접속해 있는 모든 클라이언트에게 글을 쓰는
                                 foreach (Socket soket in Server.clientSocketArray)
                                 {
+                                    bytSand_Data = Encoding.UTF8.GetBytes(lstMessage + "\r\n");
                                     NetworkStream stream = new NetworkStream(soket);
                                     stream.Write(bytSand_Data, 0, bytSand_Data.Length);
                                 }
@@ -670,6 +686,7 @@ namespace Catch_Music
                             // 접속해 있는 모든 클라이언트에게 글을 쓰는
                             foreach (Socket soket in Server.clientSocketArray)
                             {
+                                bytSand_Data = Encoding.UTF8.GetBytes(lstMessage + "\r\n");
                                 NetworkStream stream = new NetworkStream(soket);
                                 stream.Write(bytSand_Data, 0, bytSand_Data.Length);
                             }
