@@ -367,11 +367,26 @@ namespace Catch_Music
                         string splitT = lstMessage.Substring(7);
                         string[] dataInfo = splitT.Split('\x020'); // 공백 기준으로 나누기 -> 공백이 없으면? -> 에러 안나면 정상
                         // 닉네임 저장
-                        foreach(string a in dataInfo)
+                        if (ce.dataset.Tables["clientINFO"].Rows.Count == 0)
                         {
-                            // 수정필요
-                            ce.dataset.Tables["clientINFO"].Rows.Add(new object[] { a.Substring(0, a.Length), a.Substring(a.Length) });
+                            int ch = 0;
+                            foreach (string a in dataInfo)
+                            {
+                                if (ch == 0)
+                                {
+                                    ce.SetText(a + "\r\n");
+                                    ce.dataset.Tables["clientINFO"].Rows.Add(new object[] { a.Substring(0, (a.Length) - 1), a.Substring(a.Length - 1) });
+                                    ch = 1;
+                                    continue;
+                                }
+                                ce.SetText(a + "\r\n");
+                                // 수정필요
+                                ce.dataset.Tables["clientINFO"].Rows.Add(new object[] { a.Substring(0, (a.Length) - 1), a.Substring(a.Length - 1) });
+                            }
+                            ch = 0;
+                            continue;
                         }
+                        else ce.dataset.Tables["clientINFO"].Rows.Add(new object[] { splitT, 0 });
                         continue;
                     }
 

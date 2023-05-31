@@ -633,9 +633,15 @@ namespace Catch_Music
                                 {
                                     NetworkStream stream = new NetworkStream(soket);
 
+                                    if (Server.clientSocketArray.Count == 1)
+                                    {
+                                        lstMessage += "0";
+                                    }
+
                                     // 뒤 늦게 들어온 인원이면
                                     if (i == Server.clientSocketArray.Count - 1 && i != 0)
                                     {
+                                        lstMessage = "./name";
                                         foreach (DataRow row in sv.dataset.Tables["clientINFO"].Rows)
                                         {
                                             lstMessage += " " + Convert.ToString(row["name"]) + Convert.ToString(row["score"]);
