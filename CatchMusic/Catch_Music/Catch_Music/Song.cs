@@ -44,7 +44,7 @@ namespace Catch_Music
             {
                 musicMakeP = textBox1.Text,
                 musicTitle = textBox2.Text,
-                musicSearch = textBox1.Text + "무대",
+                musicSearch = textBox1.Text + " 무대",
                 musicYear = textBox3.Text,
             };
             var send = client.Set("music/" + i, s1);
