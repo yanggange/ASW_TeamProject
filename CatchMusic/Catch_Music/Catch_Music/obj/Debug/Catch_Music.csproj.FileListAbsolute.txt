@@ -243,3 +243,4 @@ C:\Users\lgpc\Desktop\응소실\ASW_TeamProject\CatchMusic\Catch_Music\Catch_Mus
 C:\Users\lgpc\Desktop\응소실\ASW_TeamProject\CatchMusic\Catch_Music\Catch_Music\obj\Debug\Catch_Music.csproj.App.config
 C:\Users\lgpc\Desktop\응소실\ASW_TeamProject\CatchMusic\Catch_Music\Catch_Music\obj\Debug\Catch_Music.Login.resources
 C:\Users\lgpc\Desktop\응소실\ASW_TeamProject\CatchMusic\Catch_Music\Catch_Music\obj\Debug\Catch_Music.SignUp.resources
+C:\Users\장시원\Documents\GitHub\ASW_TeamProject\CatchMusic\Catch_Music\Catch_Music\obj\Debug\Catch_Music.Song.resources

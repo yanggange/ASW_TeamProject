@@ -43,6 +43,7 @@
             this.nomalBtn = new System.Windows.Forms.RadioButton();
             this.hignBtn = new System.Windows.Forms.RadioButton();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.addsong = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -192,11 +193,22 @@
             this.pictureBox1.TabIndex = 25;
             this.pictureBox1.TabStop = false;
             // 
+            // addsong
+            // 
+            this.addsong.Location = new System.Drawing.Point(41, 265);
+            this.addsong.Name = "addsong";
+            this.addsong.Size = new System.Drawing.Size(75, 23);
+            this.addsong.TabIndex = 26;
+            this.addsong.Text = "노래 추가";
+            this.addsong.UseVisualStyleBackColor = true;
+            this.addsong.Click += new System.EventHandler(this.addsong_Click);
+            // 
             // Soloplay
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(584, 561);
+            this.Controls.Add(this.addsong);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.hintBtn3);
@@ -237,5 +249,6 @@
         private System.Windows.Forms.RadioButton nomalBtn;
         private System.Windows.Forms.RadioButton hignBtn;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Button addsong;
     }
 }

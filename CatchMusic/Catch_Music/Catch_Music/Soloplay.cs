@@ -36,6 +36,7 @@ namespace Catch_Music
         private string videoId;
         private string audioUrl;
         private Process audioProcess;
+        private int songCount = 1;
 
         public Soloplay()
         {
@@ -214,7 +215,7 @@ namespace Catch_Music
                 /// 정보를 musicTitle, musicMakeP 변수에 저장
                 ///
                 Random rand = new Random();
-                int a = rand.Next(1, 3);
+                int a = rand.Next(1, songCount);
                 var res = client.Get("music/" + a);
                 Music muse = res.ResultAs<Music>();
 
@@ -343,6 +344,22 @@ namespace Catch_Music
         // 게임시작 버튼 클릭 시
         private void button1_Click(object sender, EventArgs e)
         {
+            int count = 1;
+            while (true)
+            {
+                var re = client.Get("music/" + count);
+                SongInfo s = re.ResultAs<SongInfo>();
+                if (s != null)
+                {
+                    count++;
+                }
+                else
+                {
+                    break;
+                }
+            }
+            songCount = count;
+
             txtMsg.Enabled = true;
             hintBtn1.Enabled = true;
             hintBtn2.Enabled = true;
@@ -354,6 +371,7 @@ namespace Catch_Music
 
             gameThread = new Thread(new ThreadStart(soloGame));
             gameThread.Start();
+
         }
 
         private void hintBtn1_Click(object sender, EventArgs e)
@@ -409,6 +427,14 @@ namespace Catch_Music
         private void easyBtn_CheckedChanged(object sender, EventArgs e)
         {
             gameDiff = 15;
+        }
+
+        private void addsong_Click(object sender, EventArgs e)
+        {
+            Song song = new Song();
+            this.Hide();
+            song.ShowDialog();
+            this.Show();
         }
     }
 }

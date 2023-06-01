@@ -158,6 +158,13 @@
     <Compile Include="Soloplay.Designer.cs">
       <DependentUpon>Soloplay.cs</DependentUpon>
     </Compile>
+    <Compile Include="Song.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Song.Designer.cs">
+      <DependentUpon>Song.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SongInfo.cs" />
     <Compile Include="Upload.cs" />
     <EmbeddedResource Include="Client.resx">
       <DependentUpon>Client.cs</DependentUpon>
@@ -197,6 +204,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Soloplay.resx">
       <DependentUpon>Soloplay.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Song.resx">
+      <DependentUpon>Song.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Info.xsc">
       <DependentUpon>Info.xsd</DependentUpon>
