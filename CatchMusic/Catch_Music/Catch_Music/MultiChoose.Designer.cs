@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MultiChoose));
             this.makeBtn = new System.Windows.Forms.Button();
             this.multiBtn = new System.Windows.Forms.Button();
             this.txtNick = new System.Windows.Forms.Label();
@@ -71,6 +72,7 @@
             this.Controls.Add(this.txtNick);
             this.Controls.Add(this.multiBtn);
             this.Controls.Add(this.makeBtn);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "MultiChoose";
             this.Text = "Choose";
             this.Load += new System.EventHandler(this.MultiChoose_Load);

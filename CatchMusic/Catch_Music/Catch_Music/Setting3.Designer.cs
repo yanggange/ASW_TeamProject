@@ -127,6 +127,7 @@
             this.Controls.Add(this.btnMedium);
             this.Controls.Add(this.btnHigh);
             this.Controls.Add(this.pictureBox1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "MySet3";
             this.Text = "MySet3";
             this.Load += new System.EventHandler(this.MySet3_Load);

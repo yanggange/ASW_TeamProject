@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MySet1));
             this.btnStandard = new System.Windows.Forms.Button();
             this.btnWord = new System.Windows.Forms.Button();
             this.SuspendLayout();
@@ -63,6 +64,7 @@
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.btnWord);
             this.Controls.Add(this.btnStandard);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "MySet1";
             this.Text = "MySet1";
             this.ResumeLayout(false);

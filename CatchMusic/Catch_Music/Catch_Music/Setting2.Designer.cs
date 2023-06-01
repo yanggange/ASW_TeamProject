@@ -100,6 +100,7 @@
             this.Controls.Add(this.btnTeam);
             this.Controls.Add(this.btnSolo);
             this.Controls.Add(this.pictureBox1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "MySet2";
             this.Text = "MySet2";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.MySet2_FormClosed);

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Login));
             this.txtID = new System.Windows.Forms.TextBox();
             this.txtPW = new System.Windows.Forms.TextBox();
             this.btnLogin = new System.Windows.Forms.Button();
@@ -37,6 +38,7 @@
             // 
             // txtID
             // 
+            this.txtID.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.txtID.Font = new System.Drawing.Font("굴림", 12F);
             this.txtID.Location = new System.Drawing.Point(75, 95);
             this.txtID.Name = "txtID";
@@ -45,6 +47,7 @@
             // 
             // txtPW
             // 
+            this.txtPW.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.txtPW.Font = new System.Drawing.Font("굴림", 12F);
             this.txtPW.Location = new System.Drawing.Point(75, 160);
             this.txtPW.Name = "txtPW";
@@ -53,33 +56,35 @@
             // 
             // btnLogin
             // 
+            this.btnLogin.BackColor = System.Drawing.SystemColors.Info;
             this.btnLogin.Font = new System.Drawing.Font("굴림", 12F);
             this.btnLogin.Location = new System.Drawing.Point(75, 219);
             this.btnLogin.Name = "btnLogin";
             this.btnLogin.Size = new System.Drawing.Size(120, 30);
             this.btnLogin.TabIndex = 3;
             this.btnLogin.Text = "로 그 인";
-            this.btnLogin.UseVisualStyleBackColor = true;
+            this.btnLogin.UseVisualStyleBackColor = false;
             this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
             // 
             // btnSign
             // 
+            this.btnSign.BackColor = System.Drawing.SystemColors.Info;
             this.btnSign.Font = new System.Drawing.Font("굴림", 12F);
             this.btnSign.Location = new System.Drawing.Point(205, 219);
             this.btnSign.Name = "btnSign";
             this.btnSign.Size = new System.Drawing.Size(120, 30);
             this.btnSign.TabIndex = 3;
             this.btnSign.Text = "회원가입";
-            this.btnSign.UseVisualStyleBackColor = true;
+            this.btnSign.UseVisualStyleBackColor = false;
             this.btnSign.Click += new System.EventHandler(this.btnSign_Click);
             // 
             // labellogin
             // 
             this.labellogin.AutoSize = true;
-            this.labellogin.Font = new System.Drawing.Font("굴림", 20F);
+            this.labellogin.Font = new System.Drawing.Font("굴림", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.labellogin.Location = new System.Drawing.Point(150, 30);
             this.labellogin.Name = "labellogin";
-            this.labellogin.Size = new System.Drawing.Size(93, 27);
+            this.labellogin.Size = new System.Drawing.Size(96, 27);
             this.labellogin.TabIndex = 4;
             this.labellogin.Text = "로그인";
             // 
@@ -87,12 +92,14 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.ClientSize = new System.Drawing.Size(384, 278);
             this.Controls.Add(this.labellogin);
             this.Controls.Add(this.btnSign);
             this.Controls.Add(this.btnLogin);
             this.Controls.Add(this.txtPW);
             this.Controls.Add(this.txtID);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Login";
             this.Text = "Login";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Login_FormClosed);

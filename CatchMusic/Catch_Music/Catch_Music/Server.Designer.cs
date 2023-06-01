@@ -291,6 +291,7 @@
             this.Controls.Add(this.OnOffsv);
             this.Controls.Add(this.txtChatMsg);
             this.Controls.Add(this.pictureBox1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Server";
             this.Text = "Server";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Server_FormClosed);

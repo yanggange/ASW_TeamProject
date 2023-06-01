@@ -208,6 +208,7 @@
             this.Controls.Add(this.gameStartBtn);
             this.Controls.Add(this.txtMsg);
             this.Controls.Add(this.txtChatMsg);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Soloplay";
             this.Text = "Soloplay";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Soloplay_FormClosed);
