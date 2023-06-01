@@ -385,7 +385,7 @@ namespace Catch_Music
 
         private void Soloplay_FormClosed(object sender, FormClosedEventArgs e)
         {
-            if (!audioProcess.HasExited)
+            if (audioProcess != null && !audioProcess.HasExited)
             {
                 audioProcess.Kill();
             }

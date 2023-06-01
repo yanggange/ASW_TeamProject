@@ -24,6 +24,7 @@ namespace Catch_Music
             MultiChoose multiChoose = new MultiChoose();
             multiChoose.PassNick = txtNick.Text;
             multiChoose.ShowDialog();
+            this.Show();
         }
 
         private void btnSolo_Click(object sender, EventArgs e)
