@@ -60,9 +60,10 @@
             this.txtChatMsg.Location = new System.Drawing.Point(13, 13);
             this.txtChatMsg.Multiline = true;
             this.txtChatMsg.Name = "txtChatMsg";
+            this.txtChatMsg.ReadOnly = true;
             this.txtChatMsg.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.txtChatMsg.Size = new System.Drawing.Size(404, 245);
-            this.txtChatMsg.TabIndex = 0;
+            this.txtChatMsg.TabIndex = 9;
             // 
             // OnOffsv
             // 
@@ -79,7 +80,7 @@
             this.btnStart.Location = new System.Drawing.Point(310, 278);
             this.btnStart.Name = "btnStart";
             this.btnStart.Size = new System.Drawing.Size(262, 84);
-            this.btnStart.TabIndex = 2;
+            this.btnStart.TabIndex = 1;
             this.btnStart.Text = "방 열기";
             this.btnStart.UseVisualStyleBackColor = true;
             this.btnStart.Click += new System.EventHandler(this.btnStart_Click);
@@ -107,7 +108,7 @@
             this.portNumTxt.Location = new System.Drawing.Point(152, 332);
             this.portNumTxt.Name = "portNumTxt";
             this.portNumTxt.Size = new System.Drawing.Size(100, 21);
-            this.portNumTxt.TabIndex = 15;
+            this.portNumTxt.TabIndex = 0;
             // 
             // musicAnswerP
             // 
@@ -115,7 +116,7 @@
             this.musicAnswerP.Location = new System.Drawing.Point(243, 567);
             this.musicAnswerP.Name = "musicAnswerP";
             this.musicAnswerP.Size = new System.Drawing.Size(100, 21);
-            this.musicAnswerP.TabIndex = 24;
+            this.musicAnswerP.TabIndex = 8;
             this.musicAnswerP.TextChanged += new System.EventHandler(this.musicAnswerP_TextChanged);
             this.musicAnswerP.KeyDown += new System.Windows.Forms.KeyEventHandler(this.musicAnswerP_KeyDown);
             // 
@@ -135,7 +136,7 @@
             this.hintBtn1.Location = new System.Drawing.Point(10, 531);
             this.hintBtn1.Name = "hintBtn1";
             this.hintBtn1.Size = new System.Drawing.Size(75, 23);
-            this.hintBtn1.TabIndex = 20;
+            this.hintBtn1.TabIndex = 7;
             this.hintBtn1.Text = "랜덤 댓글";
             this.hintBtn1.UseVisualStyleBackColor = true;
             this.hintBtn1.Click += new System.EventHandler(this.hintBtn1_Click);
@@ -146,7 +147,7 @@
             this.musicTitleMsg.Location = new System.Drawing.Point(83, 374);
             this.musicTitleMsg.Name = "musicTitleMsg";
             this.musicTitleMsg.Size = new System.Drawing.Size(334, 21);
-            this.musicTitleMsg.TabIndex = 19;
+            this.musicTitleMsg.TabIndex = 2;
             // 
             // musicStartBtn
             // 
@@ -154,7 +155,7 @@
             this.musicStartBtn.Location = new System.Drawing.Point(83, 423);
             this.musicStartBtn.Name = "musicStartBtn";
             this.musicStartBtn.Size = new System.Drawing.Size(158, 57);
-            this.musicStartBtn.TabIndex = 18;
+            this.musicStartBtn.TabIndex = 4;
             this.musicStartBtn.Text = "노래실행";
             this.musicStartBtn.UseVisualStyleBackColor = true;
             this.musicStartBtn.Click += new System.EventHandler(this.musicStartBtn_Click);
@@ -174,7 +175,7 @@
             this.musicStopBtn.Location = new System.Drawing.Point(267, 423);
             this.musicStopBtn.Name = "musicStopBtn";
             this.musicStopBtn.Size = new System.Drawing.Size(150, 57);
-            this.musicStopBtn.TabIndex = 26;
+            this.musicStopBtn.TabIndex = 5;
             this.musicStopBtn.Text = "노래정지";
             this.musicStopBtn.UseVisualStyleBackColor = true;
             this.musicStopBtn.Click += new System.EventHandler(this.musicStopBtn_Click);
@@ -194,7 +195,7 @@
             this.btnSearch.Location = new System.Drawing.Point(439, 370);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Size = new System.Drawing.Size(96, 27);
-            this.btnSearch.TabIndex = 28;
+            this.btnSearch.TabIndex = 3;
             this.btnSearch.Text = "노래검색";
             this.btnSearch.UseVisualStyleBackColor = true;
             this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
@@ -232,7 +233,7 @@
             this.serverChatMsg.Location = new System.Drawing.Point(71, 503);
             this.serverChatMsg.Name = "serverChatMsg";
             this.serverChatMsg.Size = new System.Drawing.Size(501, 21);
-            this.serverChatMsg.TabIndex = 32;
+            this.serverChatMsg.TabIndex = 6;
             this.serverChatMsg.TextChanged += new System.EventHandler(this.serverChatMsg_TextChanged);
             this.serverChatMsg.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.serverChatMsg_KeyPress);
             // 
@@ -268,6 +269,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
             this.ClientSize = new System.Drawing.Size(584, 600);
             this.Controls.Add(this.lblRandomComment);
             this.Controls.Add(this.label3);

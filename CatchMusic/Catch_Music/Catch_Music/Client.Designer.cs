@@ -49,7 +49,7 @@
             this.IPtxtMsg.Location = new System.Drawing.Point(252, 45);
             this.IPtxtMsg.Name = "IPtxtMsg";
             this.IPtxtMsg.Size = new System.Drawing.Size(320, 21);
-            this.IPtxtMsg.TabIndex = 17;
+            this.IPtxtMsg.TabIndex = 1;
             // 
             // IPtxt
             // 
@@ -74,14 +74,14 @@
             this.portNumMsg.Location = new System.Drawing.Point(252, 18);
             this.portNumMsg.Name = "portNumMsg";
             this.portNumMsg.Size = new System.Drawing.Size(100, 21);
-            this.portNumMsg.TabIndex = 14;
+            this.portNumMsg.TabIndex = 0;
             // 
             // txtMsg
             // 
             this.txtMsg.Location = new System.Drawing.Point(13, 523);
             this.txtMsg.Name = "txtMsg";
             this.txtMsg.Size = new System.Drawing.Size(559, 21);
-            this.txtMsg.TabIndex = 13;
+            this.txtMsg.TabIndex = 3;
             this.txtMsg.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtMsg_KeyPress_1);
             // 
             // txtChatMsg
@@ -89,16 +89,17 @@
             this.txtChatMsg.Location = new System.Drawing.Point(13, 77);
             this.txtChatMsg.Multiline = true;
             this.txtChatMsg.Name = "txtChatMsg";
+            this.txtChatMsg.ReadOnly = true;
             this.txtChatMsg.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.txtChatMsg.Size = new System.Drawing.Size(416, 427);
-            this.txtChatMsg.TabIndex = 12;
+            this.txtChatMsg.TabIndex = 4;
             // 
             // btnConnect
             // 
             this.btnConnect.Location = new System.Drawing.Point(358, 16);
             this.btnConnect.Name = "btnConnect";
             this.btnConnect.Size = new System.Drawing.Size(214, 23);
-            this.btnConnect.TabIndex = 11;
+            this.btnConnect.TabIndex = 2;
             this.btnConnect.Text = "서버 들어가기";
             this.btnConnect.UseVisualStyleBackColor = true;
             this.btnConnect.Click += new System.EventHandler(this.btnConnect_Click);
@@ -145,6 +146,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
             this.ClientSize = new System.Drawing.Size(584, 561);
             this.Controls.Add(this.txtName);
             this.Controls.Add(this.dataGridView1);

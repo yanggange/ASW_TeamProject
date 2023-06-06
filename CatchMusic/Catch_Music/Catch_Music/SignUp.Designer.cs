@@ -61,7 +61,7 @@
             this.txtName.Location = new System.Drawing.Point(145, 80);
             this.txtName.Name = "txtName";
             this.txtName.Size = new System.Drawing.Size(200, 26);
-            this.txtName.TabIndex = 1;
+            this.txtName.TabIndex = 0;
             // 
             // txtID
             // 
@@ -78,7 +78,7 @@
             this.txtPW.Name = "txtPW";
             this.txtPW.PasswordChar = '●';
             this.txtPW.Size = new System.Drawing.Size(200, 26);
-            this.txtPW.TabIndex = 1;
+            this.txtPW.TabIndex = 2;
             // 
             // txtPWch
             // 
@@ -87,7 +87,7 @@
             this.txtPWch.Name = "txtPWch";
             this.txtPWch.PasswordChar = '●';
             this.txtPWch.Size = new System.Drawing.Size(200, 26);
-            this.txtPWch.TabIndex = 1;
+            this.txtPWch.TabIndex = 3;
             // 
             // txtBirth
             // 
@@ -95,7 +95,7 @@
             this.txtBirth.Location = new System.Drawing.Point(145, 320);
             this.txtBirth.Name = "txtBirth";
             this.txtBirth.Size = new System.Drawing.Size(200, 26);
-            this.txtBirth.TabIndex = 1;
+            this.txtBirth.TabIndex = 4;
             // 
             // label1
             // 
@@ -154,7 +154,7 @@
             this.btnSignUp.Location = new System.Drawing.Point(145, 419);
             this.btnSignUp.Name = "btnSignUp";
             this.btnSignUp.Size = new System.Drawing.Size(100, 30);
-            this.btnSignUp.TabIndex = 3;
+            this.btnSignUp.TabIndex = 6;
             this.btnSignUp.Text = "회원가입";
             this.btnSignUp.UseVisualStyleBackColor = false;
             this.btnSignUp.Click += new System.EventHandler(this.btnSignUp_Click);
@@ -175,13 +175,13 @@
             this.txtNick.Location = new System.Drawing.Point(145, 370);
             this.txtNick.Name = "txtNick";
             this.txtNick.Size = new System.Drawing.Size(200, 26);
-            this.txtNick.TabIndex = 1;
+            this.txtNick.TabIndex = 5;
             // 
             // SignUp
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
             this.ClientSize = new System.Drawing.Size(384, 461);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.btnSignUp);

@@ -43,7 +43,7 @@
             this.txtID.Location = new System.Drawing.Point(75, 95);
             this.txtID.Name = "txtID";
             this.txtID.Size = new System.Drawing.Size(250, 26);
-            this.txtID.TabIndex = 2;
+            this.txtID.TabIndex = 1;
             // 
             // txtPW
             // 
@@ -73,7 +73,7 @@
             this.btnSign.Location = new System.Drawing.Point(205, 219);
             this.btnSign.Name = "btnSign";
             this.btnSign.Size = new System.Drawing.Size(120, 30);
-            this.btnSign.TabIndex = 3;
+            this.btnSign.TabIndex = 4;
             this.btnSign.Text = "회원가입";
             this.btnSign.UseVisualStyleBackColor = false;
             this.btnSign.Click += new System.EventHandler(this.btnSign_Click);
@@ -92,7 +92,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
             this.ClientSize = new System.Drawing.Size(384, 278);
             this.Controls.Add(this.labellogin);
             this.Controls.Add(this.btnSign);

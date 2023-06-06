@@ -61,6 +61,7 @@
             this.txtChatMsg.Location = new System.Drawing.Point(155, 66);
             this.txtChatMsg.Multiline = true;
             this.txtChatMsg.Name = "txtChatMsg";
+            this.txtChatMsg.ReadOnly = true;
             this.txtChatMsg.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.txtChatMsg.Size = new System.Drawing.Size(416, 440);
             this.txtChatMsg.TabIndex = 14;
@@ -207,6 +208,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
             this.ClientSize = new System.Drawing.Size(584, 561);
             this.Controls.Add(this.addsong);
             this.Controls.Add(this.pictureBox1);
