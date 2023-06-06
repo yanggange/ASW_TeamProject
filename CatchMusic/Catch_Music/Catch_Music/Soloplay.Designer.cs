@@ -53,7 +53,7 @@
             this.txtMsg.Location = new System.Drawing.Point(12, 523);
             this.txtMsg.Name = "txtMsg";
             this.txtMsg.Size = new System.Drawing.Size(559, 21);
-            this.txtMsg.TabIndex = 15;
+            this.txtMsg.TabIndex = 5;
             this.txtMsg.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtMsg_KeyPress);
             // 
             // txtChatMsg
@@ -71,7 +71,7 @@
             this.gameStartBtn.Location = new System.Drawing.Point(41, 483);
             this.gameStartBtn.Name = "gameStartBtn";
             this.gameStartBtn.Size = new System.Drawing.Size(75, 23);
-            this.gameStartBtn.TabIndex = 16;
+            this.gameStartBtn.TabIndex = 4;
             this.gameStartBtn.Text = "게임시작";
             this.gameStartBtn.UseVisualStyleBackColor = true;
             this.gameStartBtn.Click += new System.EventHandler(this.button1_Click);
@@ -111,7 +111,7 @@
             this.hintBtn1.Location = new System.Drawing.Point(41, 119);
             this.hintBtn1.Name = "hintBtn1";
             this.hintBtn1.Size = new System.Drawing.Size(75, 23);
-            this.hintBtn1.TabIndex = 20;
+            this.hintBtn1.TabIndex = 0;
             this.hintBtn1.Text = "힌트1";
             this.hintBtn1.UseVisualStyleBackColor = true;
             this.hintBtn1.Click += new System.EventHandler(this.hintBtn1_Click);
@@ -121,7 +121,7 @@
             this.hintBtn2.Location = new System.Drawing.Point(41, 166);
             this.hintBtn2.Name = "hintBtn2";
             this.hintBtn2.Size = new System.Drawing.Size(75, 23);
-            this.hintBtn2.TabIndex = 21;
+            this.hintBtn2.TabIndex = 1;
             this.hintBtn2.Text = "힌트2";
             this.hintBtn2.UseVisualStyleBackColor = true;
             this.hintBtn2.Click += new System.EventHandler(this.hintBtn2_Click);
@@ -131,7 +131,7 @@
             this.hintBtn3.Location = new System.Drawing.Point(41, 213);
             this.hintBtn3.Name = "hintBtn3";
             this.hintBtn3.Size = new System.Drawing.Size(75, 23);
-            this.hintBtn3.TabIndex = 22;
+            this.hintBtn3.TabIndex = 2;
             this.hintBtn3.Text = "힌트3";
             this.hintBtn3.UseVisualStyleBackColor = true;
             this.hintBtn3.Click += new System.EventHandler(this.hintBtn3_Click);
@@ -199,7 +199,7 @@
             this.addsong.Location = new System.Drawing.Point(41, 265);
             this.addsong.Name = "addsong";
             this.addsong.Size = new System.Drawing.Size(75, 23);
-            this.addsong.TabIndex = 26;
+            this.addsong.TabIndex = 3;
             this.addsong.Text = "노래 추가";
             this.addsong.UseVisualStyleBackColor = true;
             this.addsong.Click += new System.EventHandler(this.addsong_Click);
