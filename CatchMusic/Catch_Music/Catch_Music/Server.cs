@@ -412,7 +412,7 @@ namespace Catch_Music
             string lstMessage = "./hint1 "+ lblRandomComment.Text;
             if (lstMessage != null && lstMessage != "")
             {
-                txtChatMsg.Text = txtChatMsg.Text + "힌트1버튼을 서버장이 눌렀습니다." + "\r\n";
+                txtChatMsg.Text = txtChatMsg.Text + "유튜브 댓글버튼을 서버장이 눌렀습니다." + "\r\n";
                 byte[] bytSand_Data = Encoding.UTF8.GetBytes(lstMessage + "\r\n");
                 lock (Server.clientSocketArray)
                 {
