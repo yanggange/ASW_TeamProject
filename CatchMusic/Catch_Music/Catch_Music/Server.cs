@@ -227,7 +227,6 @@ namespace Catch_Music
 
             dataset.Tables["clientINFO"].Rows.Clear();
             dataThread.Abort();
-            Environment.Exit(0); // 테스트용
         }
 
         private void musicAnswerP_KeyDown(object sender, KeyEventArgs e)

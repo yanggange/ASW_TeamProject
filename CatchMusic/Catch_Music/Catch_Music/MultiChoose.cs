@@ -24,18 +24,19 @@ namespace Catch_Music
 
         private void makeBtn_Click(object sender, EventArgs e)
         {
+            this.Hide();
             Server sv = new Server();
-            sv.Show(); // 테스트때문에 ShowDialog()가 아닌 Show() 사용
-            //this.Close();
+            sv.ShowDialog(); // 테스트때문에 ShowDialog()가 아닌 Show() 사용
+            this.Show();
         }
 
         private void multiBtn_Click(object sender, EventArgs e)
         {
+            this.Hide();
             Client ce = new Client();
             ce.PassNick = txtNick.Text;
-            ce.Show(); // 테스트때문에 ShowDialog()가 아닌 Show() 사용
-
-            //this.Close();
+            ce.ShowDialog(); // 테스트때문에 ShowDialog()가 아닌 Show() 사용
+            this.Show();
         }
 
         private void MultiChoose_Load(object sender, EventArgs e)
