@@ -42,6 +42,7 @@ namespace Catch_Music
         private int elapsedTime;
 
         Thread dataThread;
+        Thread gameCheck;
 
         public Server()
         {
@@ -49,6 +50,8 @@ namespace Catch_Music
             dataGridView1.DataSource = dataset.Tables["clientINFO"];
             dataThread = new Thread(new ThreadStart(refreshData));
             dataThread.Start();
+            gameCheck = new Thread(new ThreadStart(gameCheckThread));
+            gameCheck.Start();
 
             youtubeService = new YouTubeService(new BaseClientService.Initializer()
             {
@@ -227,6 +230,7 @@ namespace Catch_Music
 
             dataset.Tables["clientINFO"].Rows.Clear();
             dataThread.Abort();
+            gameCheck.Abort();
         }
 
         private void musicAnswerP_KeyDown(object sender, KeyEventArgs e)
@@ -583,6 +587,28 @@ namespace Catch_Music
         private void musicAnswerP_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void gameCheckThread()
+        {
+            while (true)
+            {
+                if (dataset.Tables["clientINFO"].Rows.Count != 0)
+                {
+                    foreach (DataRow row in dataset.Tables["clientINFO"].Rows)
+                    {
+                        if (Convert.ToString(row["score"]) == "5")
+                        {
+                            SetText(Convert.ToString(row["name"]) + "님이 승리했습니다!" + "\r\n");
+                            foreach (DataRow r in dataset.Tables["clientINFO"].Rows)
+                            {
+                                // 모든 플레이어들의 점수 초기화
+                                r["score"] = 0;
+                            }
+                        }
+                    }
+                }
+            }
         }
     }
 
