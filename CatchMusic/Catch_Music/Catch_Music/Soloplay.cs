@@ -6,6 +6,7 @@ using Google.Apis.YouTube.v3.Data;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Net;
@@ -377,6 +378,16 @@ namespace Catch_Music
         private void hintBtn1_Click(object sender, EventArgs e)
         {
             string hintText = "";
+            var comments = GetComments(videoId);
+            if (comments.Count > 0)
+            {
+                Random rnd = new Random();
+                int r = rnd.Next(comments.Count);
+                hintText = "유튜브댓글 : " + comments[r]+"\r\n";
+            }
+
+
+            // 모든 클라이언트들에게 힌트1실행 코드를 보내는 방법은?
             ///
             /// 힌트에 관련된 정보를 db에서 가져와 hintText 변수에 저장하는 코드작성
             ///
@@ -435,6 +446,22 @@ namespace Catch_Music
             this.Hide();
             song.ShowDialog();
             this.Show();
+        }
+
+        private List<string> GetComments(string videoId)
+        {
+            var commentThreadsRequest = youtubeService.CommentThreads.List("snippet");
+            commentThreadsRequest.VideoId = videoId;
+            commentThreadsRequest.MaxResults = 100; // get up to 100 comments
+            var response = commentThreadsRequest.Execute();
+
+            var comments = new List<string>();
+            foreach (var commentThread in response.Items)
+            {
+                comments.Add(commentThread.Snippet.TopLevelComment.Snippet.TextDisplay);
+            }
+
+            return comments;
         }
     }
 }

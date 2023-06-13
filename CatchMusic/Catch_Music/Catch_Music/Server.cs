@@ -538,7 +538,7 @@ namespace Catch_Music
             videoId = result.Id.VideoId;
             lblTitle.Text = result.Snippet.Title;
             //lblDescription.Text = result.Snippet.Description;
-            lblStatus.Text = "비디오를 재생할 수 있습니다.";
+            lblStatus.Text = "재생할 수 있습니다.";
             musicStartBtn.Enabled = true;
         }
 

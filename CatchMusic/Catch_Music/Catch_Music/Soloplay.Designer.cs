@@ -238,7 +238,6 @@
         #endregion
 
         private System.Windows.Forms.TextBox txtMsg;
-        private System.Windows.Forms.TextBox txtChatMsg;
         private System.Windows.Forms.Button gameStartBtn;
         private System.Windows.Forms.Label Nickname;
         private System.Windows.Forms.Label label1;
@@ -252,5 +251,6 @@
         private System.Windows.Forms.RadioButton hignBtn;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Button addsong;
+        private System.Windows.Forms.TextBox txtChatMsg;
     }
 }
