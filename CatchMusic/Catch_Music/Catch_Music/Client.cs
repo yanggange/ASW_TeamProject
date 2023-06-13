@@ -295,6 +295,7 @@ namespace Catch_Music
             dataThread.Abort();
             dataset.Tables["clientINFO"].Rows.Clear();
         }
+
         private void refreshData()
         {
             DelegatePlus dataRef = () =>
@@ -314,15 +315,16 @@ namespace Catch_Music
             {
                 if (dataset.Tables["clientINFO"].Rows.Count != 0)
                 {
-                    foreach (DataRow row in dataset.Tables["clientINFO"].Rows)
+                    Thread.Sleep(100);
+                    for (int i = 0; i < dataset.Tables["clientINFO"].Rows.Count; i++)
                     {
-                        if (Convert.ToString(row["score"]) == "5")
+                        if (Convert.ToString(dataset.Tables["clientINFO"].Rows[i]["score"]) == "5")
                         {
-                            SetText(Convert.ToString(row["name"]) + "님이 승리했습니다!" + "\r\n");
-                            foreach (DataRow r in dataset.Tables["clientINFO"].Rows)
+                            SetText(Convert.ToString(dataset.Tables["clientINFO"].Rows[i]["name"]) + "님이 승리했습니다!" + "\r\n");
+                            for (int j = 0; j < dataset.Tables["clientINFO"].Rows.Count; j++)
                             {
                                 // 모든 플레이어들의 점수 초기화
-                                r["score"] = 0;
+                                dataset.Tables["clientINFO"].Rows[j]["score"] = "0";
                             }
                         }
                     }
@@ -385,7 +387,7 @@ namespace Catch_Music
                     {
                         //얘는 딜레이 없이 서버에서 음악이 중지되면, 노래가 거의 동시에 중지됨.
                         ce.StopMusic();
-
+                        continue;
                     }
 
                     if (lstMessage.StartsWith("./name ") == true)
@@ -400,7 +402,7 @@ namespace Catch_Music
                             {
                                 if (ch == 0)
                                 {
-                                    ce.SetText(a + "\r\n");
+                                    //ce.SetText(a + "\r\n");
                                     ce.dataset.Tables["clientINFO"].Rows.Add(new object[] { a.Substring(0, (a.Length) - 1), a.Substring(a.Length - 1) });
                                     ch = 1;
                                     continue;

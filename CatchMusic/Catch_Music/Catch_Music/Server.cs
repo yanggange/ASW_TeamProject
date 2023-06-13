@@ -500,7 +500,7 @@ namespace Catch_Music
             string lstMessage = "./stop ";
             if (lstMessage != null && lstMessage != "")
             {
-                txtChatMsg.Text = txtChatMsg.Text + "노래 재생 시간이 끝났습니다" + "\r\n";
+                txtChatMsg.Text = txtChatMsg.Text + "노래를 정지시켰습니다" + "\r\n";
                 byte[] bytSand_Data = Encoding.UTF8.GetBytes(lstMessage + "\r\n");
                 lock (Server.clientSocketArray)
                 {
@@ -595,15 +595,16 @@ namespace Catch_Music
             {
                 if (dataset.Tables["clientINFO"].Rows.Count != 0)
                 {
-                    foreach (DataRow row in dataset.Tables["clientINFO"].Rows)
+                    Thread.Sleep(100);
+                    for (int i = 0; i < dataset.Tables["clientINFO"].Rows.Count; i++)
                     {
-                        if (Convert.ToString(row["score"]) == "5")
+                        if (Convert.ToString(dataset.Tables["clientINFO"].Rows[i]["score"]) == "5")
                         {
-                            SetText(Convert.ToString(row["name"]) + "님이 승리했습니다!" + "\r\n");
-                            foreach (DataRow r in dataset.Tables["clientINFO"].Rows)
+                            SetText(Convert.ToString(dataset.Tables["clientINFO"].Rows[i]["name"]) + "님이 승리했습니다!" + "\r\n");
+                            for (int j = 0; j < dataset.Tables["clientINFO"].Rows.Count; j++)
                             {
                                 // 모든 플레이어들의 점수 초기화
-                                r["score"] = 0;
+                                dataset.Tables["clientINFO"].Rows[j]["score"] = "0";
                             }
                         }
                     }
