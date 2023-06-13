@@ -54,18 +54,20 @@
             // IPtxt
             // 
             this.IPtxt.AutoSize = true;
+            this.IPtxt.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.IPtxt.Location = new System.Drawing.Point(216, 51);
             this.IPtxt.Name = "IPtxt";
-            this.IPtxt.Size = new System.Drawing.Size(16, 12);
+            this.IPtxt.Size = new System.Drawing.Size(18, 12);
             this.IPtxt.TabIndex = 16;
             this.IPtxt.Text = "IP";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label2.Location = new System.Drawing.Point(205, 21);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(41, 12);
+            this.label2.Size = new System.Drawing.Size(44, 12);
             this.label2.TabIndex = 15;
             this.label2.Text = "방번호";
             // 
@@ -96,20 +98,22 @@
             // 
             // btnConnect
             // 
+            this.btnConnect.BackColor = System.Drawing.SystemColors.Info;
             this.btnConnect.Location = new System.Drawing.Point(358, 16);
             this.btnConnect.Name = "btnConnect";
             this.btnConnect.Size = new System.Drawing.Size(214, 23);
             this.btnConnect.TabIndex = 2;
             this.btnConnect.Text = "서버 들어가기";
-            this.btnConnect.UseVisualStyleBackColor = true;
+            this.btnConnect.UseVisualStyleBackColor = false;
             this.btnConnect.Click += new System.EventHandler(this.btnConnect_Click);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label1.Location = new System.Drawing.Point(19, 45);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(41, 12);
+            this.label1.Size = new System.Drawing.Size(44, 12);
             this.label1.TabIndex = 9;
             this.label1.Text = "닉네임";
             // 
@@ -126,12 +130,13 @@
             // pictureBox1
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(-6, -10);
+            this.pictureBox1.Location = new System.Drawing.Point(-24, -14);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(100, 60);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.Size = new System.Drawing.Size(117, 77);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 19;
             this.pictureBox1.TabStop = false;
+            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
             // txtName
             // 

@@ -41,7 +41,7 @@
             // btnTeam
             // 
             this.btnTeam.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnTeam.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.btnTeam.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnTeam.Location = new System.Drawing.Point(454, 201);
             this.btnTeam.Name = "btnTeam";
             this.btnTeam.Size = new System.Drawing.Size(241, 88);
@@ -53,7 +53,7 @@
             // btnSolo
             // 
             this.btnSolo.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnSolo.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.btnSolo.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSolo.Location = new System.Drawing.Point(77, 201);
             this.btnSolo.Name = "btnSolo";
             this.btnSolo.Size = new System.Drawing.Size(242, 88);
@@ -82,7 +82,7 @@
             // 
             // txtNick
             // 
-            this.txtNick.Font = new System.Drawing.Font("굴림", 15F);
+            this.txtNick.Font = new System.Drawing.Font("굴림", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.txtNick.Location = new System.Drawing.Point(365, 63);
             this.txtNick.Name = "txtNick";
             this.txtNick.Size = new System.Drawing.Size(388, 35);

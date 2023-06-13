@@ -43,6 +43,8 @@
             this.btnSignUp = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
             this.txtNick = new System.Windows.Forms.TextBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // Sign
@@ -177,12 +179,24 @@
             this.txtNick.Size = new System.Drawing.Size(200, 26);
             this.txtNick.TabIndex = 5;
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(-11, 0);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(111, 69);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.pictureBox1.TabIndex = 7;
+            this.pictureBox1.TabStop = false;
+            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
+            // 
             // SignUp
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
             this.ClientSize = new System.Drawing.Size(384, 461);
+            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.btnSignUp);
             this.Controls.Add(this.label5);
@@ -201,6 +215,7 @@
             this.Name = "SignUp";
             this.Text = "SignUp";
             this.Load += new System.EventHandler(this.SignUp_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -222,5 +237,6 @@
         private System.Windows.Forms.Button btnSignUp;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox txtNick;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }

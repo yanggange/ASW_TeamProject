@@ -68,16 +68,19 @@
             // 
             // gameStartBtn
             // 
+            this.gameStartBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.gameStartBtn.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.gameStartBtn.Location = new System.Drawing.Point(41, 483);
             this.gameStartBtn.Name = "gameStartBtn";
             this.gameStartBtn.Size = new System.Drawing.Size(75, 23);
             this.gameStartBtn.TabIndex = 4;
             this.gameStartBtn.Text = "게임시작";
-            this.gameStartBtn.UseVisualStyleBackColor = true;
+            this.gameStartBtn.UseVisualStyleBackColor = false;
             this.gameStartBtn.Click += new System.EventHandler(this.button1_Click);
             // 
             // Nickname
             // 
+            this.Nickname.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.Nickname.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.Nickname.Location = new System.Drawing.Point(165, 26);
             this.Nickname.Name = "Nickname";
@@ -89,10 +92,11 @@
             // label1
             // 
             this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.label1.Location = new System.Drawing.Point(499, 26);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(38, 12);
+            this.label1.Size = new System.Drawing.Size(43, 12);
             this.label1.TabIndex = 18;
             this.label1.Text = "Score";
             // 
@@ -108,32 +112,38 @@
             // 
             // hintBtn1
             // 
+            this.hintBtn1.BackColor = System.Drawing.SystemColors.Info;
+            this.hintBtn1.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.hintBtn1.Location = new System.Drawing.Point(41, 119);
             this.hintBtn1.Name = "hintBtn1";
             this.hintBtn1.Size = new System.Drawing.Size(75, 23);
             this.hintBtn1.TabIndex = 0;
             this.hintBtn1.Text = "힌트1";
-            this.hintBtn1.UseVisualStyleBackColor = true;
+            this.hintBtn1.UseVisualStyleBackColor = false;
             this.hintBtn1.Click += new System.EventHandler(this.hintBtn1_Click);
             // 
             // hintBtn2
             // 
+            this.hintBtn2.BackColor = System.Drawing.SystemColors.Info;
+            this.hintBtn2.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.hintBtn2.Location = new System.Drawing.Point(41, 166);
             this.hintBtn2.Name = "hintBtn2";
             this.hintBtn2.Size = new System.Drawing.Size(75, 23);
             this.hintBtn2.TabIndex = 1;
             this.hintBtn2.Text = "힌트2";
-            this.hintBtn2.UseVisualStyleBackColor = true;
+            this.hintBtn2.UseVisualStyleBackColor = false;
             this.hintBtn2.Click += new System.EventHandler(this.hintBtn2_Click);
             // 
             // hintBtn3
             // 
+            this.hintBtn3.BackColor = System.Drawing.SystemColors.Info;
+            this.hintBtn3.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.hintBtn3.Location = new System.Drawing.Point(41, 213);
             this.hintBtn3.Name = "hintBtn3";
             this.hintBtn3.Size = new System.Drawing.Size(75, 23);
             this.hintBtn3.TabIndex = 2;
             this.hintBtn3.Text = "힌트3";
-            this.hintBtn3.UseVisualStyleBackColor = true;
+            this.hintBtn3.UseVisualStyleBackColor = false;
             this.hintBtn3.Click += new System.EventHandler(this.hintBtn3_Click);
             // 
             // groupBox1
@@ -141,6 +151,7 @@
             this.groupBox1.Controls.Add(this.easyBtn);
             this.groupBox1.Controls.Add(this.nomalBtn);
             this.groupBox1.Controls.Add(this.hignBtn);
+            this.groupBox1.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.groupBox1.Location = new System.Drawing.Point(12, 305);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(137, 161);
@@ -153,7 +164,7 @@
             this.easyBtn.AutoSize = true;
             this.easyBtn.Location = new System.Drawing.Point(12, 123);
             this.easyBtn.Name = "easyBtn";
-            this.easyBtn.Size = new System.Drawing.Size(81, 16);
+            this.easyBtn.Size = new System.Drawing.Size(88, 16);
             this.easyBtn.TabIndex = 2;
             this.easyBtn.TabStop = true;
             this.easyBtn.Text = "쉬움(15초)";
@@ -165,7 +176,7 @@
             this.nomalBtn.AutoSize = true;
             this.nomalBtn.Location = new System.Drawing.Point(12, 75);
             this.nomalBtn.Name = "nomalBtn";
-            this.nomalBtn.Size = new System.Drawing.Size(81, 16);
+            this.nomalBtn.Size = new System.Drawing.Size(88, 16);
             this.nomalBtn.TabIndex = 1;
             this.nomalBtn.TabStop = true;
             this.nomalBtn.Text = "보통(10초)";
@@ -177,7 +188,7 @@
             this.hignBtn.AutoSize = true;
             this.hignBtn.Location = new System.Drawing.Point(12, 30);
             this.hignBtn.Name = "hignBtn";
-            this.hignBtn.Size = new System.Drawing.Size(87, 16);
+            this.hignBtn.Size = new System.Drawing.Size(94, 16);
             this.hignBtn.TabIndex = 0;
             this.hignBtn.TabStop = true;
             this.hignBtn.Text = "어려움(5초)";
@@ -187,21 +198,23 @@
             // pictureBox1
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(10, -2);
+            this.pictureBox1.Location = new System.Drawing.Point(5, 2);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(100, 60);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.pictureBox1.TabIndex = 25;
             this.pictureBox1.TabStop = false;
             // 
             // addsong
             // 
+            this.addsong.BackColor = System.Drawing.SystemColors.Info;
+            this.addsong.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.addsong.Location = new System.Drawing.Point(41, 265);
             this.addsong.Name = "addsong";
             this.addsong.Size = new System.Drawing.Size(75, 23);
             this.addsong.TabIndex = 3;
             this.addsong.Text = "노래 추가";
-            this.addsong.UseVisualStyleBackColor = true;
+            this.addsong.UseVisualStyleBackColor = false;
             this.addsong.Click += new System.EventHandler(this.addsong_Click);
             // 
             // Soloplay

@@ -34,6 +34,8 @@
             this.btnLogin = new System.Windows.Forms.Button();
             this.btnSign = new System.Windows.Forms.Button();
             this.labellogin = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // txtID
@@ -88,12 +90,23 @@
             this.labellogin.TabIndex = 4;
             this.labellogin.Text = "로그인";
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(-7, -2);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(104, 70);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.pictureBox1.TabIndex = 5;
+            this.pictureBox1.TabStop = false;
+            // 
             // Login
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
             this.ClientSize = new System.Drawing.Size(384, 278);
+            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.labellogin);
             this.Controls.Add(this.btnSign);
             this.Controls.Add(this.btnLogin);
@@ -104,6 +117,7 @@
             this.Text = "Login";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Login_FormClosed);
             this.Load += new System.EventHandler(this.Login_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -115,5 +129,6 @@
         private System.Windows.Forms.Button btnLogin;
         private System.Windows.Forms.Button btnSign;
         private System.Windows.Forms.Label labellogin;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }

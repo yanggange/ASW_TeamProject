@@ -331,6 +331,11 @@ namespace Catch_Music
                 }
             }
         }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 
     public class ChatHandler
