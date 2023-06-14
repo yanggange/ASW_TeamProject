@@ -30,6 +30,7 @@ namespace Catch_Music
         public string checkText = "fjciwknkfl123"; // 적은 1줄의 text가 기록되는 변수
         private int gameDiff = 10; // 기본으로 설정 된 난이도
         Thread gameThread;
+        private bool pass = false;
         public string PassNick
         { get; set; }
 
@@ -326,6 +327,19 @@ namespace Catch_Music
                         Score.Invoke(scoreText, new object[] { });
                         break;
                     }
+                    if (pass == true)
+                    {
+                        timer.Stop();
+                        if (!audioProcess.HasExited)
+                        {
+                            audioProcess.Kill();
+                        }
+                        ServerText("패스!!!");
+                        checkText = "fjciwknkfl123";
+                        Score.Invoke(scoreText, new object[] { });
+                        pass = false;
+                        break;
+                    }
                 }
             }
 
@@ -462,6 +476,11 @@ namespace Catch_Music
             }
 
             return comments;
+        }
+
+        private void btnPass_Click(object sender, EventArgs e)
+        {
+            pass = true;
         }
     }
 }

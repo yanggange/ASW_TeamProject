@@ -44,6 +44,7 @@
             this.hignBtn = new System.Windows.Forms.RadioButton();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.addsong = new System.Windows.Forms.Button();
+            this.btnPass = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -217,12 +218,24 @@
             this.addsong.UseVisualStyleBackColor = false;
             this.addsong.Click += new System.EventHandler(this.addsong_Click);
             // 
+            // btnPass
+            // 
+            this.btnPass.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.btnPass.Location = new System.Drawing.Point(41, 78);
+            this.btnPass.Name = "btnPass";
+            this.btnPass.Size = new System.Drawing.Size(75, 23);
+            this.btnPass.TabIndex = 26;
+            this.btnPass.Text = "PASS";
+            this.btnPass.UseVisualStyleBackColor = true;
+            this.btnPass.Click += new System.EventHandler(this.btnPass_Click);
+            // 
             // Soloplay
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
             this.ClientSize = new System.Drawing.Size(584, 561);
+            this.Controls.Add(this.btnPass);
             this.Controls.Add(this.addsong);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.groupBox1);
@@ -265,5 +278,6 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Button addsong;
         private System.Windows.Forms.TextBox txtChatMsg;
+        private System.Windows.Forms.Button btnPass;
     }
 }
