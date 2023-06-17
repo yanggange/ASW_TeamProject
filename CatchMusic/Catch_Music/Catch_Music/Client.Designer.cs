@@ -80,7 +80,7 @@
             // 
             // txtMsg
             // 
-            this.txtMsg.Location = new System.Drawing.Point(13, 523);
+            this.txtMsg.Location = new System.Drawing.Point(13, 556);
             this.txtMsg.Name = "txtMsg";
             this.txtMsg.Size = new System.Drawing.Size(559, 21);
             this.txtMsg.TabIndex = 3;
@@ -88,12 +88,12 @@
             // 
             // txtChatMsg
             // 
-            this.txtChatMsg.Location = new System.Drawing.Point(13, 77);
+            this.txtChatMsg.Location = new System.Drawing.Point(14, 72);
             this.txtChatMsg.Multiline = true;
             this.txtChatMsg.Name = "txtChatMsg";
             this.txtChatMsg.ReadOnly = true;
             this.txtChatMsg.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.txtChatMsg.Size = new System.Drawing.Size(416, 427);
+            this.txtChatMsg.Size = new System.Drawing.Size(416, 478);
             this.txtChatMsg.TabIndex = 4;
             // 
             // btnConnect
@@ -121,10 +121,10 @@
             // 
             this.dataGridView1.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCellsExceptHeaders;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(436, 77);
+            this.dataGridView1.Location = new System.Drawing.Point(436, 72);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowTemplate.Height = 23;
-            this.dataGridView1.Size = new System.Drawing.Size(136, 427);
+            this.dataGridView1.Size = new System.Drawing.Size(136, 478);
             this.dataGridView1.TabIndex = 18;
             // 
             // pictureBox1
@@ -152,7 +152,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
-            this.ClientSize = new System.Drawing.Size(584, 561);
+            this.ClientSize = new System.Drawing.Size(584, 589);
             this.Controls.Add(this.txtName);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.IPtxtMsg);

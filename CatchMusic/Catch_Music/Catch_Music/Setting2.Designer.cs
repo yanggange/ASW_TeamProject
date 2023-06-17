@@ -34,6 +34,8 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.txtNick = new System.Windows.Forms.Label();
+            this.apiKeyText = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
@@ -90,12 +92,31 @@
             this.txtNick.Text = "unknown";
             this.txtNick.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
+            // apiKeyText
+            // 
+            this.apiKeyText.Location = new System.Drawing.Point(317, 63);
+            this.apiKeyText.Name = "apiKeyText";
+            this.apiKeyText.Size = new System.Drawing.Size(320, 21);
+            this.apiKeyText.TabIndex = 24;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label3.Location = new System.Drawing.Point(255, 66);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(59, 12);
+            this.label3.TabIndex = 23;
+            this.label3.Text = "API KEY";
+            // 
             // MySet2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.apiKeyText);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.txtNick);
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.btnTeam);
@@ -109,6 +130,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -118,5 +140,7 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.Label txtNick;
+        private System.Windows.Forms.TextBox apiKeyText;
+        private System.Windows.Forms.Label label3;
     }
 }

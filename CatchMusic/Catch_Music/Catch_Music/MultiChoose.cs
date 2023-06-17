@@ -15,7 +15,8 @@ namespace Catch_Music
         public string name; // 로그인 했을 때 주어지는 닉네임을 저장할 변수
         public string PassNick
         { get; set; }
-
+        public string apiKey { get; set; }
+        public string key;
 
         public MultiChoose()
         {
@@ -26,6 +27,7 @@ namespace Catch_Music
         {
             this.Hide();
             Server sv = new Server();
+            sv.apiKey = key;
             sv.ShowDialog(); // 테스트때문에 ShowDialog()가 아닌 Show() 사용
             this.Show();
         }
@@ -35,6 +37,7 @@ namespace Catch_Music
             this.Hide();
             Client ce = new Client();
             ce.PassNick = txtNick.Text;
+            ce.apiKey = key;
             ce.ShowDialog(); // 테스트때문에 ShowDialog()가 아닌 Show() 사용
             this.Show();
         }
@@ -42,6 +45,7 @@ namespace Catch_Music
         private void MultiChoose_Load(object sender, EventArgs e)
         {
             txtNick.Text = PassNick;
+            key = apiKey;
         }
     }
 }

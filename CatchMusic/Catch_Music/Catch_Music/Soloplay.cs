@@ -34,6 +34,8 @@ namespace Catch_Music
         public string PassNick
         { get; set; }
 
+        public string apiKey { get; set; }
+
         private YouTubeService youtubeService;
         private string videoId;
         private string audioUrl;
@@ -51,13 +53,8 @@ namespace Catch_Music
             hintBtn1.Enabled = false;
             hintBtn2.Enabled = false;
             hintBtn3.Enabled = false;
-            youtubeService = new YouTubeService(new BaseClientService.Initializer()
-            {
-                ApiKey = "AIzaSyCXYRYadXpJP9AzdPidWCYKVO_Xj5wcQM4", // Google API Console에서 생성한 인증키를 입력하세요.
-                ApplicationName = this.GetType().ToString()
-            });
-
         }
+
         FirebaseConfig fbc = new FirebaseConfig()
         {
             AuthSecret = "D0WK5xAXo5XhSBVN8dlcMxuvp4iRQuu0VypUeVbu",
@@ -116,6 +113,11 @@ namespace Catch_Music
         {
             Nickname.Text = PassNick;
             name = Nickname.Text;
+            youtubeService = new YouTubeService(new BaseClientService.Initializer()
+            {
+                ApiKey = apiKey, // Google API Console에서 생성한 인증키를 입력하세요.
+                ApplicationName = this.GetType().ToString()
+            });
             try
             {
                 client = new FireSharp.FirebaseClient(fbc);

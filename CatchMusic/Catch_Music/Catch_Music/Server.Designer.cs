@@ -62,14 +62,14 @@
             this.txtChatMsg.Name = "txtChatMsg";
             this.txtChatMsg.ReadOnly = true;
             this.txtChatMsg.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.txtChatMsg.Size = new System.Drawing.Size(404, 245);
+            this.txtChatMsg.Size = new System.Drawing.Size(404, 255);
             this.txtChatMsg.TabIndex = 9;
             // 
             // OnOffsv
             // 
             this.OnOffsv.AutoSize = true;
             this.OnOffsv.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.OnOffsv.Location = new System.Drawing.Point(139, 278);
+            this.OnOffsv.Location = new System.Drawing.Point(143, 288);
             this.OnOffsv.Name = "OnOffsv";
             this.OnOffsv.Size = new System.Drawing.Size(31, 12);
             this.OnOffsv.TabIndex = 1;
@@ -80,9 +80,9 @@
             // 
             this.btnStart.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.btnStart.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.btnStart.Location = new System.Drawing.Point(310, 278);
+            this.btnStart.Location = new System.Drawing.Point(310, 288);
             this.btnStart.Name = "btnStart";
-            this.btnStart.Size = new System.Drawing.Size(262, 84);
+            this.btnStart.Size = new System.Drawing.Size(262, 74);
             this.btnStart.TabIndex = 1;
             this.btnStart.Text = "방 열기";
             this.btnStart.UseVisualStyleBackColor = false;
@@ -92,7 +92,7 @@
             // 
             this.IPtxt.AutoSize = true;
             this.IPtxt.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.IPtxt.Location = new System.Drawing.Point(129, 305);
+            this.IPtxt.Location = new System.Drawing.Point(128, 314);
             this.IPtxt.Name = "IPtxt";
             this.IPtxt.Size = new System.Drawing.Size(18, 12);
             this.IPtxt.TabIndex = 17;
@@ -231,7 +231,7 @@
             this.dataGridView1.Location = new System.Drawing.Point(439, 13);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowTemplate.Height = 23;
-            this.dataGridView1.Size = new System.Drawing.Size(133, 245);
+            this.dataGridView1.Size = new System.Drawing.Size(133, 255);
             this.dataGridView1.TabIndex = 30;
             // 
             // labelTimer
@@ -265,7 +265,7 @@
             // pictureBox1
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(-2, 264);
+            this.pictureBox1.Location = new System.Drawing.Point(-2, 272);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(100, 60);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;

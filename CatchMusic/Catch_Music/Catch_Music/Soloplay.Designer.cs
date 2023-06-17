@@ -59,12 +59,12 @@
             // 
             // txtChatMsg
             // 
-            this.txtChatMsg.Location = new System.Drawing.Point(155, 66);
+            this.txtChatMsg.Location = new System.Drawing.Point(155, 55);
             this.txtChatMsg.Multiline = true;
             this.txtChatMsg.Name = "txtChatMsg";
             this.txtChatMsg.ReadOnly = true;
             this.txtChatMsg.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.txtChatMsg.Size = new System.Drawing.Size(416, 440);
+            this.txtChatMsg.Size = new System.Drawing.Size(416, 451);
             this.txtChatMsg.TabIndex = 14;
             // 
             // gameStartBtn

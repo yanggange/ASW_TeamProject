@@ -37,6 +37,7 @@ namespace Catch_Music
         private Process audioProcess;
         public string name;
         public string PassNick{get;set;}
+        public string apiKey { get; set; }
 
         Thread dataThread;
         Thread gameCheck;
@@ -49,12 +50,6 @@ namespace Catch_Music
             dataThread.Start();
             gameCheck = new Thread(new ThreadStart(gameCheckThread));
             gameCheck.Start();
-
-            youtubeService = new YouTubeService(new BaseClientService.Initializer()
-            {
-                ApiKey = "AIzaSyCXYRYadXpJP9AzdPidWCYKVO_Xj5wcQM4", // Google API Console에서 생성한 인증키를 입력하세요.
-                ApplicationName = this.GetType().ToString()
-            });
         }
         private string GetHtml(string url)
         {
@@ -183,6 +178,11 @@ namespace Catch_Music
         {
             txtName.Text = PassNick;
             name = txtName.Text;
+            youtubeService = new YouTubeService(new BaseClientService.Initializer()
+            {
+                ApiKey = apiKey, // Google API Console에서 생성한 인증키를 입력하세요.
+                ApplicationName = this.GetType().ToString()
+            });
         }
 
         private void btnConnect_Click(object sender, EventArgs e)

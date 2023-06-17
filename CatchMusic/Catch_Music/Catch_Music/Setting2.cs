@@ -23,6 +23,7 @@ namespace Catch_Music
             this.Hide();
             MultiChoose multiChoose = new MultiChoose();
             multiChoose.PassNick = txtNick.Text;
+            multiChoose.apiKey = apiKeyText.Text;
             multiChoose.ShowDialog();
             this.Show();
         }
@@ -32,6 +33,7 @@ namespace Catch_Music
             this.Hide();
             Soloplay solo = new Soloplay();
             solo.PassNick = txtNick.Text;
+            solo.apiKey = apiKeyText.Text;
             solo.ShowDialog();
             this.Show();
         }

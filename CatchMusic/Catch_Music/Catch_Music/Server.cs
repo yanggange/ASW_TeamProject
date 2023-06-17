@@ -41,6 +41,8 @@ namespace Catch_Music
         private System.Windows.Forms.Timer timer;
         private int elapsedTime;
 
+        public string apiKey { get; set; }
+
         Thread dataThread;
         Thread gameCheck;
 
@@ -52,12 +54,6 @@ namespace Catch_Music
             dataThread.Start();
             gameCheck = new Thread(new ThreadStart(gameCheckThread));
             gameCheck.Start();
-
-            youtubeService = new YouTubeService(new BaseClientService.Initializer()
-            {
-                ApiKey = "AIzaSyCXYRYadXpJP9AzdPidWCYKVO_Xj5wcQM4", // Google API Console에서 생성한 인증키를 입력하세요.
-                ApplicationName = this.GetType().ToString()
-            });
 
             timer = new System.Windows.Forms.Timer();
             timer.Interval = 1000; // 1초마다 타이머 이벤트 발생
@@ -72,6 +68,11 @@ namespace Catch_Music
         private void Server_Load(object sender, EventArgs e)
         {
             IPtxt.Text = GetIP();
+            youtubeService = new YouTubeService(new BaseClientService.Initializer()
+            {
+                ApiKey = apiKey, // Google API Console에서 생성한 인증키를 입력하세요.
+                ApplicationName = this.GetType().ToString()
+            });
         }
 
         // 이더넷 or Wi-Fi의 IP를 가져오는 함수
