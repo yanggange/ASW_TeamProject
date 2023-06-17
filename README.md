@@ -9,7 +9,9 @@
 2. YouTube Data API v3 선택 후 사용(프로젝트를 만들면 사용 버튼이 나옵니다.)
 3. 사용자 인증 정보 > 사용자 인증 정보 만들기 > API 키 선택
 4. API 키 생성 완료
+
 ### 실행파일 위치
 
 CatchMusic > Catch_Music > Catch_Music > bin > Release > Catch_Music.exe
+
 ---
